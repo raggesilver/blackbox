@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.2"/>
+
+  <template class="TerminalWindow" parent="AdwApplicationWindow">
+  <property name="name">blackbox-main-window</property>
+    <property name="content">
+      <object class="GtkOverlay" id="overlay">
+        <child>
+          <object class="GtkBox" id="layout_box">
+            <property name="orientation">vertical</property>
+
+            <child>
+              <object class="GtkRevealer" id="header_bar_revealer">
+                <property name="valign">start</property>
+                <child>
+                  <object class="TerminalHeaderBar" id="header_bar"/>
+                </child>
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwTabView" id="tab_view">
+                <property name="shortcuts">none</property>
+              </object>
+            </child>
+
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+</interface>
+
