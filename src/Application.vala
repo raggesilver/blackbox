@@ -40,13 +40,13 @@ public class Terminal.Application : Adw.Application {
 
     this.add_action_entries (ACTIONS, this);
 
-    var focus_tab = new SimpleAction("focus-tab", new VariantType("(uu)"));
+    var focus_tab = new SimpleAction ("focus-tab", new VariantType ("(uu)"));
     focus_tab.activate.connect ((action, variant) => {
-      var window_id = variant.get_child_value(0).get_uint32();
-      var tab_id = variant.get_child_value(1).get_uint32();
-      this.on_focus_tab(window_id, tab_id);
+      var window_id = variant.get_child_value (0).get_uint32 ();
+      var tab_id = variant.get_child_value (1).get_uint32 ();
+      this.on_focus_tab (window_id, tab_id);
     });
-    this.add_action(focus_tab);
+    this.add_action (focus_tab);
 
     var keymap = Keymap.get_default ();
     keymap.apply (this);
@@ -66,6 +66,16 @@ public class Terminal.Application : Adw.Application {
     new Window (this).show ();
   }
 
+  // Among other things, the default implementation of this method
+  // removes "--" from the args. Here we override this method and purposefully
+  // do nothing without calling the parent implementation so that command_line
+  // can handle things properly.
+  public override bool local_command_line (ref weak string[] args, out int exit_status) {
+    exit_status = 0;
+    return false; // true if completely handled.
+  }
+
+  // This always runs in the main instance and after `local_command_line`.
   public override int command_line (GLib.ApplicationCommandLine cmd) {
     CommandLineOptions options;
 
@@ -91,9 +101,24 @@ public class Terminal.Application : Adw.Application {
       );
     }
     else {
+      if (options.command != null){
+        cmd.printerr ("-c/--command are deprecated. Please use -e/--execute instead.");
+      }
+
+      // Open in a new tab if --tab is specified and there's an open terminal
+      if (options.tab) {
+        var window = this.get_active_terminal_window ();
+        if (window != null) {
+          window.new_tab (options.execute ?? options.command, options.current_working_dir);
+          window.present ();
+          this.release ();
+          return 0;
+        }
+      }
+
       new Window (
         this,
-        options.command,
+        options.execute ?? options.command,
         options.current_working_dir,
         false
       ).show ();
@@ -121,7 +146,7 @@ public class Terminal.Application : Adw.Application {
     Terminal? active_terminal = (w is Window) ? w.active_terminal : null;
 
     string? cwd = Terminal
-      .get_current_working_directory_for_new_session (active_terminal);
+                    .get_current_working_directory_for_new_session (active_terminal);
 
     new Window (this, null, cwd, false).show ();
   }
@@ -135,12 +160,26 @@ public class Terminal.Application : Adw.Application {
   }
 
   private void on_focus_tab (uint window_id, uint tab_id) {
-    foreach (var _window in this.get_windows()) {
+    foreach (var _window in this.get_windows ()) {
       var window = _window as Window;
       if (window != null && window.id == window_id) {
-          window.focus_tab_with_id (tab_id);
-          return;
+        window.focus_tab_with_id (tab_id);
+        return;
       }
     }
+  }
+
+  private Window? get_active_terminal_window () {
+    var w = this.get_active_window ();
+    if (w != null && w is Window){
+      return w as Window;
+    }
+
+    foreach (var window in this.get_windows ()) {
+      if (window is Window){
+        return window as Window;
+      }
+    }
+    return null;
   }
 }
