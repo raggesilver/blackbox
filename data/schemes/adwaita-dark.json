@@ -2,7 +2,7 @@
   "name": "Adwaita Dark",
   "comment": "Adwaita dark color scheme",
   "foreground-color": "#ffffff",
-  "background-color": "#1E1E1E",
+  "background-color": "#1C1C1F",
   "use-theme-colors": true,
   "palette": [
     "#241F31",
