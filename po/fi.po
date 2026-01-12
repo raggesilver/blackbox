@@ -8,76 +8,80 @@ msgstr ""
 "Project-Id-Version: blackbox\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-26 23:47-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-01-13 09:01+0000\n"
+"Last-Translator: \"Tinde (Joke)\" <jouko.tiilikainen@gmail.com>\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/blackbox/"
+"blackbox/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2-dev\n"
 
 #: data/com.raggesilver.BlackBox.desktop.in:2
+#, fuzzy
 msgid "Black Box"
-msgstr ""
+msgstr "Black Box"
 
 #: data/com.raggesilver.BlackBox.desktop.in:8
+#, fuzzy
 msgid "Terminal;terminal;shell;prompt;command;commandline;cmd;box;"
-msgstr ""
+msgstr "Terminal;terminal;shell;prompt;command;commandline;cmd;box;"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:6
 msgid "Window width"
-msgstr ""
+msgstr "Ikkunan leveys"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:10
 msgid "Window height"
-msgstr ""
+msgstr "Ikkunan korkeus"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:14
 msgid "Whether or not to remember window size"
-msgstr ""
+msgstr "Pitääkö ikkunan koko muistaa vai ei"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:24
 msgid "Font family and size"
-msgstr ""
+msgstr "Fonttiperhe ja -koko"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:28
 msgid "Whether the window should inherit terminal theme's colors"
-msgstr ""
+msgstr "Peritäänkö ikkunan pääteteeman värit"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:32
 msgid "Terminal window background opacity"
-msgstr ""
+msgstr "Pääteikkunan taustan läpinäkyvyys"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:36
 msgid "Whether or not tabs should expand to fill tab bar"
-msgstr ""
+msgstr "Pitääkö välilehdet laajentua täyttämään välilehtipalkki"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:40
 msgid "Whether the headerbar should be shown or not"
-msgstr ""
+msgstr "Näytetäänkö otsikkopalkki vai ei"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:44
 msgid ""
 "If enabled, the header bar will be colored differently for root and ssh "
 "contexts"
-msgstr ""
+msgstr "Jos käytössä, otsikkopalkki on eri värinen root- ja ssh-konteksteissa."
 
 #: data/com.raggesilver.BlackBox.gschema.xml:48
 msgid "Whether or not to display a menu button in the headerbar"
-msgstr ""
+msgstr "Näytetäänkö valikkopainike otsikkopalkissa vai ei"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:52
 msgid "Whether or not to reserve an area for dragging the header bar"
-msgstr ""
+msgstr "Varataanko alue otsikkopalkin vetämistä varten vai ei"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:56
 msgid "Whether or not to show scrollbars"
-msgstr ""
+msgstr "Näytetäänkö vierityspalkit vai ei"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:60
 msgid "Whether overlay scrolling should be enabled"
-msgstr ""
+msgstr "Pitäisikö päällekkäisvieritys olla käytössä"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:64
 msgid "If enabled, terminals will scroll by pixels instead of rows"
@@ -138,11 +142,11 @@ msgstr ""
 
 #: data/com.raggesilver.BlackBox.gschema.xml:118
 msgid "Terminal cell width"
-msgstr ""
+msgstr "Pääteikkunan leveys"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:122
 msgid "Terminal cell height"
-msgstr ""
+msgstr "Pääteikkunan korkeus"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:126
 msgid "Terminal bell"
@@ -205,37 +209,38 @@ msgstr ""
 
 #: src/gtk/shortcut-dialog.ui:6
 msgid "Edit Shortcut"
-msgstr ""
+msgstr "Muokkaa pikakuvaketta"
 
 #: src/gtk/shortcut-dialog.ui:17 src/utils/Dialogs.vala:36
 #: src/utils/Dialogs.vala:38 src/widgets/PreferencesWindow.vala:606
 #: src/widgets/ShortcutEditor.vala:246 src/widgets/Window.vala:632
 msgid "Cancel"
-msgstr ""
+msgstr "Peruuta"
 
 #: src/gtk/shortcut-dialog.ui:24
 msgid "Apply"
-msgstr ""
+msgstr "Hyväksy"
 
 #: src/gtk/shortcut-dialog.ui:65
 msgid "This shortcut is already in use"
-msgstr ""
+msgstr "Tämä pikanäppäin on jo käytössä"
 
 #: src/gtk/shortcut-dialog.ui:78
 msgid "Press Escape to cancel or Backspace to disable shortcut"
 msgstr ""
+"Paina Esc peruuttaaksesi tai Backspace poistaaksesi pikakuvakkeen käytöstä"
 
 #: src/gtk/shortcut-editor.ui:6
 msgid "Keyboard"
-msgstr ""
+msgstr "Näppäimistö"
 
 #: src/gtk/shortcut-editor.ui:10
 msgid "Shortcuts"
-msgstr ""
+msgstr "Pikakuvakkeet"
 
 #: src/gtk/shortcut-editor.ui:29
 msgid "Reset All Shortcuts"
-msgstr ""
+msgstr "Palauta kaikki pikavalinnat"
 
 #: src/gtk/shortcut-editor.ui:30
 msgid ""
