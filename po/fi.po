@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: blackbox\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-26 23:47-0300\n"
-"PO-Revision-Date: 2026-01-13 09:01+0000\n"
+"PO-Revision-Date: 2026-01-19 13:01+0000\n"
 "Last-Translator: \"Tinde (Joke)\" <jouko.tiilikainen@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/blackbox/"
 "blackbox/fi/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15.2-dev\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: data/com.raggesilver.BlackBox.desktop.in:2
 #, fuzzy
@@ -27,619 +27,789 @@ msgstr "Black Box"
 #: data/com.raggesilver.BlackBox.desktop.in:8
 #, fuzzy
 msgid "Terminal;terminal;shell;prompt;command;commandline;cmd;box;"
-msgstr "Terminal;terminal;shell;prompt;command;commandline;cmd;box;"
+msgstr "Pääte;pääte;kuori;kehote;komento;komentorivi;cmd;laatikko;"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:6
+#, fuzzy
 msgid "Window width"
 msgstr "Ikkunan leveys"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:10
+#, fuzzy
 msgid "Window height"
 msgstr "Ikkunan korkeus"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:14
+#, fuzzy
 msgid "Whether or not to remember window size"
 msgstr "Pitääkö ikkunan koko muistaa vai ei"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:24
+#, fuzzy
 msgid "Font family and size"
 msgstr "Fonttiperhe ja -koko"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:28
+#, fuzzy
 msgid "Whether the window should inherit terminal theme's colors"
 msgstr "Peritäänkö ikkunan pääteteeman värit"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:32
+#, fuzzy
 msgid "Terminal window background opacity"
 msgstr "Pääteikkunan taustan läpinäkyvyys"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:36
+#, fuzzy
 msgid "Whether or not tabs should expand to fill tab bar"
 msgstr "Pitääkö välilehdet laajentua täyttämään välilehtipalkki"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:40
+#, fuzzy
 msgid "Whether the headerbar should be shown or not"
 msgstr "Näytetäänkö otsikkopalkki vai ei"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:44
+#, fuzzy
 msgid ""
 "If enabled, the header bar will be colored differently for root and ssh "
 "contexts"
-msgstr "Jos käytössä, otsikkopalkki on eri värinen root- ja ssh-konteksteissa."
+msgstr "Jos käytössä, otsikkopalkki on eri värinen root- ja ssh-konteksteissa"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:48
+#, fuzzy
 msgid "Whether or not to display a menu button in the headerbar"
 msgstr "Näytetäänkö valikkopainike otsikkopalkissa vai ei"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:52
+#, fuzzy
 msgid "Whether or not to reserve an area for dragging the header bar"
 msgstr "Varataanko alue otsikkopalkin vetämistä varten vai ei"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:56
+#, fuzzy
 msgid "Whether or not to show scrollbars"
 msgstr "Näytetäänkö vierityspalkit vai ei"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:60
+#, fuzzy
 msgid "Whether overlay scrolling should be enabled"
 msgstr "Pitäisikö päällekkäisvieritys olla käytössä"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:64
+#, fuzzy
 msgid "If enabled, terminals will scroll by pixels instead of rows"
-msgstr ""
+msgstr "Jos käytössä, päätteet vierittävät pikseleinä rivien sijaan"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:68
+#, fuzzy
 msgid "If enabled, terminals will render sixel escape sequences"
-msgstr ""
+msgstr "Jos käytössä, päätelaitteet renderöivät sixel-koodinvaihtosekvenssit"
 
 #. 0 = Fixed size, 1 = Unlimited, 2 = Disabled
 #: data/com.raggesilver.BlackBox.gschema.xml:73
 #: src/gtk/preferences-window.ui:308
+#, fuzzy
 msgid "Scrollback mode"
-msgstr ""
+msgstr "Takaisinrullaustila"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:77
+#, fuzzy
 msgid "Number of lines stored in scrollback"
-msgstr ""
+msgstr "Scrollbackiin tallennettujen rivien määrä"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:81
+#, fuzzy
 msgid "If enabled, floating controls will be shown in headerless mode"
-msgstr ""
+msgstr "Jos käytössä, kelluvat ohjausobjektit näytetään otsikottomassa tilassa"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:85
+#, fuzzy
 msgid ""
 "Hoverable area (in pixels) at the top of the window to trigger floating "
 "controls"
 msgstr ""
+"Ikkunan yläreunassa oleva leijuva alue (pikseleinä), jolla kelluvat säätimet "
+"voidaan aktivoida"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:89
+#, fuzzy
 msgid "Delay time before showing floating controls"
-msgstr ""
+msgstr "Viive ennen kelluvien säätimien näyttämistä"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:93
+#, fuzzy
 msgid "The light color scheme for the terminal"
-msgstr ""
+msgstr "Päätelaitteen vaalea värimaailma"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:97
+#, fuzzy
 msgid "The dark color scheme for the terminal"
-msgstr ""
+msgstr "Päätelaitteen tumma värimaailma"
 
 #. 0 = Follow system, 1 = Light Style, 2 = Dark Style
 #: data/com.raggesilver.BlackBox.gschema.xml:102
+#, fuzzy
 msgid "Style preference"
-msgstr ""
+msgstr "Tyylin valinta"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:106
+#, fuzzy
 msgid "Show bold text in bright colors"
-msgstr ""
+msgstr "Näytä lihavoitu teksti kirkkailla väreillä"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:110
+#, fuzzy
 msgid "Hide cursor while typing"
-msgstr ""
+msgstr "Piilota kohdistin kirjoitettaessa"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:114
+#, fuzzy
 msgid "Amount of padding around terminal widgets (top, right, bottom, left)"
 msgstr ""
+"Pääte-widgetien ympärillä olevan täyttömäärä (ylhäällä, oikealla, alhaalla, "
+"vasemmalla)"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:118
+#, fuzzy
 msgid "Terminal cell width"
-msgstr "Pääteikkunan leveys"
+msgstr "Päätesolun leveys"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:122
+#, fuzzy
 msgid "Terminal cell height"
-msgstr "Pääteikkunan korkeus"
+msgstr "Päätesolun  korjeus"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:126
+#, fuzzy
 msgid "Terminal bell"
-msgstr ""
+msgstr "Päätrlaitteen kello"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:130
+#, fuzzy
 msgid "Cursor shape"
-msgstr ""
+msgstr "Kursorin varjo"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:134
+#, fuzzy
 msgid "Whether or not the cursor should blink"
-msgstr ""
+msgstr "Pitäisikö kohdistimen vilkkua vai ei"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:138
+#, fuzzy
 msgid "If enabled, ctrl+c and ctrl+v will work for copy/paste"
-msgstr ""
+msgstr "Jos käytössä, ctrl+c ja ctrl+v toimivat kopioinnissa/liitämisessä"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:142
+#, fuzzy
 msgid "Whether to spawn shell in login mode"
-msgstr ""
+msgstr "Näytetäänkö komentotulkki kirjautumistilassa"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:146
+#, fuzzy
 msgid "Whether to use a custom command instead of the user's shell"
-msgstr ""
+msgstr "Käytetäänkö mukautettua komentoa käyttäjän komentotulkin sijaan"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:150
+#, fuzzy
 msgid "Custom command to use instead of the user's shell"
-msgstr ""
+msgstr "Mukautettu komento käyttäjän komentotulkin sijaan"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:154
+#, fuzzy
 msgid ""
 "Send a desktop notification when a process is completed on an unfocussed tab"
 msgstr ""
+"Lähetä työpöytäilmoitus, kun prosessi on valmis välilehdellä, jossa ei ole "
+"aktiivista"
 
 #. 0 = Previous terminal CWD, 1 = Home Directory, 2 = Custom
 #: data/com.raggesilver.BlackBox.gschema.xml:159
+#, fuzzy
 msgid "Working directory mode"
-msgstr ""
+msgstr "Työhakemistotila"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:163
+#, fuzzy
 msgid "Custom working directory for new terminals"
-msgstr ""
+msgstr "Mukautettu työhakemisto uusille päätteille"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:171
+#, fuzzy
 msgid ""
 "Whether clicking next on the last search result should return to the first"
-msgstr ""
+msgstr "Palaako seuraavaan napsauttamalla viimeisintä hakutulosta ensimmäiseen"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:175
+#, fuzzy
 msgid "Whether search should be case sensitive"
-msgstr ""
+msgstr "Pitäisikö haun kirjainkokoerotella"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:179
+#, fuzzy
 msgid "Whether search should only match entire words"
-msgstr ""
+msgstr "Pitäisikö haun löytää vain kokonaisia sanoja"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:183
+#, fuzzy
 msgid "Whether search should be performed using regular expressions"
-msgstr ""
+msgstr "Pitäisikö haku suorittaa säännöllisten lausekkeiden avulla"
 
 #: src/gtk/shortcut-dialog.ui:6
+#, fuzzy
 msgid "Edit Shortcut"
-msgstr "Muokkaa pikakuvaketta"
+msgstr "Muokkaa pikanäppäimiä"
 
 #: src/gtk/shortcut-dialog.ui:17 src/utils/Dialogs.vala:36
 #: src/utils/Dialogs.vala:38 src/widgets/PreferencesWindow.vala:606
 #: src/widgets/ShortcutEditor.vala:246 src/widgets/Window.vala:632
+#, fuzzy
 msgid "Cancel"
 msgstr "Peruuta"
 
 #: src/gtk/shortcut-dialog.ui:24
+#, fuzzy
 msgid "Apply"
 msgstr "Hyväksy"
 
 #: src/gtk/shortcut-dialog.ui:65
+#, fuzzy
 msgid "This shortcut is already in use"
 msgstr "Tämä pikanäppäin on jo käytössä"
 
 #: src/gtk/shortcut-dialog.ui:78
+#, fuzzy
 msgid "Press Escape to cancel or Backspace to disable shortcut"
 msgstr ""
 "Paina Esc peruuttaaksesi tai Backspace poistaaksesi pikakuvakkeen käytöstä"
 
 #: src/gtk/shortcut-editor.ui:6
+#, fuzzy
 msgid "Keyboard"
 msgstr "Näppäimistö"
 
 #: src/gtk/shortcut-editor.ui:10
+#, fuzzy
 msgid "Shortcuts"
-msgstr "Pikakuvakkeet"
+msgstr "Pikanäppäimet"
 
 #: src/gtk/shortcut-editor.ui:29
+#, fuzzy
 msgid "Reset All Shortcuts"
 msgstr "Palauta kaikki pikavalinnat"
 
 #: src/gtk/shortcut-editor.ui:30
+#, fuzzy
 msgid ""
 "This will reset all shortcuts to their default keybindings and overwrite "
 "your config file."
 msgstr ""
+"Tämä palauttaa kaikki pikanäppäimet oletusarvoihinsa ja korvaa "
+"asetustiedostosi."
 
 #: src/gtk/shortcut-editor.ui:34
+#, fuzzy
 msgid "Reset All"
-msgstr ""
+msgstr "Peruuta kaikki"
 
 #: src/gtk/search-toolbar.ui:20
+#, fuzzy
 msgid "Find"
-msgstr ""
+msgstr "Etsi"
 
 #: src/gtk/search-toolbar.ui:41
+#, fuzzy
 msgid "Previous result"
-msgstr ""
+msgstr "Edellinen tulos"
 
 #: src/gtk/search-toolbar.ui:47
+#, fuzzy
 msgid "Next result"
-msgstr ""
+msgstr "Seuraava tulos"
 
 #: src/gtk/search-toolbar.ui:89
+#, fuzzy
 msgid "Search wraps around"
-msgstr ""
+msgstr "Haku jatkuu"
 
 #: src/gtk/search-toolbar.ui:94
+#, fuzzy
 msgid "Match is case sensitive"
-msgstr ""
+msgstr "Tulos on kirjainkokoriippuvainen"
 
 #: src/gtk/search-toolbar.ui:99
+#, fuzzy
 msgid "Match entire words only"
-msgstr ""
+msgstr "Vain kokonaiset sanat"
 
 #: src/gtk/search-toolbar.ui:104
+#, fuzzy
 msgid "Match using regular expression"
-msgstr ""
+msgstr "Tulos säännöllisen lausekkeen avulla"
 
 #: src/gtk/preferences-window.ui:11
+#, fuzzy
 msgid "General"
-msgstr ""
+msgstr "Yleinen"
 
 #: src/gtk/preferences-window.ui:15
+#, fuzzy
 msgid "Window"
-msgstr ""
+msgstr "Ikkuna"
 
 #: src/gtk/preferences-window.ui:18
+#, fuzzy
 msgid "Remember Window Size"
-msgstr ""
+msgstr "Muista ikkunan koko"
 
 #: src/gtk/preferences-window.ui:23
+#, fuzzy
 msgid "Theme settings have been moved to Terminal > Appearance."
-msgstr ""
+msgstr "Teeman asetukset on siirretty kohtaan Pääte > Ulkoasu."
 
 #: src/gtk/preferences-window.ui:36
+#, fuzzy
 msgid "Tabs"
-msgstr ""
+msgstr "Välilehdet"
 
 #: src/gtk/preferences-window.ui:39
+#, fuzzy
 msgid "Expand Tabs"
-msgstr ""
+msgstr "Laajenna välilehdet"
 
 #: src/gtk/preferences-window.ui:46
+#, fuzzy
 msgid "Header Bar"
-msgstr ""
+msgstr "Yläpalkki"
 
 #: src/gtk/preferences-window.ui:49
+#, fuzzy
 msgid "Show Header Bar"
-msgstr ""
+msgstr "Näytä yläpalkki"
 
 #: src/gtk/preferences-window.ui:54
+#, fuzzy
 msgid "Context Aware"
-msgstr ""
+msgstr "Kontekstitietoinen"
 
 #: src/gtk/preferences-window.ui:55
+#, fuzzy
 msgid ""
 "If enabled, the header bar will be colored differently when the active tab "
 "is running ssh or sudo."
 msgstr ""
+"Jos tämä on käytössä, otsikkopalkki värittyy eri tavalla, kun aktiivinen "
+"välilehti käyttää ssh:ta tai sudoa."
 
 #: src/gtk/preferences-window.ui:60
+#, fuzzy
 msgid "Show Menu Button"
-msgstr ""
+msgstr "Näytä Menu-painike"
 
 #: src/gtk/preferences-window.ui:65
+#, fuzzy
 msgid "Drag Area"
-msgstr ""
+msgstr "Pudotusalue"
 
 #: src/gtk/preferences-window.ui:66
+#, fuzzy
 msgid "Enable to reserve some space on the left side to drag the window."
 msgstr ""
+"Ota käyttöön varataksesi tilaa vasemmalla puolella ikkunan vetämistä varten."
 
 #: src/gtk/preferences-window.ui:71
+#, fuzzy
 msgid "Floating Controls"
-msgstr ""
+msgstr "Kelluvat ohjausobjektit"
 
 #: src/gtk/preferences-window.ui:74
+#, fuzzy
 msgid "Show Floating Controls"
-msgstr ""
+msgstr "Näytä kelluvat ohjausobjektit"
 
 #: src/gtk/preferences-window.ui:75
+#, fuzzy
 msgid "Show floating controls when header bar is hidden."
-msgstr ""
+msgstr "Näytä kelluvat ohjausobjektit, kun otsikkopalkki on piilotettu."
 
 #: src/gtk/preferences-window.ui:81
+#, fuzzy
 msgid "Floating Controls Hover Area"
-msgstr ""
+msgstr "Kelluvat ohjaimet kelluva-alue"
 
 #: src/gtk/preferences-window.ui:82
+#, fuzzy
 msgid ""
 "Hoverable area (in pixels) at the top of the window to trigger floating "
 "controls."
 msgstr ""
+"Ikkunan yläreunassa oleva leijuva alue (pikseleinä), jolla kelluvat säätimet "
+"voidaan aktivoida."
 
 #: src/gtk/preferences-window.ui:89
+#, fuzzy
 msgid "Delay Before Show Floating Controls"
-msgstr ""
+msgstr "Viive ennen kelluvien säätimien näyttämistä"
 
 #: src/gtk/preferences-window.ui:90
+#, fuzzy
 msgid "Delay time (ms) before show floating controls."
-msgstr ""
+msgstr "Viiveaika (ms) ennen kelluvien ohjausobjektien näyttämistä."
 
 #: src/gtk/preferences-window.ui:103 src/gtk/preferences-window.ui:157
+#, fuzzy
 msgid "Terminal"
-msgstr ""
+msgstr "Terminaali"
 
 #: src/gtk/preferences-window.ui:108
+#, fuzzy
 msgid "Text"
-msgstr ""
+msgstr "Teksti"
 
 #: src/gtk/preferences-window.ui:112
+#, fuzzy
 msgid "Font"
-msgstr ""
+msgstr "Fontti"
 
 #: src/gtk/preferences-window.ui:124
+#, fuzzy
 msgid "Cell Spacing"
-msgstr ""
+msgstr "Soluväli"
 
 #: src/gtk/preferences-window.ui:127
+#, fuzzy
 msgid "Width"
-msgstr ""
+msgstr "Leveys"
 
 #: src/gtk/preferences-window.ui:134
+#, fuzzy
 msgid "Height"
-msgstr ""
+msgstr "Korkeus"
 
 #: src/gtk/preferences-window.ui:143
+#, fuzzy
 msgid "Bright Bold Text"
-msgstr ""
+msgstr "Kirkas lihavoitu teksti"
 
 #: src/gtk/preferences-window.ui:144
+#, fuzzy
 msgid "Use bright colors for bold text."
-msgstr ""
+msgstr "Käytä lihavoidulle tekstille kirkkaita värejä."
 
 #: src/gtk/preferences-window.ui:149
+#, fuzzy
 msgid "Easy Copy &amp; Paste"
-msgstr ""
+msgstr "Helppo kopioida ja liittää"
 
 #: src/gtk/preferences-window.ui:150
+#, fuzzy
 msgid "Use ctrl+c/ctrl+v for copy/paste."
-msgstr ""
+msgstr "Kopioi/liitä painamalla ctrl+c/ctrl+v."
 
 #: src/gtk/preferences-window.ui:161
+#, fuzzy
 msgid "Audible Bell"
-msgstr ""
+msgstr "Äänimerkki"
 
 #: src/gtk/preferences-window.ui:162
+#, fuzzy
 msgid "If enabled, terminals might use an audible bell to indicate events."
 msgstr ""
+"Jos käytössä, päätelaitteet saattavat käyttää äänimerkkiä tapahtumien "
+"ilmaisemiseen."
 
 #: src/gtk/preferences-window.ui:169
+#, fuzzy
 msgid "Cursor"
-msgstr ""
+msgstr "Kursori"
 
 #: src/gtk/preferences-window.ui:170
+#, fuzzy
 msgid "Adjust cursor shape and behavior."
-msgstr ""
+msgstr "Säädä kohdistimen muotoa ja toimintaa."
 
 #: src/gtk/preferences-window.ui:173
+#, fuzzy
 msgid "Cursor Shape"
-msgstr ""
+msgstr "Kohdistimen muoto"
 
 #: src/gtk/preferences-window.ui:177
+#, fuzzy
 msgid "Block"
-msgstr ""
+msgstr "Esto"
 
 #: src/gtk/preferences-window.ui:178
+#, fuzzy
 msgid "IBeam"
-msgstr ""
+msgstr "IBeam"
 
 #: src/gtk/preferences-window.ui:179
+#, fuzzy
 msgid "Underline"
-msgstr ""
+msgstr "Alleviivaus"
 
 #: src/gtk/preferences-window.ui:187
+#, fuzzy
 msgid "Cursor Blinking"
-msgstr ""
+msgstr "Kursorin vilkunta"
 
 #: src/gtk/preferences-window.ui:188
+#, fuzzy
 msgid "Whether or not the cursor should blink."
-msgstr ""
+msgstr "Pitäisikö kohdistimen vilkkua vai ei."
 
 #: src/gtk/preferences-window.ui:192 src/gtk/preferences-window.ui:377
+#, fuzzy
 msgid "Follow System"
-msgstr ""
+msgstr "Seuraa järjestelmää"
 
 #: src/gtk/preferences-window.ui:193
+#, fuzzy
 msgid "On"
-msgstr ""
+msgstr "On"
 
 #: src/gtk/preferences-window.ui:194
+#, fuzzy
 msgid "Off"
-msgstr ""
+msgstr "Pois päältä"
 
 #: src/gtk/preferences-window.ui:202
+#, fuzzy
 msgid "Autohide"
-msgstr ""
+msgstr "Piilota automaattisesti"
 
 #: src/gtk/preferences-window.ui:203
+#, fuzzy
 msgid "Enable to hide the cursor while typing"
-msgstr ""
+msgstr "Ota käyttöön kohdistimen piilottaminen kirjoitettaessa"
 
 #: src/gtk/preferences-window.ui:211
+#, fuzzy
 msgid "Padding"
-msgstr ""
+msgstr "Väli"
 
 #: src/gtk/preferences-window.ui:220
+#, fuzzy
 msgid "Opacity"
-msgstr ""
+msgstr "Läpinäkyvyys"
 
 #: src/gtk/preferences-window.ui:221
+#, fuzzy
 msgid "Terminal background opacity."
-msgstr ""
+msgstr "Päätelaitteen taustan läpinäkyvyys."
 
 #: src/gtk/preferences-window.ui:239
+#, fuzzy
 msgid "Working Directory"
-msgstr ""
+msgstr "Työhakemisto"
 
 #: src/gtk/preferences-window.ui:248
+#, fuzzy
 msgid "Previous Session"
-msgstr ""
+msgstr "Edellinen istunto"
 
 #: src/gtk/preferences-window.ui:249
+#, fuzzy
 msgid "Home Directory"
-msgstr ""
+msgstr "Kotihakemisto"
 
 #: src/gtk/preferences-window.ui:250
+#, fuzzy
 msgid "Custom"
-msgstr ""
+msgstr "Mukautettu"
 
 #: src/gtk/preferences-window.ui:259
+#, fuzzy
 msgid "Custom Working Directory"
-msgstr ""
+msgstr "Mukautettu työhakemisto"
 
 #: src/gtk/preferences-window.ui:276
+#, fuzzy
 msgid "Set to user's home"
-msgstr ""
+msgstr "Aseta käyttäjän kotikansioksi"
 
 #: src/gtk/preferences-window.ui:288
+#, fuzzy
 msgid "Scrolling"
-msgstr ""
+msgstr "Vieritä"
 
 #: src/gtk/preferences-window.ui:291
+#, fuzzy
 msgid "Scrollbars"
-msgstr ""
+msgstr "Vierityspalkit"
 
 #: src/gtk/preferences-window.ui:294
+#, fuzzy
 msgid "Show Scrollbars"
-msgstr ""
+msgstr "Näytä vierityspalkit"
 
 #: src/gtk/preferences-window.ui:299
+#, fuzzy
 msgid "Use Overlay Scrolling"
-msgstr ""
+msgstr "Käytä päällekkäisvieritystä"
 
 #: src/gtk/preferences-window.ui:312
+#, fuzzy
 msgid "Fixed Size"
-msgstr ""
+msgstr "Muokattu koko"
 
 #: src/gtk/preferences-window.ui:313
+#, fuzzy
 msgid "Unlimited"
-msgstr ""
+msgstr "Rajoittamaton"
 
 #: src/gtk/preferences-window.ui:314 src/widgets/ShortcutEditor.vala:106
+#, fuzzy
 msgid "Disabled"
-msgstr ""
+msgstr "Poissa käytöstä"
 
 #: src/gtk/preferences-window.ui:323
+#, fuzzy
 msgid "Scrollback Lines"
-msgstr ""
+msgstr "Vieritysviivat"
 
 #: src/gtk/preferences-window.ui:335
+#, fuzzy
 msgid "Command"
-msgstr ""
+msgstr "Komento"
 
 #: src/gtk/preferences-window.ui:338
+#, fuzzy
 msgid "Run Command as Login Shell"
-msgstr ""
+msgstr "Suorita komento kirjautumiskomentoina"
 
 #: src/gtk/preferences-window.ui:343
+#, fuzzy
 msgid "Use Custom Command"
-msgstr ""
+msgstr "Käytä mukautettua komentoa"
 
 #: src/gtk/preferences-window.ui:348
+#, fuzzy
 msgid "Custom Command"
-msgstr ""
+msgstr "Muokattu komento"
 
 #: src/gtk/preferences-window.ui:361
+#, fuzzy
 msgid "Notification on Completed Task"
-msgstr ""
+msgstr "Ilmoitus suoritetusta tehtävästä"
 
 #: src/gtk/preferences-window.ui:362
+#, fuzzy
 msgid ""
 "Send a desktop notification when a command is completed on an unfocussed tab."
 msgstr ""
+"Lähetä työpöytäilmoitus, kun komento on suoritettu välilehdellä, jossa ei "
+"ole aktiivista."
 
 #: src/gtk/preferences-window.ui:370
+#, fuzzy
 msgid "Appearance"
-msgstr ""
+msgstr "Ulkonäkö"
 
 #: src/gtk/preferences-window.ui:373
+#, fuzzy
 msgid "Application Style"
-msgstr ""
+msgstr "Sovelluksen tyyli"
 
 #: src/gtk/preferences-window.ui:378
+#, fuzzy
 msgid "Light"
-msgstr ""
+msgstr "Vaalea"
 
 #: src/gtk/preferences-window.ui:379
+#, fuzzy
 msgid "Dark"
-msgstr ""
+msgstr "Tumma"
 
 #: src/gtk/preferences-window.ui:387
+#, fuzzy
 msgid "Theme Integration"
-msgstr ""
+msgstr "Teeman integrointi"
 
 #: src/gtk/preferences-window.ui:388
+#, fuzzy
 msgid "Paint the whole app with colors from your colorscheme."
-msgstr ""
+msgstr "Maalaa koko sovellus värimaailmasi väreillä."
 
 #: src/gtk/preferences-window.ui:397
+#, fuzzy
 msgid "Theme"
-msgstr ""
+msgstr "Teema"
 
 #: src/gtk/preferences-window.ui:398
+#, fuzzy
 msgid "Set your preferred theme for light and dark styles."
-msgstr ""
+msgstr "Aseta haluamasi teema vaaleille ja tummille tyyleille."
 
 #: src/gtk/preferences-window.ui:410
+#, fuzzy
 msgid "Open themes folder"
-msgstr ""
+msgstr "Avaa teemojen kansio"
 
 #: src/gtk/preferences-window.ui:418
+#, fuzzy
 msgid "Get more themes online"
-msgstr ""
+msgstr "Hanki lisää teemoja verkosta"
 
 #: src/gtk/preferences-window.ui:439
+#, fuzzy
 msgid "Light Theme"
-msgstr ""
+msgstr "Vaalea teema"
 
 #: src/gtk/preferences-window.ui:445
+#, fuzzy
 msgid "Dark Theme"
-msgstr ""
+msgstr "Tumma teema"
 
 #: src/gtk/preferences-window.ui:453
+#, fuzzy
 msgid "Only display themes for the current style"
-msgstr ""
+msgstr "Näytä vain nykyisen tyylin teemat"
 
 #: src/gtk/preferences-window.ui:461
+#, fuzzy
 msgid ""
 "To ensure readability, \"Theme Integration\" will be disabled if you select "
 "a light color scheme while using the dark app style or a dark color scheme "
 "while using the light app style."
 msgstr ""
+"Luettavuuden varmistamiseksi \"Teeman integrointi\" poistetaan käytöstä, jos "
+"valitset vaalean värimaailman tummaa sovellustyyliä käytettäessä tai tumman "
+"värimaailman vaaleaa sovellustyyliä käytettäessä."
 
 #: src/gtk/preferences-window.ui:494
+#, fuzzy
 msgid "Advanced"
-msgstr ""
+msgstr "Edistynyt"
 
 #: src/gtk/preferences-window.ui:498
+#, fuzzy
 msgid "Experimental"
-msgstr ""
+msgstr "Kokeellinen"
 
 #: src/gtk/preferences-window.ui:499
+#, fuzzy
 msgid ""
 "Features in this section are known to be unstable. Please feel free to test "
 "and <a href=\"https://gitlab.gnome.org/raggesilver/blackbox/-/"
 "issues\">report bugs</a>."
 msgstr ""
+"Tämän osion ominaisuuksien tiedetään olevan epävakaita. Voit vapaasti "
+"testata niitä ja <a href=\"https://gitlab.gnome.org/raggesilver/blackbox/-/"
+"issues\">ilmoittaa virheistä</a>."
 
 #: src/gtk/preferences-window.ui:502
+#, fuzzy
 msgid "Sixel Support"
-msgstr ""
+msgstr "Sixel-tuki"
 
 #: src/gtk/preferences-window.ui:503
+#, fuzzy
 msgid "Render sixel escape sequences."
-msgstr ""
+msgstr "Renderöi sixel-koodinvaihtosekvenssit."
 
 #: src/gtk/preferences-window.ui:512
+#, fuzzy
 msgid ""
 "The VTE build you are using does not have support Sixel. Sixel is still an "
 "experimental feature in VTE. For this reason, most distros do not build VTE "
@@ -647,505 +817,629 @@ msgid ""
 "feature. <a href=\"https://gitlab.gnome.org/raggesilver/blackbox/-/issues/"
 "273\">See discussion in issue tracker.</a>"
 msgstr ""
+"Käyttämäsi VTE-versio ei tue Sixeliä. Sixel on vielä kokeellinen ominaisuus "
+"VTE:ssä. Tästä syystä useimmat jakelut eivät käännä VTE:tä Sixel-tuella. "
+"Black Boxin asentaminen Flatpakin kautta ottaa tämän ominaisuuden käyttöön. "
+"<a href=\"https://gitlab.gnome.org/raggesilver/blackbox/-/issues/273\">Katso "
+"keskustelu ongelmanseurannassa.</a>"
 
 #: src/gtk/preferences-window.ui:522
+#, fuzzy
 msgid "Danger Zone"
-msgstr ""
+msgstr "Vaarallinen alue"
 
 #: src/gtk/preferences-window.ui:525 src/widgets/PreferencesWindow.vala:602
 #: src/widgets/PreferencesWindow.vala:606
+#, fuzzy
 msgid "Reset Preferences"
-msgstr ""
+msgstr "Palauta asetukset"
 
 #: src/gtk/preferences-window.ui:526
+#, fuzzy
 msgid ""
 "This will revert all settings back to default. Your extra themes will not be "
 "removed."
 msgstr ""
+"Tämä palauttaa kaikki asetukset oletusasetuksiin. Ylimääräisiä teemojasi ei "
+"poisteta."
 
 #: src/gtk/preferences-window.ui:531
+#, fuzzy
 msgid "Reset preferences"
-msgstr ""
+msgstr "Palauta asetukset"
 
 #: src/gtk/terminal-menu.ui:20
+#, fuzzy
 msgid "Open Link"
-msgstr ""
+msgstr "Avaa linkki"
 
 #: src/gtk/terminal-menu.ui:28 src/gtk/header-bar.ui:58
 #: src/gtk/header-bar.ui:170 src/gtk/header-bar.ui:280
 #: src/widgets/ShortcutEditor.vala:137
+#, fuzzy
 msgid "New Tab"
-msgstr ""
+msgstr "Uusi välilehti"
 
 #: src/gtk/terminal-menu.ui:32 src/gtk/header-bar.ui:62
 #: src/widgets/ShortcutEditor.vala:135
+#, fuzzy
 msgid "New Window"
-msgstr ""
+msgstr "Uusi ikkuna"
 
 #: src/gtk/terminal-menu.ui:55 src/widgets/ShortcutEditor.vala:139
+#, fuzzy
 msgid "Copy"
-msgstr ""
+msgstr "Kopioi"
 
 #: src/gtk/terminal-menu.ui:59
+#, fuzzy
 msgid "Copy Link"
-msgstr ""
+msgstr "Kopioi linkki"
 
 #: src/gtk/terminal-menu.ui:64 src/widgets/ShortcutEditor.vala:140
+#, fuzzy
 msgid "Paste"
-msgstr ""
+msgstr "Liitä"
 
 #: src/gtk/terminal-menu.ui:71 src/gtk/header-bar.ui:72
 #: src/widgets/ShortcutEditor.vala:138
+#, fuzzy
 msgid "Preferences"
-msgstr ""
+msgstr "Asetukset"
 
 #: src/gtk/terminal-menu.ui:78 src/gtk/header-bar.ui:78
 #: src/widgets/ShortcutEditor.vala:143
+#, fuzzy
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Pikanäppäimet"
 
 #: src/gtk/terminal-menu.ui:82 src/gtk/header-bar.ui:82
+#, fuzzy
 msgid "About Black Box"
-msgstr ""
+msgstr "Tietoja Black Box"
 
 #: src/gtk/help-overlay.ui:10
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Window"
-msgstr ""
+msgstr "Ikkuna"
 
 #: src/gtk/help-overlay.ui:13
+#, fuzzy
 msgctxt "shortcut window"
 msgid "New window"
-msgstr ""
+msgstr "Uusi ikkuna"
 
 #: src/gtk/help-overlay.ui:19
+#, fuzzy
 msgctxt "shortcut window"
 msgid "New tab"
-msgstr ""
+msgstr "Uusi välilehti"
 
 #: src/gtk/help-overlay.ui:25
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Close tab"
-msgstr ""
+msgstr "Sulje välilehti"
 
 #: src/gtk/help-overlay.ui:31
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Rename tab"
-msgstr ""
+msgstr "Uudelleen nimeä välilehti"
 
 #: src/gtk/help-overlay.ui:37
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Switch headbar mode"
-msgstr ""
+msgstr "Vaihda pääpalkin tilaa"
 
 #: src/gtk/help-overlay.ui:43
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Koko näytön vaihto"
 
 #: src/gtk/help-overlay.ui:51
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Terminal"
-msgstr ""
+msgstr "Terminaali"
 
 #: src/gtk/help-overlay.ui:54
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Search"
-msgstr ""
+msgstr "Etsi"
 
 #: src/gtk/help-overlay.ui:60
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Copy"
-msgstr ""
+msgstr "Kopioi"
 
 #: src/gtk/help-overlay.ui:66
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Paste"
-msgstr ""
+msgstr "Liitä"
 
 #: src/gtk/help-overlay.ui:72
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr ""
+msgstr "Lähennä"
 
 #: src/gtk/help-overlay.ui:78
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr ""
+msgstr "Loitonna"
 
 #: src/gtk/help-overlay.ui:84
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Reset zoom"
-msgstr ""
+msgstr "Palauta zoomi"
 
 #: src/gtk/help-overlay.ui:92
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Navigation"
-msgstr ""
+msgstr "Navigointi"
 
 #: src/gtk/help-overlay.ui:95
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Focus next tab"
-msgstr ""
+msgstr "Siirrä seuraava välilehti kohdistetuksi"
 
 #: src/gtk/help-overlay.ui:101
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Focus previous tab"
-msgstr ""
+msgstr "Siirrä edellinen välilehti kohdistetuksi"
 
 #: src/gtk/help-overlay.ui:107
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Switch to Tab 1"
-msgstr ""
+msgstr "Vaihda välilehdelle 1"
 
 #: src/gtk/help-overlay.ui:113
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Switch to Tab 2"
-msgstr ""
+msgstr "Vaihda välilehdelle 2"
 
 #: src/gtk/help-overlay.ui:119
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Switch to Tab 3"
-msgstr ""
+msgstr "Vaihda välilehdelle 3"
 
 #: src/gtk/help-overlay.ui:125
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Switch to Tab 4"
-msgstr ""
+msgstr "Vaihda välilehdelle 4"
 
 #: src/gtk/help-overlay.ui:131
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Switch to Tab 5"
-msgstr ""
+msgstr "Vaihda välilehdelle 5"
 
 #: src/gtk/help-overlay.ui:137
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Switch to Tab 6"
-msgstr ""
+msgstr "Vaihda välilehdelle 6"
 
 #: src/gtk/help-overlay.ui:143
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Switch to Tab 7"
-msgstr ""
+msgstr "Vaihda välilehdelle 7"
 
 #: src/gtk/help-overlay.ui:149
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Switch to Tab 8"
-msgstr ""
+msgstr "Vaihda välilehdelle 8"
 
 #: src/gtk/help-overlay.ui:155
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Switch to Tab 9"
-msgstr ""
+msgstr "Vaihda välilehdelle 9"
 
 #: src/gtk/help-overlay.ui:161
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Switch to last Tab"
-msgstr ""
+msgstr "Vaihda viimeiseen välilehteen"
 
 #: src/gtk/help-overlay.ui:169
+#, fuzzy
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Yleinen"
 
 #: src/gtk/help-overlay.ui:172
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Näytä pikanäppäimet"
 
 #: src/gtk/help-overlay.ui:178
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Edit Preferences"
-msgstr ""
+msgstr "Muokkaa asetuksia"
 
 #: src/gtk/tab-menu.ui:9 src/widgets/ShortcutEditor.vala:149
+#, fuzzy
 msgid "Move Tab Left"
-msgstr ""
+msgstr "Siirrä välilehti vasemmalle"
 
 #: src/gtk/tab-menu.ui:14 src/widgets/ShortcutEditor.vala:150
+#, fuzzy
 msgid "Move Tab Right"
-msgstr ""
+msgstr "Siirrä välilehti oikealle"
 
 #: src/gtk/tab-menu.ui:21 src/widgets/ShortcutEditor.vala:148
 #: src/widgets/Window.vala:622
+#, fuzzy
 msgid "Rename Tab"
-msgstr ""
+msgstr "Uudelleen nimeä välilehti"
 
 #: src/gtk/tab-menu.ui:25
+#, fuzzy
 msgid "Move Tab to New Window"
-msgstr ""
+msgstr "Siirrä välilehti uuteen ikkunaan"
 
 #: src/gtk/tab-menu.ui:32 src/widgets/ShortcutEditor.vala:147
+#, fuzzy
 msgid "Close Tab"
-msgstr ""
+msgstr "Sulje välilehti"
 
 #: src/gtk/header-bar.ui:23
+#, fuzzy
 msgid "Remote Access"
-msgstr ""
+msgstr "Etäkäyttö"
 
 #: src/gtk/header-bar.ui:25
+#, fuzzy
 msgid "SSH Connections"
-msgstr ""
+msgstr "SSH-yhteydet"
 
 #: src/gtk/header-bar.ui:35 src/gtk/header-bar.ui:43
+#, fuzzy
 msgid "New Connection"
-msgstr ""
+msgstr "Uusi yhteys"
 
 #: src/gtk/header-bar.ui:41
+#, fuzzy
 msgid "SFTP Servers"
-msgstr ""
+msgstr "SFTP Serveriit"
 
 #: src/gtk/header-bar.ui:68 src/widgets/ShortcutEditor.vala:142
+#, fuzzy
 msgid "Fullscreen"
-msgstr ""
+msgstr "Koko näyttö"
 
 #: src/gtk/header-bar.ui:178 src/gtk/header-bar.ui:288
+#, fuzzy
 msgid "Exit Fullscreen"
-msgstr ""
+msgstr "Lopeta koko näyttö"
 
 #: src/gtk/header-bar.ui:193 src/gtk/header-bar.ui:303
+#, fuzzy
 msgid "Menu"
-msgstr ""
+msgstr "Valikko"
 
 #: src/gtk/style-switcher.ui:17
+#, fuzzy
 msgid "Use System Colors"
-msgstr ""
+msgstr "Käytä järjestelmän värejä"
 
 #: src/gtk/style-switcher.ui:46
+#, fuzzy
 msgid "Use Light Colors"
-msgstr ""
+msgstr "Käytä vaaleita värejä"
 
 #: src/gtk/style-switcher.ui:74
+#, fuzzy
 msgid "Use Dark Colors"
-msgstr ""
+msgstr "Käytä tummia värejä"
 
 #: src/services/Shortcuts.vala:327
+#, fuzzy
 msgid "Replace keybinding?"
-msgstr ""
+msgstr "Korvataanko näppäinyhdistelmä?"
 
 #. FIXME: `to_action` is an action identifier (i.e. win.paste). Replace it
 #. with the user-friendly action name.
 #: src/services/Shortcuts.vala:330
-#, c-format
+#, c-format, fuzzy
 msgid "%s is already assigned to %s"
-msgstr ""
+msgstr "%s on jo määritetty käyttäjälle %s"
 
 #: src/utils/Constants.vala:34
+#, fuzzy
 msgid "You can still access the menu by right-clicking any terminal."
 msgstr ""
+"Voit edelleen käyttää valikkoa napsauttamalla hiiren kakkospainikkeella mitä "
+"tahansa päätettä."
 
 #: src/utils/Constants.vala:36
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "%s uses an early Gtk 4 port of VTE as a terminal widget. While a lot of "
 "progress has been made on this port, copying has yet to be implemented. This "
 "means there's currently no way to copy text in %s."
 msgstr ""
+"%s käyttää VTE:n varhaista Gtk 4 -porttia päätewidgetinä. Vaikka tässä "
+"portissa on edistytty paljon, kopiointia ei ole vielä toteutettu. Tämä "
+"tarkoittaa, että tekstiä ei tällä hetkellä voi kopioida %s:ssä."
 
 #: src/utils/Constants.vala:38
+#, fuzzy
 msgid ""
 "Warning: unlimited scrollback saves content to disk, which may cause your "
 "system to run out of storage."
 msgstr ""
+"Varoitus: rajoittamaton vieritys taaksepäin tallentaa sisältöä levylle, mikä "
+"voi aiheuttaa järjestelmän tallennustilan loppumisen."
 
 #: src/utils/Dialogs.vala:35
+#, fuzzy
 msgid "No"
-msgstr ""
+msgstr "Ei"
 
 #: src/utils/Dialogs.vala:35
+#, fuzzy
 msgid "Yes"
-msgstr ""
+msgstr "Kyllä"
 
 #: src/utils/Dialogs.vala:36
+#, fuzzy
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/utils/Dialogs.vala:37
+#, fuzzy
 msgid "Keep"
-msgstr ""
+msgstr "Pidä"
 
 #: src/utils/Dialogs.vala:37
+#, fuzzy
 msgid "Replace"
-msgstr ""
+msgstr "Korvaa"
 
 #: src/utils/Dialogs.vala:38
+#, fuzzy
 msgid "Close"
-msgstr ""
+msgstr "Sulje"
 
 #: src/utils/Dialogs.vala:119
+#, fuzzy
 msgid "Close Tab?"
-msgstr ""
+msgstr "Sulje välilehti?"
 
 #: src/utils/Dialogs.vala:120
+#, fuzzy
 msgid "Close Window?"
-msgstr ""
+msgstr "Sulje ikkuna?"
 
 #: src/utils/Dialogs.vala:123
+#, fuzzy
 msgid ""
 "Some commands are still running. Closing this tab will kill them and may "
 "lead to unexpected outcomes."
 msgstr ""
+"Jotkin komennot ovat edelleen käynnissä. Tämän välilehden sulkeminen "
+"lopettaa ne ja voi johtaa odottamattomiin tuloksiin."
 
 #: src/utils/Dialogs.vala:124
+#, fuzzy
 msgid ""
 "Some commands are still running. Closing this window will kill them and may "
 "lead to unexpected outcomes."
 msgstr ""
+"Jotkin komennot ovat edelleen käynnissä. Tämän ikkunan sulkeminen lopettaa "
+"ne ja voi johtaa odottamattomiin tuloksiin."
 
 #: src/utils/Shortcuts.vala:32
+#, fuzzy
 msgid "invalid keybinding"
-msgstr ""
+msgstr "virheellinen näppäinsidonta"
 
 #: src/widgets/AboutDialog.vala:53
+#, fuzzy
 msgid "Donate"
-msgstr ""
+msgstr "Lahjoita"
 
 #: src/widgets/AboutDialog.vala:54
+#, fuzzy
 msgid "Full Changelog"
-msgstr ""
+msgstr "Koko muutosloki"
 
 #: src/widgets/PreferencesWindow.vala:577
+#, fuzzy
 msgid "Terminal Font"
-msgstr ""
+msgstr "Päätteen fontti"
 
 #: src/widgets/PreferencesWindow.vala:603
+#, fuzzy
 msgid "Are you sure you want to reset all settings?"
-msgstr ""
+msgstr "Haluatko varmasti nollata kaikki asetukset?"
 
 #: src/widgets/PreferencesWindow.vala:647
+#, fuzzy
 msgid "Reuse previous tab's directory."
-msgstr ""
+msgstr "Käytä uudelleen edellisen välilehden hakemistoa."
 
 #: src/widgets/PreferencesWindow.vala:649
+#, fuzzy
 msgid "Use the current user's home as working directory."
-msgstr ""
+msgstr "Käytä nykyisen käyttäjän kotihakemistoa työhakemistona."
 
 #: src/widgets/PreferencesWindow.vala:651
+#, fuzzy
 msgid "Use a custom path as working directory."
-msgstr ""
+msgstr "Käytä työhakemistona mukautettua polkua."
 
 #: src/widgets/ShortcutDialog.vala:46
+#, fuzzy
 msgid "Enter new shortcut"
-msgstr ""
+msgstr "Syötä uusi pikanäppäin"
 
 #: src/widgets/ShortcutDialog.vala:47
-#, c-format
+#, c-format, fuzzy
 msgid "Enter new shortcut for \"%s\""
-msgstr ""
+msgstr "Anna uusi pikanäppäin kohteelle \"%s\""
 
 #: src/widgets/ShortcutEditor.vala:59
+#, fuzzy
 msgid "Add Keybinding"
-msgstr ""
+msgstr "Lisää näppäinyhdistelmä"
 
 #: src/widgets/ShortcutEditor.vala:66
+#, fuzzy
 msgid "Reset Keybindings"
-msgstr ""
+msgstr "Palauta näppäinyhdistelmät"
 
 #: src/widgets/ShortcutEditor.vala:81
-#, c-format
+#, c-format, fuzzy
 msgid "Remove %s"
-msgstr ""
+msgstr "Poista %s"
 
 #: src/widgets/ShortcutEditor.vala:133
+#, fuzzy
 msgid "Focus Next Tab"
-msgstr ""
+msgstr "Kohdista uuteen välilehteen"
 
 #: src/widgets/ShortcutEditor.vala:134
+#, fuzzy
 msgid "Focus Previous Tab"
-msgstr ""
+msgstr "Kohdista edelliseen välilehteen"
 
 #: src/widgets/ShortcutEditor.vala:136
+#, fuzzy
 msgid "Toggle Header Bar"
-msgstr ""
+msgstr "Yläpalkki päälle/pois"
 
 #: src/widgets/ShortcutEditor.vala:141
+#, fuzzy
 msgid "Search"
-msgstr ""
+msgstr "Etsi"
 
 #: src/widgets/ShortcutEditor.vala:144
+#, fuzzy
 msgid "Zoom In"
-msgstr ""
+msgstr "Lähennä"
 
 #: src/widgets/ShortcutEditor.vala:145
+#, fuzzy
 msgid "Zoom Out"
-msgstr ""
+msgstr "Loitonna"
 
 #: src/widgets/ShortcutEditor.vala:146
+#, fuzzy
 msgid "Reset Zoom"
-msgstr ""
+msgstr "Palauta zoomi"
 
 #: src/widgets/ShortcutEditor.vala:152 src/widgets/ShortcutEditor.vala:153
 #: src/widgets/ShortcutEditor.vala:154 src/widgets/ShortcutEditor.vala:155
 #: src/widgets/ShortcutEditor.vala:156 src/widgets/ShortcutEditor.vala:157
 #: src/widgets/ShortcutEditor.vala:158 src/widgets/ShortcutEditor.vala:159
 #: src/widgets/ShortcutEditor.vala:160
-#, c-format
+#, c-format, fuzzy
 msgid "Switch to Tab %u"
-msgstr ""
+msgstr "Vaihda välilehdelle %u"
 
 #: src/widgets/ShortcutEditor.vala:161
+#, fuzzy
 msgid "Switch to Last Tab"
-msgstr ""
+msgstr "Vaihda viimeiseen välilehteen"
 
 #: src/widgets/ShortcutEditor.vala:243
+#, fuzzy
 msgid "Reset All Shortcuts?"
-msgstr ""
+msgstr "Palauta kaikki pikavalinnat?"
 
 #: src/widgets/ShortcutEditor.vala:244
+#, fuzzy
 msgid ""
 "This will reset all shortcuts to default and overwrite your config file. "
 "This action is irreversible."
 msgstr ""
+"Tämä palauttaa kaikki pikavalinnat oletusarvoihinsa ja korvaa "
+"asetustiedostosi. Tätä toimintoa ei voi peruuttaa."
 
 #: src/widgets/ShortcutEditor.vala:247
+#, fuzzy
 msgid "Reset"
-msgstr ""
+msgstr "Palauta"
 
 #: src/widgets/TerminalTab.vala:58
+#, fuzzy
 msgid "tab"
-msgstr ""
+msgstr "vVälilehti"
 
 #: src/widgets/TerminalTab.vala:109
+#, fuzzy
 msgid "Error"
-msgstr ""
+msgstr "Virhe"
 
 #: src/widgets/Window.vala:623
+#, fuzzy
 msgid "Set a custom title for this tab"
-msgstr ""
+msgstr "Aseta tälle välilehdelle mukautettu otsikko"
 
 #: src/widgets/Window.vala:626
+#, fuzzy
 msgid "Enter a custom tab title"
-msgstr ""
+msgstr "Anna mukautettu välilehden otsikko"
 
 #: src/widgets/Window.vala:633
+#, fuzzy
 msgid "Reset Title"
-msgstr ""
+msgstr "Palauta otsikko"
 
 #: src/widgets/Window.vala:634
+#, fuzzy
 msgid "Set Title"
-msgstr ""
+msgstr "Aseta otsikko"
 
 #: src/widgets/Terminal.vala:631
+#, fuzzy
 msgid "Command completed"
-msgstr ""
+msgstr "Komento suoritettu"
 
 #: src/CommandLine.vala:47
+#, fuzzy
 msgid "Show app version"
-msgstr ""
+msgstr "Näytä sovellusversio"
 
 #: src/CommandLine.vala:56
+#, fuzzy
 msgid "Set current working directory"
-msgstr ""
+msgstr "Aseta nykyinen työhakemisto"
 
 #: src/CommandLine.vala:65
+#, fuzzy
 msgid "Execute command in a terminal"
-msgstr ""
+msgstr "Suorita komento terminaalissa"
 
 #: src/CommandLine.vala:74
+#, fuzzy
 msgid "Show help"
-msgstr ""
+msgstr "Näytä ohjeet"
 
 #: src/CommandLine.vala:121
-#, c-format
+#, c-format, fuzzy
 msgid "Run %s --help to get help\n"
-msgstr ""
+msgstr "Suorita %s --help saadaksesi apua\n"
