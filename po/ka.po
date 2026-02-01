@@ -8,18 +8,20 @@ msgstr ""
 "Project-Id-Version: blackbox\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-26 23:47-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-02-02 08:01+0000\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <https://hosted.weblate.org/projects/blackbox/"
+"blackbox/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: data/com.raggesilver.BlackBox.desktop.in:2
 msgid "Black Box"
-msgstr ""
+msgstr "Black Box"
 
 #: data/com.raggesilver.BlackBox.desktop.in:8
 msgid "Terminal;terminal;shell;prompt;command;commandline;cmd;box;"
@@ -27,11 +29,11 @@ msgstr ""
 
 #: data/com.raggesilver.BlackBox.gschema.xml:6
 msgid "Window width"
-msgstr ""
+msgstr "ფანჯრის სიგანე"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:10
 msgid "Window height"
-msgstr ""
+msgstr "ფანჯრის სიმაღლე"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:14
 msgid "Whether or not to remember window size"
@@ -39,7 +41,7 @@ msgstr ""
 
 #: data/com.raggesilver.BlackBox.gschema.xml:24
 msgid "Font family and size"
-msgstr ""
+msgstr "ფონტის ოჯახი და ზომა"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:28
 msgid "Whether the window should inherit terminal theme's colors"
@@ -205,17 +207,17 @@ msgstr ""
 
 #: src/gtk/shortcut-dialog.ui:6
 msgid "Edit Shortcut"
-msgstr ""
+msgstr "მალსახმობის ჩასწორება"
 
 #: src/gtk/shortcut-dialog.ui:17 src/utils/Dialogs.vala:36
 #: src/utils/Dialogs.vala:38 src/widgets/PreferencesWindow.vala:606
 #: src/widgets/ShortcutEditor.vala:246 src/widgets/Window.vala:632
 msgid "Cancel"
-msgstr ""
+msgstr "გაუქმება"
 
 #: src/gtk/shortcut-dialog.ui:24
 msgid "Apply"
-msgstr ""
+msgstr "გადატარება"
 
 #: src/gtk/shortcut-dialog.ui:65
 msgid "This shortcut is already in use"
@@ -227,11 +229,11 @@ msgstr ""
 
 #: src/gtk/shortcut-editor.ui:6
 msgid "Keyboard"
-msgstr ""
+msgstr "კლავიატურა"
 
 #: src/gtk/shortcut-editor.ui:10
 msgid "Shortcuts"
-msgstr ""
+msgstr "მალსახმობები"
 
 #: src/gtk/shortcut-editor.ui:29
 msgid "Reset All Shortcuts"
@@ -245,19 +247,19 @@ msgstr ""
 
 #: src/gtk/shortcut-editor.ui:34
 msgid "Reset All"
-msgstr ""
+msgstr "ყველა საწყისი მნიშვნელობის დაბრუნება"
 
 #: src/gtk/search-toolbar.ui:20
 msgid "Find"
-msgstr ""
+msgstr "ძებნა"
 
 #: src/gtk/search-toolbar.ui:41
 msgid "Previous result"
-msgstr ""
+msgstr "წინა შედეგი"
 
 #: src/gtk/search-toolbar.ui:47
 msgid "Next result"
-msgstr ""
+msgstr "შემდეგი შედეგი"
 
 #: src/gtk/search-toolbar.ui:89
 msgid "Search wraps around"
@@ -277,11 +279,11 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:11
 msgid "General"
-msgstr ""
+msgstr "ზოგადი"
 
 #: src/gtk/preferences-window.ui:15
 msgid "Window"
-msgstr ""
+msgstr "ფანჯარა"
 
 #: src/gtk/preferences-window.ui:18
 msgid "Remember Window Size"
@@ -293,7 +295,7 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:36
 msgid "Tabs"
-msgstr ""
+msgstr "ჩანართები"
 
 #: src/gtk/preferences-window.ui:39
 msgid "Expand Tabs"
@@ -361,15 +363,15 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:103 src/gtk/preferences-window.ui:157
 msgid "Terminal"
-msgstr ""
+msgstr "ტერმინალი"
 
 #: src/gtk/preferences-window.ui:108
 msgid "Text"
-msgstr ""
+msgstr "ტექსტი"
 
 #: src/gtk/preferences-window.ui:112
 msgid "Font"
-msgstr ""
+msgstr "ფონტი"
 
 #: src/gtk/preferences-window.ui:124
 msgid "Cell Spacing"
@@ -377,11 +379,11 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:127
 msgid "Width"
-msgstr ""
+msgstr "სიგანე"
 
 #: src/gtk/preferences-window.ui:134
 msgid "Height"
-msgstr ""
+msgstr "სიმაღლე"
 
 #: src/gtk/preferences-window.ui:143
 msgid "Bright Bold Text"
@@ -401,7 +403,7 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:161
 msgid "Audible Bell"
-msgstr ""
+msgstr "გასაგონი ზარი"
 
 #: src/gtk/preferences-window.ui:162
 msgid "If enabled, terminals might use an audible bell to indicate events."
@@ -409,7 +411,7 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:169
 msgid "Cursor"
-msgstr ""
+msgstr "კურსორი"
 
 #: src/gtk/preferences-window.ui:170
 msgid "Adjust cursor shape and behavior."
@@ -417,23 +419,23 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:173
 msgid "Cursor Shape"
-msgstr ""
+msgstr "კურსორის ფორმა"
 
 #: src/gtk/preferences-window.ui:177
 msgid "Block"
-msgstr ""
+msgstr "ბლოკი"
 
 #: src/gtk/preferences-window.ui:178
 msgid "IBeam"
-msgstr ""
+msgstr "IBeam"
 
 #: src/gtk/preferences-window.ui:179
 msgid "Underline"
-msgstr ""
+msgstr "ხაზგასმული"
 
 #: src/gtk/preferences-window.ui:187
 msgid "Cursor Blinking"
-msgstr ""
+msgstr "კურსორის ციმციმი"
 
 #: src/gtk/preferences-window.ui:188
 msgid "Whether or not the cursor should blink."
@@ -441,19 +443,19 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:192 src/gtk/preferences-window.ui:377
 msgid "Follow System"
-msgstr ""
+msgstr "სისტემის მიყოლა"
 
 #: src/gtk/preferences-window.ui:193
 msgid "On"
-msgstr ""
+msgstr "ჩართ"
 
 #: src/gtk/preferences-window.ui:194
 msgid "Off"
-msgstr ""
+msgstr "გამორთ"
 
 #: src/gtk/preferences-window.ui:202
 msgid "Autohide"
-msgstr ""
+msgstr "ავტომატური დამალვა"
 
 #: src/gtk/preferences-window.ui:203
 msgid "Enable to hide the cursor while typing"
@@ -461,11 +463,11 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:211
 msgid "Padding"
-msgstr ""
+msgstr "შევსება"
 
 #: src/gtk/preferences-window.ui:220
 msgid "Opacity"
-msgstr ""
+msgstr "გაუმჭვირვალობა"
 
 #: src/gtk/preferences-window.ui:221
 msgid "Terminal background opacity."
@@ -473,19 +475,19 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:239
 msgid "Working Directory"
-msgstr ""
+msgstr "სამუშაო საქაღალდე"
 
 #: src/gtk/preferences-window.ui:248
 msgid "Previous Session"
-msgstr ""
+msgstr "წინა სესია"
 
 #: src/gtk/preferences-window.ui:249
 msgid "Home Directory"
-msgstr ""
+msgstr "საწყისი საქაღალდე"
 
 #: src/gtk/preferences-window.ui:250
 msgid "Custom"
-msgstr ""
+msgstr "ხელით"
 
 #: src/gtk/preferences-window.ui:259
 msgid "Custom Working Directory"
@@ -497,15 +499,15 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:288
 msgid "Scrolling"
-msgstr ""
+msgstr "აჩოჩება"
 
 #: src/gtk/preferences-window.ui:291
 msgid "Scrollbars"
-msgstr ""
+msgstr "ჩოჩიები"
 
 #: src/gtk/preferences-window.ui:294
 msgid "Show Scrollbars"
-msgstr ""
+msgstr "ჩოჩიების ჩვენება"
 
 #: src/gtk/preferences-window.ui:299
 msgid "Use Overlay Scrolling"
@@ -513,15 +515,15 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:312
 msgid "Fixed Size"
-msgstr ""
+msgstr "ფიქსირებული ზომა"
 
 #: src/gtk/preferences-window.ui:313
 msgid "Unlimited"
-msgstr ""
+msgstr "შეუზღუდავი"
 
 #: src/gtk/preferences-window.ui:314 src/widgets/ShortcutEditor.vala:106
 msgid "Disabled"
-msgstr ""
+msgstr "გამორთულია"
 
 #: src/gtk/preferences-window.ui:323
 msgid "Scrollback Lines"
@@ -529,7 +531,7 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:335
 msgid "Command"
-msgstr ""
+msgstr "ბრძანება"
 
 #: src/gtk/preferences-window.ui:338
 msgid "Run Command as Login Shell"
@@ -541,7 +543,7 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:348
 msgid "Custom Command"
-msgstr ""
+msgstr "ხელით შეყვანილი ბრძანება"
 
 #: src/gtk/preferences-window.ui:361
 msgid "Notification on Completed Task"
@@ -554,19 +556,19 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:370
 msgid "Appearance"
-msgstr ""
+msgstr "გარეგნობა"
 
 #: src/gtk/preferences-window.ui:373
 msgid "Application Style"
-msgstr ""
+msgstr "აპლიკაციის სტილი"
 
 #: src/gtk/preferences-window.ui:378
 msgid "Light"
-msgstr ""
+msgstr "ღია"
 
 #: src/gtk/preferences-window.ui:379
 msgid "Dark"
-msgstr ""
+msgstr "მუქი"
 
 #: src/gtk/preferences-window.ui:387
 msgid "Theme Integration"
@@ -578,7 +580,7 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:397
 msgid "Theme"
-msgstr ""
+msgstr "თემა"
 
 #: src/gtk/preferences-window.ui:398
 msgid "Set your preferred theme for light and dark styles."
@@ -613,11 +615,11 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:494
 msgid "Advanced"
-msgstr ""
+msgstr "დამატებით"
 
 #: src/gtk/preferences-window.ui:498
 msgid "Experimental"
-msgstr ""
+msgstr "ექსპერიმენტული"
 
 #: src/gtk/preferences-window.ui:499
 msgid ""
@@ -664,40 +666,40 @@ msgstr ""
 
 #: src/gtk/terminal-menu.ui:20
 msgid "Open Link"
-msgstr ""
+msgstr "ბმულის გახსნა"
 
 #: src/gtk/terminal-menu.ui:28 src/gtk/header-bar.ui:58
 #: src/gtk/header-bar.ui:170 src/gtk/header-bar.ui:280
 #: src/widgets/ShortcutEditor.vala:137
 msgid "New Tab"
-msgstr ""
+msgstr "ახალი ჩანართი"
 
 #: src/gtk/terminal-menu.ui:32 src/gtk/header-bar.ui:62
 #: src/widgets/ShortcutEditor.vala:135
 msgid "New Window"
-msgstr ""
+msgstr "ახალი ფანჯარა"
 
 #: src/gtk/terminal-menu.ui:55 src/widgets/ShortcutEditor.vala:139
 msgid "Copy"
-msgstr ""
+msgstr "კოპირება"
 
 #: src/gtk/terminal-menu.ui:59
 msgid "Copy Link"
-msgstr ""
+msgstr "ბმულის კოპირება"
 
 #: src/gtk/terminal-menu.ui:64 src/widgets/ShortcutEditor.vala:140
 msgid "Paste"
-msgstr ""
+msgstr "ჩასმა"
 
 #: src/gtk/terminal-menu.ui:71 src/gtk/header-bar.ui:72
 #: src/widgets/ShortcutEditor.vala:138
 msgid "Preferences"
-msgstr ""
+msgstr "მორგება"
 
 #: src/gtk/terminal-menu.ui:78 src/gtk/header-bar.ui:78
 #: src/widgets/ShortcutEditor.vala:143
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "კლავიატურის მალსახმობები"
 
 #: src/gtk/terminal-menu.ui:82 src/gtk/header-bar.ui:82
 msgid "About Black Box"
@@ -706,27 +708,27 @@ msgstr ""
 #: src/gtk/help-overlay.ui:10
 msgctxt "shortcut window"
 msgid "Window"
-msgstr ""
+msgstr "ფანჯარა"
 
 #: src/gtk/help-overlay.ui:13
 msgctxt "shortcut window"
 msgid "New window"
-msgstr ""
+msgstr "ახალი ფანჯარა"
 
 #: src/gtk/help-overlay.ui:19
 msgctxt "shortcut window"
 msgid "New tab"
-msgstr ""
+msgstr "ახალი ჩანართი"
 
 #: src/gtk/help-overlay.ui:25
 msgctxt "shortcut window"
 msgid "Close tab"
-msgstr ""
+msgstr "ჩანართის დახურვა"
 
 #: src/gtk/help-overlay.ui:31
 msgctxt "shortcut window"
 msgid "Rename tab"
-msgstr ""
+msgstr "ჩანართის სახელის გადარქმევა"
 
 #: src/gtk/help-overlay.ui:37
 msgctxt "shortcut window"
@@ -736,47 +738,47 @@ msgstr ""
 #: src/gtk/help-overlay.ui:43
 msgctxt "shortcut window"
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "მთელ ეკრანზე გატანის ჩართ/გამორთ"
 
 #: src/gtk/help-overlay.ui:51
 msgctxt "shortcut window"
 msgid "Terminal"
-msgstr ""
+msgstr "ტერმინალი"
 
 #: src/gtk/help-overlay.ui:54
 msgctxt "shortcut window"
 msgid "Search"
-msgstr ""
+msgstr "ძებნა"
 
 #: src/gtk/help-overlay.ui:60
 msgctxt "shortcut window"
 msgid "Copy"
-msgstr ""
+msgstr "კოპირება"
 
 #: src/gtk/help-overlay.ui:66
 msgctxt "shortcut window"
 msgid "Paste"
-msgstr ""
+msgstr "ჩასმა"
 
 #: src/gtk/help-overlay.ui:72
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr ""
+msgstr "გადიდება"
 
 #: src/gtk/help-overlay.ui:78
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr ""
+msgstr "დაპატარავება"
 
 #: src/gtk/help-overlay.ui:84
 msgctxt "shortcut window"
 msgid "Reset zoom"
-msgstr ""
+msgstr "გადიდების ჩამოყრა"
 
 #: src/gtk/help-overlay.ui:92
 msgctxt "shortcut window"
 msgid "Navigation"
-msgstr ""
+msgstr "ნავიგაცია"
 
 #: src/gtk/help-overlay.ui:95
 msgctxt "shortcut window"
@@ -791,47 +793,47 @@ msgstr ""
 #: src/gtk/help-overlay.ui:107
 msgctxt "shortcut window"
 msgid "Switch to Tab 1"
-msgstr ""
+msgstr "გადართვა ჩანართზე 1"
 
 #: src/gtk/help-overlay.ui:113
 msgctxt "shortcut window"
 msgid "Switch to Tab 2"
-msgstr ""
+msgstr "გადართვა ჩანართზე 2"
 
 #: src/gtk/help-overlay.ui:119
 msgctxt "shortcut window"
 msgid "Switch to Tab 3"
-msgstr ""
+msgstr "გადართვა ჩანართზე 3"
 
 #: src/gtk/help-overlay.ui:125
 msgctxt "shortcut window"
 msgid "Switch to Tab 4"
-msgstr ""
+msgstr "გადართვა ჩანართზე 4"
 
 #: src/gtk/help-overlay.ui:131
 msgctxt "shortcut window"
 msgid "Switch to Tab 5"
-msgstr ""
+msgstr "გადართვა ჩანართზე 5"
 
 #: src/gtk/help-overlay.ui:137
 msgctxt "shortcut window"
 msgid "Switch to Tab 6"
-msgstr ""
+msgstr "გადართვა ჩანართზე 6"
 
 #: src/gtk/help-overlay.ui:143
 msgctxt "shortcut window"
 msgid "Switch to Tab 7"
-msgstr ""
+msgstr "გადართვა ჩანართზე 7"
 
 #: src/gtk/help-overlay.ui:149
 msgctxt "shortcut window"
 msgid "Switch to Tab 8"
-msgstr ""
+msgstr "გადართვა ჩანართზე 8"
 
 #: src/gtk/help-overlay.ui:155
 msgctxt "shortcut window"
 msgid "Switch to Tab 9"
-msgstr ""
+msgstr "გადართვა ჩანართზე 9"
 
 #: src/gtk/help-overlay.ui:161
 msgctxt "shortcut window"
@@ -841,42 +843,42 @@ msgstr ""
 #: src/gtk/help-overlay.ui:169
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "ზოგადი"
 
 #: src/gtk/help-overlay.ui:172
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "მალსახმობების ჩვენება"
 
 #: src/gtk/help-overlay.ui:178
 msgctxt "shortcut window"
 msgid "Edit Preferences"
-msgstr ""
+msgstr "მორგება"
 
 #: src/gtk/tab-menu.ui:9 src/widgets/ShortcutEditor.vala:149
 msgid "Move Tab Left"
-msgstr ""
+msgstr "ჩანართის გადატანა მარცხნივ"
 
 #: src/gtk/tab-menu.ui:14 src/widgets/ShortcutEditor.vala:150
 msgid "Move Tab Right"
-msgstr ""
+msgstr "ჩანართის გადატანა მარჯვნივ"
 
 #: src/gtk/tab-menu.ui:21 src/widgets/ShortcutEditor.vala:148
 #: src/widgets/Window.vala:622
 msgid "Rename Tab"
-msgstr ""
+msgstr "ჩანართის სახელის გადარქმევა"
 
 #: src/gtk/tab-menu.ui:25
 msgid "Move Tab to New Window"
-msgstr ""
+msgstr "ჩანართის ახალ ფანჯარაში გადატანა"
 
 #: src/gtk/tab-menu.ui:32 src/widgets/ShortcutEditor.vala:147
 msgid "Close Tab"
-msgstr ""
+msgstr "ჩანართის დახურვა"
 
 #: src/gtk/header-bar.ui:23
 msgid "Remote Access"
-msgstr ""
+msgstr "დაშორებული წვდომა"
 
 #: src/gtk/header-bar.ui:25
 msgid "SSH Connections"
@@ -884,7 +886,7 @@ msgstr ""
 
 #: src/gtk/header-bar.ui:35 src/gtk/header-bar.ui:43
 msgid "New Connection"
-msgstr ""
+msgstr "ახალი შეერთება"
 
 #: src/gtk/header-bar.ui:41
 msgid "SFTP Servers"
@@ -892,27 +894,27 @@ msgstr ""
 
 #: src/gtk/header-bar.ui:68 src/widgets/ShortcutEditor.vala:142
 msgid "Fullscreen"
-msgstr ""
+msgstr "სრულ ეკრანზე"
 
 #: src/gtk/header-bar.ui:178 src/gtk/header-bar.ui:288
 msgid "Exit Fullscreen"
-msgstr ""
+msgstr "სრული ეკრანიდან გასვლა"
 
 #: src/gtk/header-bar.ui:193 src/gtk/header-bar.ui:303
 msgid "Menu"
-msgstr ""
+msgstr "მენიუ"
 
 #: src/gtk/style-switcher.ui:17
 msgid "Use System Colors"
-msgstr ""
+msgstr "სისტემის ფერების გამოყენება"
 
 #: src/gtk/style-switcher.ui:46
 msgid "Use Light Colors"
-msgstr ""
+msgstr "ღია ფერების ხმარება"
 
 #: src/gtk/style-switcher.ui:74
 msgid "Use Dark Colors"
-msgstr ""
+msgstr "მუქი ფერების ხმარება"
 
 #: src/services/Shortcuts.vala:327
 msgid "Replace keybinding?"
@@ -945,35 +947,35 @@ msgstr ""
 
 #: src/utils/Dialogs.vala:35
 msgid "No"
-msgstr ""
+msgstr "არა"
 
 #: src/utils/Dialogs.vala:35
 msgid "Yes"
-msgstr ""
+msgstr "დიახ"
 
 #: src/utils/Dialogs.vala:36
 msgid "OK"
-msgstr ""
+msgstr "დიახ"
 
 #: src/utils/Dialogs.vala:37
 msgid "Keep"
-msgstr ""
+msgstr "შენარჩუნება"
 
 #: src/utils/Dialogs.vala:37
 msgid "Replace"
-msgstr ""
+msgstr "ჩანაცვლება"
 
 #: src/utils/Dialogs.vala:38
 msgid "Close"
-msgstr ""
+msgstr "დახურვა"
 
 #: src/utils/Dialogs.vala:119
 msgid "Close Tab?"
-msgstr ""
+msgstr "დავხურო ჩანართი?"
 
 #: src/utils/Dialogs.vala:120
 msgid "Close Window?"
-msgstr ""
+msgstr "დავხურო ფანჯარა?"
 
 #: src/utils/Dialogs.vala:123
 msgid ""
@@ -993,7 +995,7 @@ msgstr ""
 
 #: src/widgets/AboutDialog.vala:53
 msgid "Donate"
-msgstr ""
+msgstr "შემოწირულობა"
 
 #: src/widgets/AboutDialog.vala:54
 msgid "Full Changelog"
@@ -1001,7 +1003,7 @@ msgstr ""
 
 #: src/widgets/PreferencesWindow.vala:577
 msgid "Terminal Font"
-msgstr ""
+msgstr "ტერმინალის ფონტი"
 
 #: src/widgets/PreferencesWindow.vala:603
 msgid "Are you sure you want to reset all settings?"
@@ -1039,7 +1041,7 @@ msgstr ""
 #: src/widgets/ShortcutEditor.vala:81
 #, c-format
 msgid "Remove %s"
-msgstr ""
+msgstr "%s-ის წაშლა"
 
 #: src/widgets/ShortcutEditor.vala:133
 msgid "Focus Next Tab"
@@ -1055,19 +1057,19 @@ msgstr ""
 
 #: src/widgets/ShortcutEditor.vala:141
 msgid "Search"
-msgstr ""
+msgstr "ძებნა"
 
 #: src/widgets/ShortcutEditor.vala:144
 msgid "Zoom In"
-msgstr ""
+msgstr "გადიდება"
 
 #: src/widgets/ShortcutEditor.vala:145
 msgid "Zoom Out"
-msgstr ""
+msgstr "დაპატარავება"
 
 #: src/widgets/ShortcutEditor.vala:146
 msgid "Reset Zoom"
-msgstr ""
+msgstr "გადიდების ჩამოყრა"
 
 #: src/widgets/ShortcutEditor.vala:152 src/widgets/ShortcutEditor.vala:153
 #: src/widgets/ShortcutEditor.vala:154 src/widgets/ShortcutEditor.vala:155
@@ -1076,15 +1078,15 @@ msgstr ""
 #: src/widgets/ShortcutEditor.vala:160
 #, c-format
 msgid "Switch to Tab %u"
-msgstr ""
+msgstr "%u ჩანართზე გადართვა"
 
 #: src/widgets/ShortcutEditor.vala:161
 msgid "Switch to Last Tab"
-msgstr ""
+msgstr "ბოლო ჩანართზე გადართვა"
 
 #: src/widgets/ShortcutEditor.vala:243
 msgid "Reset All Shortcuts?"
-msgstr ""
+msgstr "დავაბრუნო ყველა მალსახმობი საწყის მნიშვნელობაზე?"
 
 #: src/widgets/ShortcutEditor.vala:244
 msgid ""
@@ -1094,15 +1096,15 @@ msgstr ""
 
 #: src/widgets/ShortcutEditor.vala:247
 msgid "Reset"
-msgstr ""
+msgstr "ჩამოყრა"
 
 #: src/widgets/TerminalTab.vala:58
 msgid "tab"
-msgstr ""
+msgstr "ჩანართი"
 
 #: src/widgets/TerminalTab.vala:109
 msgid "Error"
-msgstr ""
+msgstr "შეცდომა"
 
 #: src/widgets/Window.vala:623
 msgid "Set a custom title for this tab"
@@ -1118,11 +1120,11 @@ msgstr ""
 
 #: src/widgets/Window.vala:634
 msgid "Set Title"
-msgstr ""
+msgstr "სათაურის მითითება"
 
 #: src/widgets/Terminal.vala:631
 msgid "Command completed"
-msgstr ""
+msgstr "ბრძანება დასრულდა"
 
 #: src/CommandLine.vala:47
 msgid "Show app version"
@@ -1138,7 +1140,7 @@ msgstr ""
 
 #: src/CommandLine.vala:74
 msgid "Show help"
-msgstr ""
+msgstr "დახმარების ჩვენება"
 
 #: src/CommandLine.vala:121
 #, c-format
