@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: blackbox\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-26 23:47-0300\n"
-"PO-Revision-Date: 2026-02-02 08:01+0000\n"
+"PO-Revision-Date: 2026-02-21 09:26+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/blackbox/"
 "blackbox/ka/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.16-dev\n"
+"X-Generator: Weblate 5.16.1-dev\n"
 
 #: data/com.raggesilver.BlackBox.desktop.in:2
 msgid "Black Box"
@@ -26,6 +26,7 @@ msgstr "Black Box"
 #: data/com.raggesilver.BlackBox.desktop.in:8
 msgid "Terminal;terminal;shell;prompt;command;commandline;cmd;box;"
 msgstr ""
+"Terminal;terminal;shell;prompt;command;commandline;cmd;box;ტერმინალი;გარსი;"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:6
 msgid "Window width"
@@ -93,7 +94,7 @@ msgstr ""
 #: data/com.raggesilver.BlackBox.gschema.xml:73
 #: src/gtk/preferences-window.ui:308
 msgid "Scrollback mode"
-msgstr ""
+msgstr "გადახვევის რეჟიმი"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:77
 msgid "Number of lines stored in scrollback"
@@ -124,7 +125,7 @@ msgstr ""
 #. 0 = Follow system, 1 = Light Style, 2 = Dark Style
 #: data/com.raggesilver.BlackBox.gschema.xml:102
 msgid "Style preference"
-msgstr ""
+msgstr "სტილის პარამეტრები"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:106
 msgid "Show bold text in bright colors"
@@ -148,11 +149,11 @@ msgstr ""
 
 #: data/com.raggesilver.BlackBox.gschema.xml:126
 msgid "Terminal bell"
-msgstr ""
+msgstr "ტერმინალის ზარი"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:130
 msgid "Cursor shape"
-msgstr ""
+msgstr "კურსორის ფორმა"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:134
 msgid "Whether or not the cursor should blink"
@@ -299,11 +300,11 @@ msgstr "ჩანართები"
 
 #: src/gtk/preferences-window.ui:39
 msgid "Expand Tabs"
-msgstr ""
+msgstr "ჩანართების ჩამოშლა"
 
 #: src/gtk/preferences-window.ui:46
 msgid "Header Bar"
-msgstr ""
+msgstr "სათაურის ზოლი"
 
 #: src/gtk/preferences-window.ui:49
 msgid "Show Header Bar"
@@ -311,7 +312,7 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:54
 msgid "Context Aware"
-msgstr ""
+msgstr "კონტექსტზე დამოკიდებული"
 
 #: src/gtk/preferences-window.ui:55
 msgid ""
@@ -325,7 +326,7 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:65
 msgid "Drag Area"
-msgstr ""
+msgstr "გადათრევის არე"
 
 #: src/gtk/preferences-window.ui:66
 msgid "Enable to reserve some space on the left side to drag the window."
