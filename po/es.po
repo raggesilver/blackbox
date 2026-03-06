@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-29 03:28-0300\n"
 "PO-Revision-Date: 2026-03-07 11:09+0000\n"
-"Last-Translator: Francisco Serrador <fserrador@gmail.com>\n"
+"Last-Translator: Deleted User <noreply+48943@weblate.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/blackbox/"
 "blackbox/es/>\n"
 "Language: es\n"
@@ -285,7 +285,7 @@ msgstr "Solo buscar palabras enteras"
 
 #: src/gtk/search-toolbar.ui:104
 msgid "Match using regular expression"
-msgstr "Buscar con expresiones regulares"
+msgstr "Emparejar usando expresión regular"
 
 #: src/gtk/preferences-window.ui:12
 msgid "General"
@@ -417,7 +417,7 @@ msgstr "Usa ctrl+c/ctrl+v para copiar/pegar."
 
 #: src/gtk/preferences-window.ui:236
 msgid "Audible Bell"
-msgstr "Timbre audible"
+msgstr "Campana sonora"
 
 #: src/gtk/preferences-window.ui:237
 msgid "If enabled, terminals might use an audible bell to indicate events."
