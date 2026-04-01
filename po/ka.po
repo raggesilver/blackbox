@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: blackbox\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-26 23:47-0300\n"
-"PO-Revision-Date: 2026-02-21 09:26+0000\n"
+"PO-Revision-Date: 2026-04-02 09:09+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/blackbox/"
 "blackbox/ka/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.16.1-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: data/com.raggesilver.BlackBox.desktop.in:2
 msgid "Black Box"
@@ -597,11 +597,11 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:439
 msgid "Light Theme"
-msgstr ""
+msgstr "ღია თემა"
 
 #: src/gtk/preferences-window.ui:445
 msgid "Dark Theme"
-msgstr ""
+msgstr "მუქი თემა"
 
 #: src/gtk/preferences-window.ui:453
 msgid "Only display themes for the current style"
@@ -631,7 +631,7 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:502
 msgid "Sixel Support"
-msgstr ""
+msgstr "Sixel-ის მხარდაჭერა"
 
 #: src/gtk/preferences-window.ui:503
 msgid "Render sixel escape sequences."
@@ -648,12 +648,12 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:522
 msgid "Danger Zone"
-msgstr ""
+msgstr "საშიში ზონა"
 
 #: src/gtk/preferences-window.ui:525 src/widgets/PreferencesWindow.vala:602
 #: src/widgets/PreferencesWindow.vala:606
 msgid "Reset Preferences"
-msgstr ""
+msgstr "პარამეტრების ჩამოყრა"
 
 #: src/gtk/preferences-window.ui:526
 msgid ""
@@ -663,7 +663,7 @@ msgstr ""
 
 #: src/gtk/preferences-window.ui:531
 msgid "Reset preferences"
-msgstr ""
+msgstr "პარამეტრების ჩამოყრა"
 
 #: src/gtk/terminal-menu.ui:20
 msgid "Open Link"
@@ -704,7 +704,7 @@ msgstr "კლავიატურის მალსახმობები"
 
 #: src/gtk/terminal-menu.ui:82 src/gtk/header-bar.ui:82
 msgid "About Black Box"
-msgstr ""
+msgstr "Black Box-ის შესახებ"
 
 #: src/gtk/help-overlay.ui:10
 msgctxt "shortcut window"
@@ -1000,7 +1000,7 @@ msgstr "შემოწირულობა"
 
 #: src/widgets/AboutDialog.vala:54
 msgid "Full Changelog"
-msgstr ""
+msgstr "სრული ცვლილებების ჟურნალი"
 
 #: src/widgets/PreferencesWindow.vala:577
 msgid "Terminal Font"
