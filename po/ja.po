@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: blackbox\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-26 23:47-0300\n"
-"PO-Revision-Date: 2025-08-27 13:32+0000\n"
+"PO-Revision-Date: 2026-04-04 15:09+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/blackbox/"
 "blackbox/ja/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: data/com.raggesilver.BlackBox.desktop.in:2
 msgid "Black Box"
@@ -285,7 +285,7 @@ msgstr "正規表現を使う"
 
 #: src/gtk/preferences-window.ui:11
 msgid "General"
-msgstr "一般"
+msgstr "全般"
 
 #: src/gtk/preferences-window.ui:15
 msgid "Window"
@@ -863,7 +863,7 @@ msgstr "最後のタブに切り替える"
 #: src/gtk/help-overlay.ui:169
 msgctxt "shortcut window"
 msgid "General"
-msgstr "一般"
+msgstr "全般"
 
 #: src/gtk/help-overlay.ui:172
 msgctxt "shortcut window"
