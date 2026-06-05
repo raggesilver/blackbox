@@ -1,7 +1,7 @@
 {
   "app-id": "com.raggesilver.BlackBox",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "49",
+  "runtime-version": "50",
   "sdk": "org.gnome.Sdk",
   "command": "blackbox",
   "finish-args": [
@@ -28,14 +28,47 @@
   ],
   "modules": [
     {
-      "name": "vte",
-      "buildsystem": "meson",
-      "config-opts": ["-Dgtk4=true", "-Dgtk3=false"],
+      "name": "fast_float",
+      "buildsystem": "cmake-ninja",
       "sources": [
         {
           "type": "archive",
-          "url": "https://gitlab.gnome.org/GNOME/vte/-/archive/0.78.0/vte-0.78.0.tar.gz",
-          "sha256": "82e19d11780fed4b66400f000829ce5ca113efbbfb7975815f26ed93e4c05f2d"
+          "url": "https://github.com/fastfloat/fast_float/archive/refs/tags/v8.2.6.tar.gz",
+          "sha256": "3d5ccfd4ee0f70bb7d5da520c9d7d85587b2c566257ee55bdfbf15516c13bf1d"
+        }
+      ]
+    },
+    {
+      "name": "simdutf",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DCMAKE_CXX_VISIBILITY_PRESET=hidden",
+        "-DCMAKE_POSITION_INDEPENDENT_CODE=TRUE",
+        "-DCMAKE_VISIBILITY_INLINES_HIDDEN=TRUE"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/simdutf/simdutf/archive/refs/tags/v9.0.0.tar.gz",
+          "sha256": "fd2ce975f29809a975a8da8843cfb3a7265af3f71be548f199d23cf65e101764"
+        }
+      ]
+    },
+    {
+      "name": "vte",
+      "buildsystem": "meson",
+      "config-opts": [
+        "--buildtype=release",
+        "-Dapp=false",
+        "-Dgtk3=false",
+        "-Dgtk4=true",
+        "-Dglade=false"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://gitlab.gnome.org/GNOME/vte/-/archive/0.84.0/vte-0.84.0.tar.gz",
+          "sha256": "a7f3a0ea17554ca643729c3502d3bfc76b20b53c97e81ddf6e099b16486df7e2"
         }
       ]
     },
