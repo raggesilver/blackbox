@@ -63,6 +63,11 @@
   </kudos>
 
   <releases>
+    <release date="2026-06-05" version="0.14.1">
+      <description>
+        <p>Dependency updates: GNOME runtime 50, VTE 0.84.0.</p>
+      </description>
+    </release>
     <release date="2023-07-17" version="0.14.0">
       <description>
         <p>Features</p>

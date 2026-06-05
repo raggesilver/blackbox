@@ -31,18 +31,7 @@ namespace Terminal {
       issue_url = "https://gitlab.gnome.org/raggesilver/blackbox/-/issues",
       debug_info = get_debug_information (),
       release_notes = """
-        <p>The Sandbox Conundrum, patch 1.</p>
-        <p>Features</p>
-        <ul>
-          <li>Added shortcut for moving tabs Shift+Ctrl+PageDown/PageUp.</li>
-          <li>Ctrl+PageDown/PageUp have been added as default keybindins for switching tabs, alongside (Shift)+Ctrl+Tab (yes, there are two default keybindings). You may need to reset keybindings for these two actions to see the new defaults.</li>
-          <li>The window title is now set to the title of the active tab. This is noticeable when hovering Black Box in the GNOME Overview</li>
-          <li>Black Box will show a visual indicator on a tab when a command finishes in the background (similar to desktop notifications, but less noisy)</li>
-        </ul>
-        <p>Improvements</p>
-        <ul>
-          <li>Command completion notifications have been improved. Clicking a notification will now focus the correct tab. Black Box will no longer emit two notifications for the same command.</li>
-        </ul>
+        <p>Dependency updates: GNOME runtime 50, VTE 0.84.0.</p>
       """
     };
 
