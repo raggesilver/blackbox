@@ -20,9 +20,11 @@
 
 public struct Terminal.CommandLineOptions {
   string? command;
+  string? execute;
   string? current_working_dir;
   bool    version;
   bool    help;
+  bool    tab;
 }
 
 //  Usage:
@@ -32,6 +34,8 @@ public struct Terminal.CommandLineOptions {
 //    -v, --version               Show app version
 //    -w, --working-directory     Set current working directory
 //    -c, --command               Execute command in a terminal
+//    -e, --execute               Execute command in a terminal
+//    --tab                       Open in a new tab
 //    -h, --help                  Show help
 
 public class Terminal.CommandLine {
@@ -42,39 +46,56 @@ public class Terminal.CommandLine {
 
     OptionEntry[] option_entries = {
       OptionEntry () {
-        long_name       = "version",
-        short_name      = 'v',
-        description     = _("Show app version"),
-        flags           = OptionFlags.NONE,
-        arg             = OptionArg.NONE,
-        arg_data        = &options.version,
+        long_name = "version",
+        short_name = 'v',
+        description = _ ("Show app version"),
+        flags = OptionFlags.NONE,
+        arg = OptionArg.NONE,
+        arg_data = &options.version,
         arg_description = null,
       },
       OptionEntry () {
-        long_name       = "working-directory",
-        short_name      = 'w',
-        description     = _("Set current working directory"),
-        flags           = OptionFlags.NONE,
-        arg             = OptionArg.FILENAME,
-        arg_data        = &options.current_working_dir,
+        long_name = "working-directory",
+        short_name = 'w',
+        description = _ ("Set current working directory"),
+        flags = OptionFlags.NONE,
+        arg = OptionArg.FILENAME,
+        arg_data = &options.current_working_dir,
         arg_description = null,
       },
       OptionEntry () {
-        long_name       = "command",
-        short_name      = 'c',
-        description     = _("Execute command in a terminal"),
-        flags           = OptionFlags.NONE,
-        arg             = OptionArg.STRING,
-        arg_data        = &options.command,
+        long_name = "command",
+        short_name = 'c',
+        description = _ ("Execute command in a terminal (deprecated, use -e or --execute)"),
+        flags = OptionFlags.NONE,
+        arg = OptionArg.STRING,
+        arg_data = &options.command,
         arg_description = null,
       },
       OptionEntry () {
-        long_name       = "help",
-        short_name      = 'h',
-        description     = _("Show help"),
-        flags           = OptionFlags.NONE,
-        arg             = OptionArg.NONE,
-        arg_data        = &options.help,
+        long_name = "execute",
+        short_name = 'e',
+        description = _ ("Execute command in a terminal"),
+        flags = OptionFlags.NONE,
+        arg = OptionArg.STRING,
+        arg_data = &options.execute,
+        arg_description = null,
+      },
+      OptionEntry () {
+        long_name = "help",
+        short_name = 'h',
+        description = _ ("Show help"),
+        flags = OptionFlags.NONE,
+        arg = OptionArg.NONE,
+        arg_data = &options.help,
+        arg_description = null,
+      },
+      OptionEntry () {
+        long_name = "tab",
+        description = _ ("Open in a new tab"),
+        flags = OptionFlags.NONE,
+        arg = OptionArg.NONE,
+        arg_data = &options.tab,
         arg_description = null,
       },
     };
@@ -94,31 +115,27 @@ public class Terminal.CommandLine {
     // Check if "--" is present. If so, everything after it will be appended to
     // `commandv` and fed as a single command to the terminal.
     foreach (unowned string s in original_argv) {
-      if (dd) {
+      print ("Parsing '%s'%s\n", s, dd ? " adding to commandv" : "");
+      if (dd)
         commandv += s;
-      }
-      else if (s == "--") {
+      else if (s == "--")
         dd = true;
-      }
-      else {
+      else
         real_argv += s;
-      }
     }
 
     try {
       ctx.parse_strv (ref real_argv);
 
-      if (options.help) {
+      if (options.help)
         cmd.print_literal (ctx.get_help (true, null));
-      }
-      // If "--" was present and "-c" wasn't set
-      if (dd && options.command == null) {
-        options.command = string.joinv (" ", commandv);
-      }
+      // If "--" was present and "-e" wasn't set
+      if (dd && options.execute == null && options.command == null)
+        options.execute = string.joinv (" ", commandv);
     }
     catch (Error e) {
       cmd.printerr ("%s\n", e.message);
-      cmd.printerr (_("Run %s --help to get help\n"), original_argv[0]);
+      cmd.printerr (_ ("Run %s --help to get help\n"), original_argv[0]);
       return false;
     }
 

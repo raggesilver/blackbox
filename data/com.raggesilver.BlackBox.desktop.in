@@ -8,3 +8,10 @@ StartupNotify=false
 Keywords=Terminal;terminal;shell;prompt;command;commandline;cmd;box;
 Icon=com.raggesilver.BlackBox
 X-GNOME-UsesNotifications=true
+X-ExecArg=--
+X-TerminalArgDir=--working-directory
+
+[Desktop Action new-tab]
+Name=New Tab
+Exec=blackbox-terminal --tab
+
