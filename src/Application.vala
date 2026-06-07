@@ -66,6 +66,17 @@ public class Terminal.Application : Adw.Application {
     new Window(this).show();
   }
 
+  public override void startup() {
+    base.startup();
+
+    // For whatever reason, gsettings doesn't apply anything in macOS, nor are
+    // the default values relevant for the platform, so we hardcode this here.
+    if (Gdk.Display.get_default().get_class().get_name() == "GdkMacosDisplay") {
+      Gtk.Settings.get_default().gtk_decoration_layout =
+        "close,minimize,maximize:";
+    }
+  }
+
   public override int command_line(GLib.ApplicationCommandLine cmd) {
     CommandLineOptions options;
 
