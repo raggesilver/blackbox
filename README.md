@@ -41,32 +41,47 @@
 
 ## Install
 
-**Flathub**
+Black Box is packaged by the community for several distributions. See
+[Repology](https://repology.org/project/blackbox-terminal/versions) for the
+full list.
 
-<a href='https://flathub.org/apps/details/com.raggesilver.BlackBox'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.svg'/></a>
-
-```bash
-flatpak install flathub com.raggesilver.BlackBox
-```
-
-**Flatpak Nightly**
-
-You can also download the most recent build. Note that these are _unstable_ and completely unavailable if the latest pipeline failed.
-
-- [Flatpak](https://gitlab.gnome.org/raggesilver/blackbox/-/jobs/artifacts/main/raw/blackbox.flatpak?job=flatpak)
-- [Zip](https://gitlab.gnome.org/raggesilver/blackbox/-/jobs/artifacts/main/download?job=flatpak)
+| Distribution | Package |
+|---|---|
+| Fedora | [![Fedora package](https://repology.org/badge/version-for-repo/fedora_44/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions) |
+| Arch Linux (AUR) | [![AUR package](https://repology.org/badge/version-for-repo/aur/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions) |
+| Ubuntu | [![Ubuntu package](https://repology.org/badge/version-for-repo/ubuntu_25_10/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions) |
+| Debian | [![Debian package](https://repology.org/badge/version-for-repo/debian_13/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions) |
+| Alpine Linux | [![Alpine package](https://repology.org/badge/version-for-repo/alpine_3_23/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions) |
+| Manjaro | [![Manjaro package](https://repology.org/badge/version-for-repo/manjaro_stable/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions) |
 
 **Looking for an older release?**
 
 Check out the [releases page](https://gitlab.gnome.org/raggesilver/blackbox/-/releases).
 
-## Compile
+## Build from source
 
-**Flatpak**
+### Dependencies
 
-To build and run Black Box, use GNOME Builder or VS Code along with [Vala](https://marketplace.visualstudio.com/items?itemName=prince781.vala) and [Flatpak](https://marketplace.visualstudio.com/items?itemName=bilelmoussaoui.flatpak-vscode) extensions.
+- `valac` (Vala compiler)
+- `meson` >= 0.50
+- `gtk4` >= 4.12.0
+- `libadwaita-1` >= 1.4
+- `vte-2.91-gtk4` >= 0.69.0
+- `json-glib-1.0` >= 1.4.4
+- `gee-0.8` >= 0.20
+- `libpcre2-8`
+- `libxml-2.0` >= 2.9.12
+- `librsvg-2.0` >= 2.54.0
+- `graphene-gobject-1.0`
 
-If you want to build Black Box manually, look at the build script in [.gitlab-ci.yml](./.gitlab-ci.yml).
+### Steps
+
+```sh
+meson setup builddir
+ninja -C builddir
+# If you want to install it
+sudo ninja -C builddir install
+```
 
 ## Translations
 

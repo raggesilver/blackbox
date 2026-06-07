@@ -1,6 +1,19 @@
 # Changelog
 
-## 0.15.0 - Unreleased
+## 0.15.1
+
+Improvements:
+
+- Improved process watcher: uses less resources both in use and in idle mode (no
+  recent changes or things to watch)
+- Renamed executable to `blackbox-terminal` to prevent name clashing with the
+  Black Box desktop environment; most distro packagers already patch this
+
+## 0.15.0
+
+- Dropped support for Flatpak
+
+## 0.14.1
 
 Features:
 
