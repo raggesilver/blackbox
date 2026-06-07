@@ -63,6 +63,15 @@
   </kudos>
 
   <releases>
+    <release date="2026-06-07" version="0.15.1">
+      <description>
+        <p>Improvements</p>
+        <ul>
+          <li>Improved process watcher: uses less resources both in use and in idle mode</li>
+          <li>Renamed executable to blackbox-terminal to prevent name clashing with the Black Box desktop environment</li>
+        </ul>
+      </description>
+    </release>
     <release date="2026-06-05" version="0.14.1">
       <description>
         <p>Dependency updates: GNOME runtime 50, VTE 0.84.0.</p>

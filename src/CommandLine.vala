@@ -21,10 +21,9 @@
 public struct Terminal.CommandLineOptions {
   string? command;
   string? current_working_dir;
-  bool    version;
-  bool    help;
+  bool version;
+  bool help;
 }
-
 //  Usage:
 //    blackbox [OPTION…] [-- COMMAND ...]
 //
@@ -35,13 +34,14 @@ public struct Terminal.CommandLineOptions {
 //    -h, --help                  Show help
 
 public class Terminal.CommandLine {
-  public static bool parse_command_line (GLib.ApplicationCommandLine cmd,
-                                         out CommandLineOptions options)
-  {
+  public static bool parse_command_line(
+    GLib.ApplicationCommandLine cmd,
+    out CommandLineOptions options
+  ) {
     options = {};
 
     OptionEntry[] option_entries = {
-      OptionEntry () {
+      OptionEntry() {
         long_name       = "version",
         short_name      = 'v',
         description     = _("Show app version"),
@@ -50,7 +50,7 @@ public class Terminal.CommandLine {
         arg_data        = &options.version,
         arg_description = null,
       },
-      OptionEntry () {
+      OptionEntry() {
         long_name       = "working-directory",
         short_name      = 'w',
         description     = _("Set current working directory"),
@@ -59,7 +59,7 @@ public class Terminal.CommandLine {
         arg_data        = &options.current_working_dir,
         arg_description = null,
       },
-      OptionEntry () {
+      OptionEntry() {
         long_name       = "command",
         short_name      = 'c',
         description     = _("Execute command in a terminal"),
@@ -68,7 +68,7 @@ public class Terminal.CommandLine {
         arg_data        = &options.command,
         arg_description = null,
       },
-      OptionEntry () {
+      OptionEntry() {
         long_name       = "help",
         short_name      = 'h',
         description     = _("Show help"),
@@ -79,14 +79,14 @@ public class Terminal.CommandLine {
       },
     };
 
-    var ctx = new OptionContext ("[-- COMMAND ...]");
+    var ctx = new OptionContext("[-- COMMAND ...]");
     // If this is set to true and the user launches blackbox with --help, the
     // entire GTK application will close (with exit(0)), even if there are other
     // windows open
-    ctx.set_help_enabled (false);
-    ctx.add_main_entries (option_entries, null);
+    ctx.set_help_enabled(false);
+    ctx.add_main_entries(option_entries, null);
 
-    var original_argv = cmd.get_arguments ();
+    var original_argv = cmd.get_arguments();
     string[] real_argv = {};
     string[] commandv = {};
     bool dd = false;
@@ -96,29 +96,26 @@ public class Terminal.CommandLine {
     foreach (unowned string s in original_argv) {
       if (dd) {
         commandv += s;
-      }
-      else if (s == "--") {
+      } else if (s == "--") {
         dd = true;
-      }
-      else {
+      } else {
         real_argv += s;
       }
     }
 
     try {
-      ctx.parse_strv (ref real_argv);
+      ctx.parse_strv(ref real_argv);
 
       if (options.help) {
-        cmd.print_literal (ctx.get_help (true, null));
+        cmd.print_literal(ctx.get_help(true, null));
       }
       // If "--" was present and "-c" wasn't set
       if (dd && options.command == null) {
-        options.command = string.joinv (" ", commandv);
+        options.command = string.joinv(" ", commandv);
       }
-    }
-    catch (Error e) {
-      cmd.printerr ("%s\n", e.message);
-      cmd.printerr (_("Run %s --help to get help\n"), original_argv[0]);
+    } catch (Error e) {
+      cmd.printerr("%s\n", e.message);
+      cmd.printerr(_("Run %s --help to get help\n"), original_argv[0]);
       return false;
     }
 

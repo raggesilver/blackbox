@@ -82,8 +82,7 @@ public class Terminal.Terminal : Vte.Terminal {
 
   public  Window            window;
   private uint              original_scrollback_lines;
-  private GLib.Cancellable? fp_spawn_host_command_callback_cancellable = null;
-  private static uint       next_id = 0;
+private static uint       next_id = 0;
   private uint              attention_timer = 0;
 
   // FIXME: either get rid of this field, or stop creating a local copy of
@@ -142,7 +141,6 @@ public class Terminal.Terminal : Vte.Terminal {
 #if BLACKBOX_DEBUG_MEMORY
     message ("Terminal dispose");
 #endif
-    this.fp_spawn_host_command_callback_cancellable?.cancel ();
     base.dispose ();
   }
 
@@ -433,22 +431,6 @@ public class Terminal.Terminal : Vte.Terminal {
       Shell.parse_argv (settings.custom_shell_command, out custom_shell_commandv);
     }
 
-    // Spawning works differently on host vs flatpak
-#if BLACKBOX_IS_FLATPAK
-    shell = fp_guess_shell () ?? "/usr/bin/bash";
-
-    flags = Vte.PtyFlags.NO_CTTY;
-
-    var tmp_envv = fp_get_env (null) ?? Environ.get ();
-
-    foreach (string env in tmp_envv) {
-      envv.append_val (env);
-    }
-
-    foreach (string env in Terminal.blackbox_envv) {
-      envv.append_val (env);
-    }
-#else /* BLACKBOX_IS_FLATPAK */
     var tmp_envv = Environ.get ();
 
     foreach (string env in tmp_envv) {
@@ -460,7 +442,6 @@ public class Terminal.Terminal : Vte.Terminal {
     }
 
     shell = Environ.get_variable (envv.data, "SHELL");
-#endif /* BLACKBOX_IS_FLATPAK */
 
     if (custom_shell_commandv != null) {
       foreach (unowned string s in custom_shell_commandv) {
@@ -478,27 +459,6 @@ public class Terminal.Terminal : Vte.Terminal {
       argv.append_val (command);
     }
 
-#if BLACKBOX_IS_FLATPAK
-    this.spawn_on_flatpak.begin (flags, cwd, argv, envv, (o, _) => {
-      try {
-        Pid ppid;
-        var res = this.spawn_on_flatpak.end (_, out ppid);
-        this.pid = ppid;
-
-        if (!res) {
-          // FIXME: translate this
-          this.spawn_failed ("An unexpected error occurred while spawning a new terminal.");
-        }
-        else {
-          this.on_spawn_finished ();
-        }
-      }
-      catch (GLib.Error e) {
-        this.pid = -1;
-        this.spawn_failed (e.message);
-      }
-    });
-#else /* BLACKBOX_IS_FLATPAK */
     this.spawn_async (
       flags,
       cwd,
@@ -510,10 +470,8 @@ public class Terminal.Terminal : Vte.Terminal {
       null,
       this._on_spawn_finished
     );
-#endif /* BLACKBOX_IS_FLATPAK */
   }
 
-#if !BLACKBOX_IS_FLATPAK
   private void _on_spawn_finished (Vte.Terminal t, Pid pid, GLib.Error? error) {
     if (error == null) {
       this.pid = pid;
@@ -523,7 +481,6 @@ public class Terminal.Terminal : Vte.Terminal {
       this.spawn_failed (error.message);
     }
   }
-#endif
 
   private void on_spawn_finished () {
     if (_pid < 0) {
@@ -559,68 +516,6 @@ public class Terminal.Terminal : Vte.Terminal {
     ProcessWatcher.get_instance ().watch (this.process);
 
     this.context_changed.emit (this.process.context);
-  }
-
-  private async bool spawn_on_flatpak (Vte.PtyFlags flags,
-                                       string? cwd,
-                                       Array<string> argv,
-                                       Array<string> envv,
-                                       out Pid p) throws GLib.Error
-  {
-    p = -1;
-    Vte.Pty _ppty;
-
-    try {
-      _ppty = new Vte.Pty.sync (flags, null);
-    }
-    catch (GLib.Error e) {
-      warning ("%s", e.message);
-      return false;
-    }
-
-    int pty_master = _ppty.get_fd ();
-
-    if (Posix.grantpt (pty_master) != 0) {
-      warning ("Failed granting access to slave pseudoterminal device");
-      return false;
-    }
-
-    if (Posix.unlockpt (pty_master) != 0) {
-      warning ("Failed unlocking slave pseudoterminal device");
-      return false;
-    }
-
-    int[] pty_slaves = {};
-
-    pty_slaves += Posix.open (Posix.ptsname (pty_master), Posix.O_RDWR | Posix.O_CLOEXEC);
-
-    if (pty_slaves [0] < 0) {
-      warning ("Failed opening slave pseudoterminal device");
-      return false;
-    }
-
-    pty_slaves += Posix.dup (pty_slaves [0]);
-    pty_slaves += Posix.dup (pty_slaves [0]);
-
-    this.fp_spawn_host_command_callback_cancellable = new GLib.Cancellable ();
-
-    var res = yield send_host_command (
-      cwd,
-      argv,
-      envv,
-      pty_slaves,
-      this.on_host_command_exited,
-      this.fp_spawn_host_command_callback_cancellable,
-      out p
-    );
-
-    this.pty = _ppty;
-
-    return res;
-  }
-
-  void on_host_command_exited (uint _pid, uint status) {
-    this.child_exited ((int) status);
   }
 
   private void send_command_completed_notification () {

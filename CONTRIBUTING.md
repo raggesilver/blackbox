@@ -46,7 +46,6 @@ following extensions:
 
 - [Vala](https://marketplace.visualstudio.com/items?itemName=prince781.vala)
 - [Editorconfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
-- [Flatpak](https://marketplace.visualstudio.com/items?itemName=bilelmoussaoui.flatpak-vscode)
 
 ### Code Style
 

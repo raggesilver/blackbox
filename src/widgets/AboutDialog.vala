@@ -22,7 +22,7 @@ namespace Terminal {
   public Adw.AboutDialog create_about_dialog () {
     var window = new Adw.AboutDialog () {
       developer_name = "Paulo Queiroz",
-      copyright = "© 2022-2023 Paulo Queiroz",
+      copyright = "© 2022-2026 Paulo Queiroz",
       license_type = Gtk.License.GPL_3_0,
       application_icon = APP_ID,
       application_name = APP_NAME,
@@ -31,7 +31,10 @@ namespace Terminal {
       issue_url = "https://gitlab.gnome.org/raggesilver/blackbox/-/issues",
       debug_info = get_debug_information (),
       release_notes = """
-        <p>Dependency updates: GNOME runtime 50, VTE 0.84.0.</p>
+        <ul>
+          <li>Improved process watcher: uses less resources both in use and in idle mode</li>
+          <li>Renamed executable to <code>blackbox-terminal</code> to prevent name clashing with the Black Box desktop environment</li>
+        </ul>
       """
     };
 
@@ -49,11 +52,10 @@ namespace Terminal {
     var app = "Black Box: %s\n".printf (VERSION);
     var backend = "Backend: %s\n".printf (get_gtk_backend ());
     var renderer = "Renderer: %s\n".printf (get_renderer ());
-    var flatpak = get_flatpak_info ();
     var os_info = get_os_info ();
     var libs = get_libraries_info ();
 
-    return app + backend + renderer + flatpak + os_info + libs;
+    return app + backend + renderer + os_info + libs;
   }
 
   private string get_gtk_backend () {
@@ -82,38 +84,6 @@ namespace Terminal {
       case "GskCairoRenderer": return "Cairo";
       default: return name;
     }
-  }
-
-  static KeyFile? flatpak_keyfile = null;
-
-  private string? get_flatpak_value (string group, string key) {
-    try {
-      if (flatpak_keyfile == null) {
-        flatpak_keyfile = new KeyFile ();
-        flatpak_keyfile.load_from_file ("/.flatpak-info", 0);
-      }
-      return flatpak_keyfile.get_string (group, key);
-    }
-    catch (Error e) {
-      warning ("%s", e.message);
-      return null;
-    }
-  }
-
-  private string get_flatpak_info () {
-#if BLACKBOX_IS_FLATPAK
-    string res = "Flatpak:\n";
-
-    res += " - Runtime: %s\n".printf (get_flatpak_value ("Application", "runtime"));
-    res += " - Runtime commit: %s\n".printf (get_flatpak_value ("Instance", "runtime-commit"));
-    res += " - Arch: %s\n".printf (get_flatpak_value ("Instance", "arch"));
-    res += " - Flatpak version: %s\n".printf (get_flatpak_value ("Instance", "flatpak-version"));
-    res += " - Devel: %s\n".printf (get_flatpak_value ("Instance", "devel") != null ? "yes" : "no");
-
-    return res;
-#else
-    return "Flatpak: No\n";
-#endif
   }
 
   private string get_libraries_info () {
