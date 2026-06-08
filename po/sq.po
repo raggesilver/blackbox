@@ -8,348 +8,375 @@ msgstr ""
 "Project-Id-Version: blackbox\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-26 23:47-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-06-09 15:01+0000\n"
+"Last-Translator: eraldo <eraldobako@gmail.com>\n"
+"Language-Team: Albanian <https://hosted.weblate.org/projects/blackbox/"
+"blackbox/sq/>\n"
 "Language: sq\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2026.6\n"
 
 #: data/com.raggesilver.BlackBox.desktop.in:2
 msgid "Black Box"
-msgstr ""
+msgstr "Kutia e Zezë"
 
 #: data/com.raggesilver.BlackBox.desktop.in:8
 msgid "Terminal;terminal;shell;prompt;command;commandline;cmd;box;"
-msgstr ""
+msgstr "Terminal;terminal;shell;prompt;komandë;rrjeshtkomande;cmd;kuti;"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:6
 msgid "Window width"
-msgstr ""
+msgstr "Gjerësia e dritares"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:10
 msgid "Window height"
-msgstr ""
+msgstr "Gjatësia e dritares"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:14
 msgid "Whether or not to remember window size"
-msgstr ""
+msgstr "Nëse duhet apo jo të mbaj mend madhësinë e dritares"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:24
 msgid "Font family and size"
-msgstr ""
+msgstr "Familja e karaktereve dhe madhësia"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:28
 msgid "Whether the window should inherit terminal theme's colors"
-msgstr ""
+msgstr "Nëse dritarja duhet apo jo të trashëgojë ngjyrën e temës së terminalit"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:32
 msgid "Terminal window background opacity"
-msgstr ""
+msgstr "Tejdukshmëria e sfondit të faqes së terminalit"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:36
 msgid "Whether or not tabs should expand to fill tab bar"
-msgstr ""
+msgstr "Nëse skedat duhet apo jo të zgjerohen për të mbushur shiritin e skedave"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:40
 msgid "Whether the headerbar should be shown or not"
-msgstr ""
+msgstr "Nëse shiriti kryesor duhet të jetë i dukshëm ose jo"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:44
 msgid ""
 "If enabled, the header bar will be colored differently for root and ssh "
 "contexts"
 msgstr ""
+"Nëse aktivizohet, shiriti kryesor do të ngjyroset ndryshe për kontekstet "
+"root dhe ssh"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:48
 msgid "Whether or not to display a menu button in the headerbar"
-msgstr ""
+msgstr "Nëse duhet apo jo të shfaq një buton menuje në shiritin kryesor"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:52
 msgid "Whether or not to reserve an area for dragging the header bar"
 msgstr ""
+"Nëse duhet apo jo të rezervoj një zonë per të zvarritur shiritin kryesor"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:56
 msgid "Whether or not to show scrollbars"
-msgstr ""
+msgstr "Nëse duhet apo jo të tregoj shiritin e rrotullës"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:60
 msgid "Whether overlay scrolling should be enabled"
-msgstr ""
+msgstr "Nëse rrëshqitja me tërheqje duhet të jetë e aktivizuar"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:64
 msgid "If enabled, terminals will scroll by pixels instead of rows"
 msgstr ""
+"Nëse e aktivizuar, terminalet do të rrëshqasin për piksel në vend të për "
+"rresht"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:68
 msgid "If enabled, terminals will render sixel escape sequences"
-msgstr ""
+msgstr "Nëse e aktivizuar, terminalet do të render sekuenca daljeje sixel"
 
 #. 0 = Fixed size, 1 = Unlimited, 2 = Disabled
 #: data/com.raggesilver.BlackBox.gschema.xml:73
 #: src/gtk/preferences-window.ui:308
 msgid "Scrollback mode"
-msgstr ""
+msgstr "Modaliteti i rrëshqitjes prapa"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:77
 msgid "Number of lines stored in scrollback"
-msgstr ""
+msgstr "Numri i rrjeshtave të ruajtur në rrëshqitjen prapa"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:81
 msgid "If enabled, floating controls will be shown in headerless mode"
 msgstr ""
+"Nëse e aktivizuar, kontrollet që pluskojnë do të shfaqen në modalitetin pa "
+"shiritin kryesor"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:85
 msgid ""
 "Hoverable area (in pixels) at the top of the window to trigger floating "
 "controls"
 msgstr ""
+"Madhësia (në piksel) e zonës në krye të dritares ku mund të lëvizni kursorin "
+"për të shfaqur kontrollet që pluskojnë"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:89
 msgid "Delay time before showing floating controls"
-msgstr ""
+msgstr "Vonesa përpara se të shfaqen kontrollet që pluskojnë"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:93
 msgid "The light color scheme for the terminal"
-msgstr ""
+msgstr "Skema me ngjyra të ndritshme për terminalin"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:97
 msgid "The dark color scheme for the terminal"
-msgstr ""
+msgstr "Skema me ngjyra të errëta për terminalin"
 
 #. 0 = Follow system, 1 = Light Style, 2 = Dark Style
 #: data/com.raggesilver.BlackBox.gschema.xml:102
 msgid "Style preference"
-msgstr ""
+msgstr "Preferenca e stilit"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:106
 msgid "Show bold text in bright colors"
-msgstr ""
+msgstr "Shfaq tekst të trashë me ngjyrat e ndritshme"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:110
 msgid "Hide cursor while typing"
-msgstr ""
+msgstr "Fshih kursorin kur shruan"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:114
 msgid "Amount of padding around terminal widgets (top, right, bottom, left)"
 msgstr ""
+"Sasia e mbushur përreth widget-eve të terminalit (lartë, djathtas, poshtë, "
+"majtas)"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:118
 msgid "Terminal cell width"
-msgstr ""
+msgstr "Gjerësia e qelizave të terminalit"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:122
 msgid "Terminal cell height"
-msgstr ""
+msgstr "Gjatësia e qelizave të terminalit"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:126
 msgid "Terminal bell"
-msgstr ""
+msgstr "Zilja e terminalit"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:130
 msgid "Cursor shape"
-msgstr ""
+msgstr "Forma e kursorit"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:134
 msgid "Whether or not the cursor should blink"
-msgstr ""
+msgstr "Nëse duhet apo jo që kursori të pulsojë"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:138
 msgid "If enabled, ctrl+c and ctrl+v will work for copy/paste"
 msgstr ""
+"Nëse e aktivizuar, ctrl+c dhe ctrl+v do të funksionojnë për kopjim/ngjitje"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:142
 msgid "Whether to spawn shell in login mode"
-msgstr ""
+msgstr "Nëse duhet shfaqur shell në modalitetin e logimit"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:146
 msgid "Whether to use a custom command instead of the user's shell"
 msgstr ""
+"Nëse duhet përdorur një komandë e personalizuar në vend të shell të "
+"përdoruesit"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:150
 msgid "Custom command to use instead of the user's shell"
-msgstr ""
+msgstr "Komanda e personalizuar për tu përdorur në vend të shell të përdoruesit"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:154
 msgid ""
 "Send a desktop notification when a process is completed on an unfocussed tab"
 msgstr ""
+"Dërgo një njoftim në desktop kur një proces ka përfunduar në një skedë të "
+"pafokusuar"
 
 #. 0 = Previous terminal CWD, 1 = Home Directory, 2 = Custom
 #: data/com.raggesilver.BlackBox.gschema.xml:159
 msgid "Working directory mode"
-msgstr ""
+msgstr "Modaliteti i skedarit të punës"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:163
 msgid "Custom working directory for new terminals"
-msgstr ""
+msgstr "Skedar pune i personalizuar për terminalet e rinj"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:171
 msgid ""
 "Whether clicking next on the last search result should return to the first"
 msgstr ""
+"Nëse kur klikon tjetër në rezultatin e fundit të kërkimit të kthen tek e para"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:175
 msgid "Whether search should be case sensitive"
-msgstr ""
+msgstr "Nëse kërkimi duhet të ketë ndjeshmëri ndaj shkronjave"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:179
 msgid "Whether search should only match entire words"
-msgstr ""
+msgstr "Nëse kërkimi duhet të përputhet fjalë për fjalë"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:183
 msgid "Whether search should be performed using regular expressions"
-msgstr ""
+msgstr "Nëse kërkimi duhet të bëhet duke përdorur shprehje të zakonshme"
 
 #: src/gtk/shortcut-dialog.ui:6
 msgid "Edit Shortcut"
-msgstr ""
+msgstr "Modifiko Shkurtoren"
 
 #: src/gtk/shortcut-dialog.ui:17 src/utils/Dialogs.vala:36
 #: src/utils/Dialogs.vala:38 src/widgets/PreferencesWindow.vala:606
 #: src/widgets/ShortcutEditor.vala:246 src/widgets/Window.vala:632
 msgid "Cancel"
-msgstr ""
+msgstr "Anulo"
 
 #: src/gtk/shortcut-dialog.ui:24
 msgid "Apply"
-msgstr ""
+msgstr "Apliko"
 
 #: src/gtk/shortcut-dialog.ui:65
 msgid "This shortcut is already in use"
-msgstr ""
+msgstr "Kjo shkurtore është në përdorim"
 
 #: src/gtk/shortcut-dialog.ui:78
 msgid "Press Escape to cancel or Backspace to disable shortcut"
-msgstr ""
+msgstr "Kliko Escape për të anuluar ose Backspace për të çaktivizuar shkurtoren"
 
 #: src/gtk/shortcut-editor.ui:6
 msgid "Keyboard"
-msgstr ""
+msgstr "Tastiera"
 
 #: src/gtk/shortcut-editor.ui:10
 msgid "Shortcuts"
-msgstr ""
+msgstr "Shkurtore"
 
 #: src/gtk/shortcut-editor.ui:29
 msgid "Reset All Shortcuts"
-msgstr ""
+msgstr "Rivendos të Gjitha Shkurtoret"
 
 #: src/gtk/shortcut-editor.ui:30
 msgid ""
 "This will reset all shortcuts to their default keybindings and overwrite "
 "your config file."
 msgstr ""
+"Kjo do të rivendosë të gjitha shkurtoret te kombinimet e tyre të "
+"parazgjedhura të tasteve dhe do të mbishkruaj skedarin tënd të konfigurimit."
 
 #: src/gtk/shortcut-editor.ui:34
 msgid "Reset All"
-msgstr ""
+msgstr "Rivendos të Gjitha"
 
 #: src/gtk/search-toolbar.ui:20
 msgid "Find"
-msgstr ""
+msgstr "Gjej"
 
 #: src/gtk/search-toolbar.ui:41
 msgid "Previous result"
-msgstr ""
+msgstr "Rezultati i mëparshëm"
 
 #: src/gtk/search-toolbar.ui:47
 msgid "Next result"
-msgstr ""
+msgstr "Rezultati pasardhës"
 
 #: src/gtk/search-toolbar.ui:89
 msgid "Search wraps around"
-msgstr ""
+msgstr "Kërkimi përfundon"
 
 #: src/gtk/search-toolbar.ui:94
 msgid "Match is case sensitive"
-msgstr ""
+msgstr "Gjetja është e ndjeshme ndaj shkronjave"
 
 #: src/gtk/search-toolbar.ui:99
 msgid "Match entire words only"
-msgstr ""
+msgstr "Gjej vetëm fjalë të plota"
 
 #: src/gtk/search-toolbar.ui:104
 msgid "Match using regular expression"
-msgstr ""
+msgstr "Gjej duke përdorur shprehi të zakonshme"
 
 #: src/gtk/preferences-window.ui:11
 msgid "General"
-msgstr ""
+msgstr "Përgjithshme"
 
 #: src/gtk/preferences-window.ui:15
 msgid "Window"
-msgstr ""
+msgstr "Dritare"
 
 #: src/gtk/preferences-window.ui:18
 msgid "Remember Window Size"
-msgstr ""
+msgstr "Mbaj Mend Madhësinë e Dritares"
 
 #: src/gtk/preferences-window.ui:23
 msgid "Theme settings have been moved to Terminal > Appearance."
-msgstr ""
+msgstr "Cilësimet e temës janë zhvendosur në Terminal > Paraqitja."
 
 #: src/gtk/preferences-window.ui:36
 msgid "Tabs"
-msgstr ""
+msgstr "Skeda"
 
 #: src/gtk/preferences-window.ui:39
 msgid "Expand Tabs"
-msgstr ""
+msgstr "Zgjero Skedat"
 
 #: src/gtk/preferences-window.ui:46
 msgid "Header Bar"
-msgstr ""
+msgstr "Shiriti Kryesor"
 
 #: src/gtk/preferences-window.ui:49
 msgid "Show Header Bar"
-msgstr ""
+msgstr "Shfaq Shiritin Kryesor"
 
 #: src/gtk/preferences-window.ui:54
 msgid "Context Aware"
-msgstr ""
+msgstr "Sipas Kontekstit"
 
 #: src/gtk/preferences-window.ui:55
 msgid ""
 "If enabled, the header bar will be colored differently when the active tab "
 "is running ssh or sudo."
 msgstr ""
+"Nëse e aktivizuar, shiriti kryesor do të ngjyroset ndryshe kur skeda aktive "
+"është duke ekzekutuar ssh ose sudo."
 
 #: src/gtk/preferences-window.ui:60
 msgid "Show Menu Button"
-msgstr ""
+msgstr "Shfaq Butonin e Menusë"
 
 #: src/gtk/preferences-window.ui:65
 msgid "Drag Area"
-msgstr ""
+msgstr "Zona e Tërheqjes"
 
 #: src/gtk/preferences-window.ui:66
 msgid "Enable to reserve some space on the left side to drag the window."
 msgstr ""
+"Aktivizoje për të rezervuar disa hapsirë në anën e majtë për të tërhequar "
+"dritaren."
 
 #: src/gtk/preferences-window.ui:71
 msgid "Floating Controls"
-msgstr ""
+msgstr "Kontrollet Pluskuese"
 
 #: src/gtk/preferences-window.ui:74
 msgid "Show Floating Controls"
-msgstr ""
+msgstr "Shfaq Kontrollet Pluskuese"
 
 #: src/gtk/preferences-window.ui:75
 msgid "Show floating controls when header bar is hidden."
-msgstr ""
+msgstr "Shfaq kontrollet pluskuese kur shiriti kryesor është i fshehur."
 
 #: src/gtk/preferences-window.ui:81
 msgid "Floating Controls Hover Area"
-msgstr ""
+msgstr "Zona e Klikueshme për Kontrollet Pluskuese"
 
 #: src/gtk/preferences-window.ui:82
 msgid ""
 "Hoverable area (in pixels) at the top of the window to trigger floating "
 "controls."
 msgstr ""
+"Zona e klikueshme (në piksels) në majë të ditares për të shfaqur kontrollet "
+"pluskuese."
 
 #: src/gtk/preferences-window.ui:89
 msgid "Delay Before Show Floating Controls"
