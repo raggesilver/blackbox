@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.15.2 - 2026-06-10
+
+Features:
+
+- Add Nautilus extension providing "Open in Black Box" context menu for folders
+  in Files (GNOME's file manager) (#20)
+
+Bug fixes:
+
+- Fix regression introduced in 0.15.1 where "command completed" notifications
+  were not delivered when the context-aware sidebar was disabled (#426)
+
+Translations:
+
+- Updated translations with 9 new languages added — thank you to all
+  contributors on Weblate!
+
 ## 0.15.1
 
 Improvements:
