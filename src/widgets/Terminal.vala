@@ -518,22 +518,21 @@ private static uint       next_id = 0;
     this.context_changed.emit (this.process.context);
   }
 
-  private void send_command_completed_notification () {
+  private void send_command_completed_notification() {
     var desktop_notifications_enabled =
-      Settings.get_default ().notify_process_completion;
+      Settings.get_default().notify_process_completion;
 
-    if (desktop_notifications_enabled) {
-      var n = new GLib.Notification (_("Command completed"));
-      n.set_body (_process.last_foreground_task_command);
-      n.set_default_action_and_target ("app.focus-tab",
-                                       "(uu)",
-                                       window.id,
-                                       this.id);
-      this.window.application.send_notification (
-        process_completed_notification_id (),
-        n
-      );
-    }
+    if (!desktop_notifications_enabled) { return; }
+
+    var n = new GLib.Notification(_("Command completed"));
+    n.set_body(_process.last_foreground_task_command);
+    n.set_default_action_and_target("app.focus-tab", "(uu)",
+                                    this.window.id,
+                                    this.id);
+    this.window.application.send_notification(
+      process_completed_notification_id(),
+      n
+    );
   }
 
   private void withdraw_command_completed_notification () {
@@ -564,7 +563,7 @@ private static uint       next_id = 0;
     }
 
     switch (Gdk.keyval_name (keyval)) {
-      case "c": {
+      case "c":
         if (
           this.get_has_selection () &&
           Settings.get_default ().easy_copy_paste
@@ -574,14 +573,12 @@ private static uint       next_id = 0;
           return true;
         }
         return false;
-      }
-      case "v": {
+      case "v":
         if (Settings.get_default ().easy_copy_paste) {
           this.do_paste_clipboard ();
           return true;
         }
         return false;
-      }
     }
 
     return false;
@@ -677,12 +674,11 @@ private static uint       next_id = 0;
         return custom_working_directory;
       case WorkingDirectoryMode.HOME_DIRECTORY:
         return GLib.Environment.get_home_dir ();
-      case WorkingDirectoryMode.PREVIOUS_SESSION: {
+      case WorkingDirectoryMode.PREVIOUS_SESSION:
         if (previous_terminal != null) {
           return previous_terminal.get_current_working_directory ();
         }
         break;
-      }
     }
 
     return null;
