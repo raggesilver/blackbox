@@ -63,6 +63,22 @@
   </kudos>
 
   <releases>
+    <release date="2026-06-10" version="0.15.2">
+      <description>
+        <p>New features</p>
+        <ul>
+          <li>Open folders directly in Black Box from the Files app via the right-click context menu.</li>
+        </ul>
+        <p>Bug fixes</p>
+        <ul>
+          <li>Fixed missing "command completed" notifications when the context-aware sidebar was disabled.</li>
+        </ul>
+        <p>Translations</p>
+        <ul>
+          <li>Updated translations, including 9 new languages. Thank you to all Weblate contributors!</li>
+        </ul>
+      </description>
+    </release>
     <release date="2026-06-07" version="0.15.1">
       <description>
         <p>Improvements</p>
