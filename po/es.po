@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: blackbox\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-29 03:28-0300\n"
-"PO-Revision-Date: 2023-12-06 22:07+0000\n"
-"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"PO-Revision-Date: 2026-03-07 11:09+0000\n"
+"Last-Translator: Deleted User <noreply+48943@weblate.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/blackbox/"
 "blackbox/es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.3-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: data/com.raggesilver.BlackBox.desktop.in:3
 msgid "Black Box"
@@ -26,8 +26,7 @@ msgstr "Black Box"
 #: data/com.raggesilver.BlackBox.desktop.in:9
 msgid "Terminal;terminal;shell;prompt;command;commandline;cmd;box;"
 msgstr ""
-"Terminal;terminal;shell;prompt;command;commandline;cmd;box;comando;línea;"
-"consola;caja;"
+"Terminal;terminal;shell;prompt;command;commandline;cmd;box;comando;línea;consola;caja;"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:6
 msgid "Window width"
@@ -43,7 +42,7 @@ msgstr "Recordar o no el tamaño de la ventana"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:24
 msgid "Font family and size"
-msgstr "Familia y tamaño de tipografía"
+msgstr "Tamaño y fuentes"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:28
 msgid "Whether the window should inherit terminal theme's colors"
@@ -51,7 +50,7 @@ msgstr "Si la ventana debe heredar los colores del tema del terminal"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:32
 msgid "Terminal window background opacity"
-msgstr "Opacidad del fondo de la ventana del terminal"
+msgstr "Opacidad del fondo de la ventana de terminal"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:36
 msgid "Whether or not tabs should expand to fill tab bar"
@@ -66,7 +65,7 @@ msgid ""
 "If enabled, the header bar will be colored differently for root and ssh "
 "contexts"
 msgstr ""
-"Si se activa, la barra de encabezado se coloreará de forma diferente para "
+"Si está habilitado, la barra de encabezado tendrá un color diferente para "
 "los contextos root y ssh"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:48
@@ -75,7 +74,7 @@ msgstr "Mostrar o no un botón de menú en la barra de encabezado"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:52
 msgid "Whether or not to reserve an area for dragging the header bar"
-msgstr "Reservar o no un área para arrastrar la barra de la cabecera"
+msgstr "Reservar o no un área para arrastrar la barra del encabezado"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:56
 msgid "Whether or not to show scrollbars"
@@ -136,7 +135,7 @@ msgstr "Preferencia de estilo"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:106
 msgid "Show bold text in bright colors"
-msgstr "Mostrar el texto en negrita con colores vivos"
+msgstr "Mostrar el texto en negrita en colores brillantes"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:110
 msgid "Amount of padding around terminal widgets (top, right, bottom, left)"
@@ -154,7 +153,7 @@ msgstr "Alto de celda del terminal"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:122
 msgid "Terminal bell"
-msgstr "Timbre de terminal"
+msgstr "Campana de terminal"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:126
 msgid "Cursor shape"
@@ -162,7 +161,7 @@ msgstr "Forma del cursor"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:130
 msgid "Whether or not the cursor should blink"
-msgstr "Si el cursor debe parpadear o no"
+msgstr "Si el cursor debería parpadear o no"
 
 #: data/com.raggesilver.BlackBox.gschema.xml:134
 msgid "If enabled, ctrl+c and ctrl+v will work for copy/paste"
@@ -217,7 +216,7 @@ msgstr "Si la búsqueda debe realizarse mediante expresiones regulares"
 
 #: src/gtk/shortcut-dialog.ui:6
 msgid "Edit Shortcut"
-msgstr "Editar el acceso directo"
+msgstr "Editar atajos"
 
 #: src/gtk/shortcut-dialog.ui:21 src/utils/Dialogs.vala:36
 #: src/utils/Dialogs.vala:38 src/widgets/Window.vala:617
@@ -234,7 +233,7 @@ msgstr "Este atajo ya está en uso"
 
 #: src/gtk/shortcut-dialog.ui:81
 msgid "Press Escape to cancel or Backspace to disable shortcut"
-msgstr "Presione Esc para cancelar o Retroceso para desativar el atajo"
+msgstr "Presiona Esc para cancelar o Retroceso para inhabilitar el atajo"
 
 #: src/gtk/shortcut-editor.ui:6
 msgid "Keyboard"
@@ -286,7 +285,7 @@ msgstr "Solo buscar palabras enteras"
 
 #: src/gtk/search-toolbar.ui:104
 msgid "Match using regular expression"
-msgstr "Buscar con expresiones regulares"
+msgstr "Emparejar usando expresión regular"
 
 #: src/gtk/preferences-window.ui:12
 msgid "General"
@@ -418,7 +417,7 @@ msgstr "Usa ctrl+c/ctrl+v para copiar/pegar."
 
 #: src/gtk/preferences-window.ui:236
 msgid "Audible Bell"
-msgstr "Timbre audible"
+msgstr "Campana sonora"
 
 #: src/gtk/preferences-window.ui:237
 msgid "If enabled, terminals might use an audible bell to indicate events."
@@ -436,7 +435,7 @@ msgstr "Ajustar forma y comportamiento del cursor."
 
 #: src/gtk/preferences-window.ui:254
 msgid "Cursor Shape"
-msgstr "Forma del cursor"
+msgstr "Forma del Cursor"
 
 #: src/gtk/preferences-window.ui:258
 msgid "Block"
