@@ -77,6 +77,7 @@ public struct Terminal.Padding {
   }
 }
 
+[GtkTemplate (ui = "/com/raggesilver/BlackBox/gtk/window.ui")]
 public class Terminal.Window : Adw.ApplicationWindow {
 
   // Signals
@@ -86,7 +87,8 @@ public class Terminal.Window : Adw.ApplicationWindow {
   // Properties
 
   public ThemeProvider  theme_provider        { get; private set; }
-  public Adw.TabView    tab_view              { get; private set; }
+  [GtkChild]
+  public Adw.TabView    tab_view;
   public Adw.TabBar     tab_bar               { get; private set; }
   public Terminal?      active_terminal       { get; private set; }
   public TerminalTab?   active_terminal_tab   { get; private set; default = null; }
@@ -103,13 +105,13 @@ public class Terminal.Window : Adw.ApplicationWindow {
   Array<ulong>  active_terminal_tab_signal_handlers = new Array<ulong> ();
   bool          force_close = false;
   const uint    header_bar_revealer_duration_ms = 250;
-  Gtk.Revealer  header_bar_revealer;
+  [GtkChild]    Gtk.Revealer  header_bar_revealer;
+  [GtkChild]    Gtk.Box layout_box;
+  [GtkChild]    Gtk.Overlay overlay;
   HeaderBar     header_bar;
   Settings      settings = Settings.get_default ();
   uint          header_bar_waiting_floating_animation = 0;
   uint          header_bar_waiting_floating_delay = 0;
-  Gtk.Box       layout_box;
-  Gtk.Overlay   overlay;
   private static uint next_id = 0;
 
   weak Adw.TabPage? tab_menu_target = null;
@@ -141,36 +143,13 @@ public class Terminal.Window : Adw.ApplicationWindow {
 
     // FIXME: move this over to an ui file
 
-    this.layout_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-
-    this.tab_view = new Adw.TabView () {
-      // Disable Adw.TabView shortcuts
-      shortcuts = Adw.TabViewShortcuts.NONE,
-    };
-
     this.header_bar = new HeaderBar (this);
-
     this.tab_bar = this.header_bar.tab_bar;
     this.tab_bar.view = this.tab_view;
-
-    this.header_bar_revealer = new Gtk.Revealer () {
-      transition_duration = Window.header_bar_revealer_duration_ms,
-      child = this.header_bar,
-      valign = Gtk.Align.START,
-    };
-
+    this.header_bar_revealer.child = this.header_bar;
+    this.header_bar_revealer.transition_duration = Window.header_bar_revealer_duration_ms;
     var builder = new Gtk.Builder.from_resource ("/com/raggesilver/BlackBox/gtk/tab-menu.ui");
     this.tab_view.menu_model = builder.get_object ("tab-menu") as GLib.Menu;
-
-    this.layout_box.append (this.header_bar_revealer);
-    this.layout_box.append (this.tab_view);
-
-    this.overlay = new Gtk.Overlay ();
-    this.overlay.child = this.layout_box;
-
-    this.content = this.overlay;
-
-    this.set_name ("blackbox-main-window");
   }
 
   public Window (

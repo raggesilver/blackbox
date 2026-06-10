@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/com/raggesilver/BlackBox">
+    <file>gtk/window.ui</file>
     <file>gtk/header-bar.ui</file>
     <file>gtk/help-overlay.ui</file>
     <file>gtk/preferences-window.ui</file>
