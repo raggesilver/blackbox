@@ -16,6 +16,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-int main (string[] args) {
-  return new Terminal.Application ().run (args);
+int main(string[] args) {
+  return new Terminal.Application().run(args);
 }

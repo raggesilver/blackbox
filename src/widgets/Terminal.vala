@@ -518,22 +518,21 @@ private static uint       next_id = 0;
     this.context_changed.emit (this.process.context);
   }
 
-  private void send_command_completed_notification () {
+  private void send_command_completed_notification() {
     var desktop_notifications_enabled =
-      Settings.get_default ().notify_process_completion;
+      Settings.get_default().notify_process_completion;
 
-    if (desktop_notifications_enabled) {
-      var n = new GLib.Notification (_("Command completed"));
-      n.set_body (_process.last_foreground_task_command);
-      n.set_default_action_and_target ("app.focus-tab",
-                                       "(uu)",
-                                       window.id,
-                                       this.id);
-      this.window.application.send_notification (
-        process_completed_notification_id (),
-        n
-      );
-    }
+    if (!desktop_notifications_enabled) { return; }
+
+    var n = new GLib.Notification(_("Command completed"));
+    n.set_body(_process.last_foreground_task_command);
+    n.set_default_action_and_target("app.focus-tab", "(uu)",
+                                    this.window.id,
+                                    this.id);
+    this.window.application.send_notification(
+      process_completed_notification_id(),
+      n
+    );
   }
 
   private void withdraw_command_completed_notification () {
