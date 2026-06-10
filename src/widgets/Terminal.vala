@@ -669,7 +669,8 @@ public class Terminal.Terminal : Vte.Terminal {
         return GLib.Environment.get_home_dir();
       case WorkingDirectoryMode.PREVIOUS_SESSION:
         if (previous_terminal != null) {
-          return previous_terminal.get_current_working_directory();
+          return previous_terminal.get_current_working_directory()
+                 ?? previous_terminal.window.last_known_cwd;
         }
         break;
     }

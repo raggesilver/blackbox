@@ -95,7 +95,10 @@ public class Terminal.Window : Adw.ApplicationWindow {
 
   // Terminal tabs set this to any link clicked by the user. The value is then
   // consumed by the open-link and copy-link actions.
-  public string? link  { get; set; default = null; }
+  public string? link { get; set; default = null; }
+  // This keeps track of the last known cwd for any terminal on this Window.
+  // Useful when opening a new tab from one where the cwd cannot be determined.
+  public string? last_known_cwd { get; private set; default = null; }
 
   // Fields
 
@@ -454,8 +457,10 @@ public class Terminal.Window : Adw.ApplicationWindow {
     return true; // Block closing for now
   }
 
-  private static void on_close_request_resolver(GLib.Object? _window,
-                                                GLib.AsyncResult obj) {
+  private static void on_close_request_resolver(
+    GLib.Object? _window,
+    GLib.AsyncResult obj
+  ) {
     if (_window != null && _window is Window) {
       var window = _window as Window;
       window.try_closing_window.end(obj);
@@ -812,6 +817,11 @@ public class Terminal.Window : Adw.ApplicationWindow {
         this.active_terminal_signal_handlers.length
       );
     }
+    var outgoing_cwd = this.active_terminal?.get_current_working_directory();
+    if (outgoing_cwd != null) {
+      this.last_known_cwd = outgoing_cwd;
+    }
+
     this.freeze_notify();
     this.active_terminal_tab =
       this.tab_view.selected_page?.child as TerminalTab;
