@@ -563,7 +563,7 @@ private static uint       next_id = 0;
     }
 
     switch (Gdk.keyval_name (keyval)) {
-      case "c": {
+      case "c":
         if (
           this.get_has_selection () &&
           Settings.get_default ().easy_copy_paste
@@ -573,14 +573,12 @@ private static uint       next_id = 0;
           return true;
         }
         return false;
-      }
-      case "v": {
+      case "v":
         if (Settings.get_default ().easy_copy_paste) {
           this.do_paste_clipboard ();
           return true;
         }
         return false;
-      }
     }
 
     return false;
@@ -676,12 +674,11 @@ private static uint       next_id = 0;
         return custom_working_directory;
       case WorkingDirectoryMode.HOME_DIRECTORY:
         return GLib.Environment.get_home_dir ();
-      case WorkingDirectoryMode.PREVIOUS_SESSION: {
+      case WorkingDirectoryMode.PREVIOUS_SESSION:
         if (previous_terminal != null) {
           return previous_terminal.get_current_working_directory ();
         }
         break;
-      }
     }
 
     return null;
