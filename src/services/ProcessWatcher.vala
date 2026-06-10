@@ -18,13 +18,11 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-// TODO: fix uncrustify config. It goes crazy with enums outside namespace.
-namespace Terminal {
-  public enum ProcessContext {
-    DEFAULT,
-    ROOT,
-    SSH
-  } }
+public enum Terminal.ProcessContext {
+  DEFAULT,
+  ROOT,
+  SSH
+}
 
 public class Terminal.Process : Object {
   /**
@@ -72,9 +70,9 @@ namespace Terminal {
 }
 
 public class Terminal.ProcessWatcher : Object {
-  private static ProcessWatcher? instance = null;
-  private Gee.ArrayList<Process> process_list;
-  private Gee.ArrayList<Process> pending_process_list;
+  private static ProcessWatcher?   instance = null;
+  private Gee.ArrayList<Process>   process_list;
+  private Gee.ArrayList<Process>   pending_process_list;
   private Gee.HashMap<int, string> cmdline_cache;
   private bool watching = false;
   private bool fast_mode = false;
