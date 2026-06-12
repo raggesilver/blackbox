@@ -66,6 +66,16 @@ public class Terminal.Application : Adw.Application {
     new Window(this).show();
   }
 
+  // GLib's default implementation strips "--" from args before command_line
+  // runs. Override it to do nothing so command_line can see "--" intact.
+  public override bool local_command_line(
+    ref weak string[] args,
+    out int exit_status
+  ) {
+    exit_status = 0;
+    return false;
+  }
+
   public override int command_line(GLib.ApplicationCommandLine cmd) {
     CommandLineOptions options;
 
@@ -79,6 +89,21 @@ public class Terminal.Application : Adw.Application {
     } else if (options.version) {
       cmd.print("%s version %s%s\n", APP_NAME, VERSION, DEVEL ? " (dev)" : "");
     } else {
+      if (options.used_execute) {
+        cmd.printerr(
+          _(
+            "Warning: -e/--execute is deprecated and will be removed in the next major release. Use -- instead.\n")
+        );
+      }
+      if (options.tab) {
+        var window = this.get_active_terminal_window();
+        if (window != null) {
+          window.new_tab(options.command, options.current_working_dir);
+          window.present();
+          this.release();
+          return 0;
+        }
+      }
       new Window(
         this,
         options.command,
@@ -120,6 +145,19 @@ public class Terminal.Application : Adw.Application {
 
   private void on_focus_previous_tab() {
     (this.get_active_window() as Window)?.focus_previous_tab();
+  }
+
+  private Window? get_active_terminal_window() {
+    var w = this.get_active_window();
+    if (w is Window) {
+      return w as Window;
+    }
+    foreach (var window in this.get_windows()) {
+      if (window is Window) {
+        return window as Window;
+      }
+    }
+    return null;
   }
 
   private void on_focus_tab(uint window_id, uint tab_id) {
