@@ -131,6 +131,7 @@ public class Terminal.Window : Adw.ApplicationWindow {
   // TODO: bring all SimpleActions over here
   private const ActionEntry[] ACTION_ENTRIES = {
     { "new_tab", on_new_tab },
+    { "clear-scrollback", on_clear_scrollback },
   };
 
   static PreferencesWindow? preferences_window = null;
@@ -719,6 +720,11 @@ public class Terminal.Window : Adw.ApplicationWindow {
 
   public void search() {
     (this.tab_view.selected_page?.child as TerminalTab)?.search();
+  }
+
+  public void on_clear_scrollback() {
+    (this.tab_view.selected_page?.child as TerminalTab)?
+    .terminal.clear_scrollback();
   }
 
   public void zoom_in() {
