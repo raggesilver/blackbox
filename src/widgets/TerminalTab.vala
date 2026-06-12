@@ -16,11 +16,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/com/raggesilver/BlackBox/gtk/terminal-tab.ui")]
+[GtkTemplate(ui = "/com/raggesilver/BlackBox/gtk/terminal-tab.ui")]
 public class Terminal.TerminalTab : Gtk.Box {
-
   // This signal is emitted when the TerminalTab is asking to be closed.
-  public signal void close_request ();
+  public signal void close_request();
 
   [GtkChild] unowned Adw.Banner banner;
   [GtkChild] unowned Gtk.ScrolledWindow scrolled;
@@ -34,58 +33,63 @@ public class Terminal.TerminalTab : Gtk.Box {
 
   public string title {
     get {
-      if (this.title_override != null) return this.title_override;
-      if (this.terminal.window_title != "") return this.terminal.window_title;
+      if (this.title_override != null) { return this.title_override; }
+      if (this.terminal.window_title != null &&
+          this.terminal.window_title.strip() != "") {
+        return this.terminal.window_title;
+      }
 
       return this.default_title;
     }
   }
 
   static construct {
-    typeof (SearchToolbar).class_ref ();
+    typeof (SearchToolbar).class_ref();
   }
 
-  public TerminalTab (Window  window,
-                      uint    tab_id,
-                      string? command,
-                      string? cwd)
-  {
-    Object (
+  public TerminalTab (
+    Window window,
+    uint tab_id,
+    string? command,
+    string? cwd
+  ) {
+    Object(
       orientation: Gtk.Orientation.VERTICAL,
       spacing: 0
     );
 
-    this.default_title = command ?? "%s %u".printf (_("tab"), tab_id);
+    this.default_title = command ?? "%s %u".printf(_("tab"), tab_id);
 
-    this.terminal = new Terminal (window, command, cwd);
+    this.terminal = new Terminal(window, command, cwd);
     // TODO: Can't we use a property for this? Has default or something?
-    this.terminal.grab_focus ();
+    this.terminal.grab_focus();
     this.popover = build_popover();
 
-    var click = new Gtk.GestureClick () {
+    var click = new Gtk.GestureClick() {
       button = Gdk.BUTTON_SECONDARY,
     };
 
-    click.pressed.connect (this.show_menu);
+    click.pressed.connect(this.show_menu);
 
-    this.terminal.add_controller (click);
+    this.terminal.add_controller(click);
 
-    this.connect_signals ();
+    this.connect_signals();
   }
 
 #if BLACKBOX_DEBUG_MEMORY
   ~TerminalTab () {
-    message ("TerminalTab destroyed");
+    message("TerminalTab destroyed");
   }
 
-  public override void dispose () {
-    message ("TerminalTab dispose");
-    base.dispose ();
+  public override void dispose() {
+    message("TerminalTab dispose");
+    base.dispose();
   }
+
 #endif
 
-  private void connect_signals () {
-    var settings = Settings.get_default ();
+  private void connect_signals() {
+    var settings = Settings.get_default();
 
     //  this.terminal.bind_property ("window-title",
     //                               this,
@@ -93,37 +97,37 @@ public class Terminal.TerminalTab : Gtk.Box {
     //                               GLib.BindingFlags.DEFAULT,
     //                               null, null);
 
-    this.terminal.notify ["window-title"].connect (() => {
-      this.notify_property ("title");
+    this.terminal.notify["window-title"].connect(() => {
+      this.notify_property("title");
     });
 
-    this.notify ["title-override"].connect (() => {
-      this.notify_property ("title");
+    this.notify["title-override"].connect(() => {
+      this.notify_property("title");
     });
 
-    this.terminal.exit.connect (() => {
-      this.close_request ();
+    this.terminal.exit.connect(() => {
+      this.close_request();
     });
 
-    this.terminal.spawn_failed.connect ((message) => {
-      this.override_title (_("Error"));
+    this.terminal.spawn_failed.connect((message) => {
+      this.override_title(_("Error"));
       this.banner.title = message;
       this.banner.revealed = true;
     });
 
-    settings.notify ["show-scrollbars"]
-      .connect (this.on_show_scrollbars_updated);
+    settings.notify["show-scrollbars"]
+    .connect(this.on_show_scrollbars_updated);
 
-    settings.notify_property ("show-scrollbars");
+    settings.notify_property("show-scrollbars");
 
-    settings.schema.bind (
+    settings.schema.bind(
       "use-overlay-scrolling",
       this.scrolled,
       "overlay-scrolling",
       SettingsBindFlags.GET
     );
 
-    settings.bind_property (
+    settings.bind_property(
       "use-sixel",
       this.terminal,
       "enable-sixel",
@@ -131,11 +135,11 @@ public class Terminal.TerminalTab : Gtk.Box {
     );
 
     // refocus terminal after closing context menu, otherwise the focus will go on the header buttons
-    this.popover.closed.connect_after (pop_close);
+    this.popover.closed.connect_after(pop_close);
   }
 
-  private void on_show_scrollbars_updated () {
-    var settings = Settings.get_default ();
+  private void on_show_scrollbars_updated() {
+    var settings = Settings.get_default();
     var show_scrollbars = settings.show_scrollbars;
     var is_scrollbar_being_used = this.terminal.parent == this.scrolled;
 
@@ -143,9 +147,8 @@ public class Terminal.TerminalTab : Gtk.Box {
 
     if (show_scrollbars != is_scrollbar_being_used) {
       if (this == this.terminal.parent) {
-        this.remove (this.terminal);
-      }
-      else if (this.scrolled == this.terminal.parent) {
+        this.remove(this.terminal);
+      } else if (this.scrolled == this.terminal.parent) {
         this.scrolled.child = null;
       }
     }
@@ -156,20 +159,21 @@ public class Terminal.TerminalTab : Gtk.Box {
     ) {
       if (show_scrollbars) {
         this.scrolled.child = this.terminal;
-      }
-      else {
-        this.insert_child_after (this.terminal, null);
+      } else {
+        this.insert_child_after(this.terminal, null);
       }
     }
   }
 
-  public Gtk.PopoverMenu build_popover () {
-    var builder = new Gtk.Builder.from_resource ("/com/raggesilver/BlackBox/gtk/terminal-menu.ui");
-    var pop = builder.get_object ("popover") as Gtk.PopoverMenu;
+  public Gtk.PopoverMenu build_popover() {
+    var builder =
+      new Gtk.Builder.from_resource(
+        "/com/raggesilver/BlackBox/gtk/terminal-menu.ui");
+    var pop = builder.get_object("popover") as Gtk.PopoverMenu;
 
-    pop.set_parent (this);
-    pop.set_has_arrow (false);
-    pop.set_halign (Gtk.Align.START);
+    pop.set_parent(this);
+    pop.set_has_arrow(false);
+    pop.set_halign(Gtk.Align.START);
 
     return pop;
   }
@@ -178,38 +182,39 @@ public class Terminal.TerminalTab : Gtk.Box {
     this.terminal.grab_focus();
   }
 
-  public void show_menu (int n_pressed, double x, double y) {
+  public void show_menu(int n_pressed, double x, double y) {
     if (this.terminal.hyperlink_hover_uri != null) {
       this.terminal.window.link = this.terminal.hyperlink_hover_uri;
     } else {
-      this.terminal.window.link = this.terminal.check_match_at (x, y, null);
+      this.terminal.window.link = this.terminal.check_match_at(x, y, null);
     }
 
     double x_in_view, y_in_view;
-    this.terminal.translate_coordinates (this, x, y, out x_in_view, out y_in_view);
+    this.terminal.translate_coordinates(this, x, y, out x_in_view,
+                                        out y_in_view);
 
-    var r = Gdk.Rectangle () {
+    var r = Gdk.Rectangle() {
       x = (int) x_in_view,
       y = (int) y_in_view
     };
 
-    this.popover.set_pointing_to (r);
-    this.popover.popup ();
+    this.popover.set_pointing_to(r);
+    this.popover.popup();
   }
 
-  public void search () {
-    this.search_toolbar.open ();
+  public void search() {
+    this.search_toolbar.open();
   }
 
-  public void override_title (string? _title) {
+  public void override_title(string? _title) {
     this.title_override = _title;
   }
 
-  public uint get_id () {
+  public uint get_id() {
     return terminal.id;
   }
 
-  public void on_before_close () {
-    terminal.on_before_close ();
+  public void on_before_close() {
+    terminal.on_before_close();
   }
 }
