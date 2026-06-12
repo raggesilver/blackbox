@@ -32,8 +32,9 @@ namespace Terminal {
       debug_info = get_debug_information (),
       release_notes = """
         <ul>
-          <li>Improved process watcher: uses less resources both in use and in idle mode</li>
-          <li>Renamed executable to <code>blackbox-terminal</code> to prevent name clashing with the Black Box desktop environment</li>
+          <li>Open folders in Black Box directly from the Files app right-click menu.</li>
+          <li>Fixed missing "command completed" notifications when the context-aware sidebar was disabled.</li>
+          <li>Updated translations, including 9 new languages.</li>
         </ul>
       """
     };

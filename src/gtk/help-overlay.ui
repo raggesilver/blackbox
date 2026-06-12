@@ -69,6 +69,12 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Reset and Clear</property>
+                <property name="action-name">win.clear-scrollback</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Zoom in</property>
                 <property name="action-name">win.zoom-in</property>
               </object>

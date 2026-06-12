@@ -37,6 +37,17 @@ if appstreamcli.found()
   test('Validate appstream file', appstreamcli, args: validate_args)
 endif
 
+# No need to install the Nautilus extension on platforms other than Linux. We
+# may also want to skip installation if Nautilus isn't already installed, but
+# that could generate confusion if a user installs Nautilus *after* Black Box
+# and realizes they have no access to the extension.
+if host_machine.system() == 'linux'
+  install_data(
+    'nautilus/open-blackbox.py',
+    install_dir: join_paths(get_option('datadir'), 'nautilus-python/extensions'),
+  )
+endif
+
 install_data(
   'com.raggesilver.BlackBox.gschema.xml',
   install_dir: join_paths(get_option('datadir'), 'glib-2.0/schemas'),

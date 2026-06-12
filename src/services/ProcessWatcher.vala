@@ -18,13 +18,11 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-// TODO: fix uncrustify config. It goes crazy with enums outside namespace.
-namespace Terminal {
-  public enum ProcessContext {
-    DEFAULT,
-    ROOT,
-    SSH
-  } }
+public enum Terminal.ProcessContext {
+  DEFAULT,
+  ROOT,
+  SSH
+}
 
 public class Terminal.Process : Object {
   /**
@@ -72,9 +70,9 @@ namespace Terminal {
 }
 
 public class Terminal.ProcessWatcher : Object {
-  private static ProcessWatcher? instance = null;
-  private Gee.ArrayList<Process> process_list;
-  private Gee.ArrayList<Process> pending_process_list;
+  private static ProcessWatcher?   instance = null;
+  private Gee.ArrayList<Process>   process_list;
+  private Gee.ArrayList<Process>   pending_process_list;
   private Gee.HashMap<int, string> cmdline_cache;
   private bool watching = false;
   private bool fast_mode = false;
@@ -180,6 +178,8 @@ public class Terminal.ProcessWatcher : Object {
     return cmdline;
   }
 
+  // Like check_process, but skips cmdline/context tracking — only watches
+  // foreground PID lifecycle for notifications.
   private void check_process_minimal(Process process) {
     if (
       process.foreground_pid >= 0 &&
@@ -189,6 +189,18 @@ public class Terminal.ProcessWatcher : Object {
       process.foreground_task_finished();
       process.foreground_pid = -1;
     }
+
+    get_foreground_process.begin(process.terminal_fd, null, (_, res) => {
+      int foreground_pid = get_foreground_process.end(res);
+
+      if (
+        foreground_pid >= 0 &&
+        foreground_pid != process.pid &&
+        foreground_pid != process.foreground_pid
+      ) {
+        process.foreground_pid = foreground_pid;
+      }
+    });
 
     process.ended = !check_pid_running(process.pid);
     if (process.ended) {
