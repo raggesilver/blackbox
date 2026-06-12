@@ -21,8 +21,10 @@
 public struct Terminal.CommandLineOptions {
   string? command;
   string? current_working_dir;
-  bool version;
-  bool help;
+  bool    version;
+  bool    help;
+  bool    tab;
+  bool    used_execute;
 }
 //  Usage:
 //    blackbox [OPTION…] [-- COMMAND ...]
@@ -30,8 +32,11 @@ public struct Terminal.CommandLineOptions {
 //  Options:
 //    -v, --version               Show app version
 //    -w, --working-directory     Set current working directory
-//    -c, --command               Execute command in a terminal
+//    -c, --command               Execute a shell command string in a terminal
+//    -e, --execute               Alias for --; deprecated, will be removed in the next major release
+//        --tab                   Open command in a new tab of the active window
 //    -h, --help                  Show help
+//    --                          Pass remaining arguments as the command to execute
 
 public class Terminal.CommandLine {
   public static bool parse_command_line(
@@ -62,10 +67,19 @@ public class Terminal.CommandLine {
       OptionEntry() {
         long_name       = "command",
         short_name      = 'c',
-        description     = _("Execute command in a terminal"),
+        description     = _("Execute a shell command string in a terminal"),
         flags           = OptionFlags.NONE,
         arg             = OptionArg.STRING,
         arg_data        = &options.command,
+        arg_description = null,
+      },
+      OptionEntry() {
+        long_name       = "tab",
+        short_name      = 0,
+        description     = _("Open command in a new tab of the active window"),
+        flags           = OptionFlags.NONE,
+        arg             = OptionArg.NONE,
+        arg_data        = &options.tab,
         arg_description = null,
       },
       OptionEntry() {
@@ -89,15 +103,21 @@ public class Terminal.CommandLine {
     var original_argv = cmd.get_arguments();
     string[] real_argv = {};
     string[] commandv = {};
-    bool dd = false;
+    bool consume_rest = false;
+    bool used_execute = false;
 
-    // Check if "--" is present. If so, everything after it will be appended to
-    // `commandv` and fed as a single command to the terminal.
+    // Split argv at "--" or "-e"/"--execute". Everything after the separator
+    // goes into commandv and is joined into a single command string. "-e" is
+    // handled here rather than via OptionEntry so it consumes the rest of argv
+    // the same way "--" does.
     foreach (unowned string s in original_argv) {
-      if (dd) {
+      if (consume_rest) {
         commandv += s;
       } else if (s == "--") {
-        dd = true;
+        consume_rest = true;
+      } else if (s == "-e" || s == "--execute") {
+        used_execute = true;
+        consume_rest = true;
       } else {
         real_argv += s;
       }
@@ -109,8 +129,8 @@ public class Terminal.CommandLine {
       if (options.help) {
         cmd.print_literal(ctx.get_help(true, null));
       }
-      // If "--" was present and "-c" wasn't set
-      if (dd && options.command == null) {
+      // If "--" or "-e"/"--execute" was used and "-c" wasn't set
+      if (consume_rest && options.command == null && commandv.length > 0) {
         options.command = string.joinv(" ", commandv);
       }
     } catch (Error e) {
@@ -119,6 +139,7 @@ public class Terminal.CommandLine {
       return false;
     }
 
+    options.used_execute = used_execute;
     return true;
   }
 }
