@@ -681,4 +681,9 @@ public class Terminal.Terminal : Vte.Terminal {
   public void on_before_close() {
     this.withdraw_command_completed_notification();
   }
+
+  public void clear_scrollback() {
+    this.reset(true, true);
+    this.feed_child("\x0c".data);
+  }
 }
