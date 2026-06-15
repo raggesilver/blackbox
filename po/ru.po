@@ -657,7 +657,7 @@ msgstr "Отображение управляющей последователь
 
 #: src/gtk/preferences-window.ui:645
 msgid ""
-"The VTE build you are using does not have support Sixel. Sixel is still an "
+"The VTE build you are using does not have Sixel support. Sixel is still an "
 "experimental feature in VTE. For this reason, most distros do not build VTE "
 "with Sixel support. Installing Black Box via Flatpak will enable this "
 "feature. <a href=\"https://gitlab.gnome.org/raggesilver/blackbox/-/"
