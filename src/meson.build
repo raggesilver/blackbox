@@ -52,7 +52,7 @@ if get_option('blackbox_debug_memory')
   add_project_arguments('-D', 'BLACKBOX_DEBUG_MEMORY', language: 'vala')
 endif
 
-executable(
+blackbox_exe = executable(
   blackbox_cli,
   blackbox_sources,
   config_header,
@@ -60,3 +60,18 @@ executable(
   dependencies: blackbox_deps,
   install: true,
 )
+
+# The Adwaita theme prints several thousand warnings when running apps in macOS,
+# mostly "Expected ';' at the end of the block". Here we use environment
+# variables to override the theme and avoid those warnings.
+if host_machine.system() == 'darwin'
+  gtk_css_compat_dir = meson.project_source_root() / 'data' / 'gtk-css-compat'
+
+  run_target(
+    'run',
+    command: blackbox_exe,
+    env: {
+      'G_RESOURCE_OVERLAYS': '/org/gnome/Adwaita=' + gtk_css_compat_dir,
+    },
+  )
+endif

@@ -2,7 +2,7 @@ project(
   'blackbox',
   ['c', 'vala'],
   version: '0.15.2',
-  meson_version: '>= 0.55.0',
+  meson_version: '>= 0.56.0',
   default_options: [
     'warning_level=2',
   ],
