@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <interface>
   <requires lib="gtk" version="4.0" />
   <requires lib="libadwaita" version="1.2" />
@@ -26,13 +26,18 @@
         <section>
           <item>
             <attribute name="label" translatable="no">Localhost</attribute>
-            <attribute name="icon">preferences-desktop-locale-symbolic</attribute>
+            <attribute
+              name="icon"
+            >preferences-desktop-locale-symbolic</attribute>
             <attribute name="action">win.new_localhost_ssh_session</attribute>
           </item>
         </section>
         <section>
           <item>
-            <attribute name="label" translatable="yes">New Connection</attribute>
+            <attribute
+              name="label"
+              translatable="yes"
+            >New Connection</attribute>
             <attribute name="action">app.new-ssh-profile</attribute>
           </item>
         </section>
@@ -75,7 +80,10 @@
     </section>
     <section>
       <item>
-        <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
+        <attribute
+          name="label"
+          translatable="yes"
+        >Keyboard Shortcuts</attribute>
         <attribute name="action">win.show-help-overlay</attribute>
       </item>
       <item>
@@ -121,14 +129,24 @@
                         <child type="start">
                           <object class="GtkWindowControls" id="left_controls">
                             <property name="side">start</property>
+                            <property name="use-native-controls">true</property>
 
                             <binding name="visible">
-                              <closure type="gboolean" function="show_window_controls">
+                              <closure
+                                type="gboolean"
+                                function="show_window_controls"
+                              >
                                 <lookup name="fullscreened">
-                                  <lookup name="window">TerminalHeaderBar</lookup>
+                                  <lookup
+                                    name="window"
+                                  >TerminalHeaderBar</lookup>
                                 </lookup>
-                                <lookup name="floating-mode">TerminalHeaderBar</lookup>
-                                <lookup name="single-tab-mode">TerminalHeaderBar</lookup>
+                                <lookup
+                                  name="floating-mode"
+                                >TerminalHeaderBar</lookup>
+                                <lookup
+                                  name="single-tab-mode"
+                                >TerminalHeaderBar</lookup>
                                 <constant type="gboolean">false</constant>
                               </closure>
                             </binding>
@@ -138,7 +156,9 @@
                         <child type="center">
                           <object class="AdwWindowTitle" id="hb_title_widget">
                             <binding name="visible">
-                              <lookup name="single-tab-mode">TerminalHeaderBar</lookup>
+                              <lookup
+                                name="single-tab-mode"
+                              >TerminalHeaderBar</lookup>
                             </binding>
 
                             <binding name="title">
@@ -162,27 +182,47 @@
                             <property name="valign">center</property>
 
                             <binding name="visible">
-                              <lookup name="single-tab-mode">TerminalHeaderBar</lookup>
+                              <lookup
+                                name="single-tab-mode"
+                              >TerminalHeaderBar</lookup>
                             </binding>
 
                             <child>
                               <object class="GtkButton">
-                                <property name="tooltip-text" translatable="yes">New Tab</property>
-                                <property name="icon-name">list-add-symbolic</property>
-                                <property name="action-name">win.new_tab</property>
+                                <property
+                                  name="tooltip-text"
+                                  translatable="yes"
+                                >New Tab</property>
+                                <property
+                                  name="icon-name"
+                                >list-add-symbolic</property>
+                                <property
+                                  name="action-name"
+                                >win.new_tab</property>
                               </object>
                             </child>
 
                             <child>
                               <object class="GtkButton">
-                                <property name="tooltip-text" translatable="yes">Exit Fullscreen</property>
-                                <property name="icon-name">view-restore-symbolic</property>
+                                <property
+                                  name="tooltip-text"
+                                  translatable="yes"
+                                >Exit Fullscreen</property>
+                                <property
+                                  name="icon-name"
+                                >view-restore-symbolic</property>
                                 <property name="can-focus">false</property>
-                                <signal name="clicked" handler="unfullscreen" swapped="no" />
+                                <signal
+                                  name="clicked"
+                                  handler="unfullscreen"
+                                  swapped="no"
+                                />
 
                                 <binding name="visible">
                                   <lookup name="fullscreened">
-                                    <lookup name="window">TerminalHeaderBar</lookup>
+                                    <lookup
+                                      name="window"
+                                    >TerminalHeaderBar</lookup>
                                   </lookup>
                                 </binding>
                               </object>
@@ -190,12 +230,19 @@
 
                             <child>
                               <object class="GtkMenuButton">
-                                <property name="tooltip-text" translatable="yes">Menu</property>
-                                <property name="icon-name">open-menu-symbolic</property>
+                                <property
+                                  name="tooltip-text"
+                                  translatable="yes"
+                                >Menu</property>
+                                <property
+                                  name="icon-name"
+                                >open-menu-symbolic</property>
 
                                 <property name="popover">
                                   <object class="GtkPopoverMenu">
-                                    <property name="menu-model">main-menu</property>
+                                    <property
+                                      name="menu-model"
+                                    >main-menu</property>
                                     <child type="style-switcher">
                                       <object class="TerminalStyleSwitcher" />
                                     </child>
@@ -204,7 +251,9 @@
 
                                 <binding name="visible">
                                   <lookup name="show-menu-button">
-                                    <lookup name="settings">TerminalHeaderBar</lookup>
+                                    <lookup
+                                      name="settings"
+                                    >TerminalHeaderBar</lookup>
                                   </lookup>
                                 </binding>
                               </object>
@@ -213,14 +262,26 @@
                             <child>
                               <object class="GtkWindowControls">
                                 <property name="side">end</property>
+                                <property
+                                  name="use-native-controls"
+                                >true</property>
 
                                 <binding name="visible">
-                                  <closure type="gboolean" function="show_window_controls">
+                                  <closure
+                                    type="gboolean"
+                                    function="show_window_controls"
+                                  >
                                     <lookup name="fullscreened">
-                                      <lookup name="window">TerminalHeaderBar</lookup>
+                                      <lookup
+                                        name="window"
+                                      >TerminalHeaderBar</lookup>
                                     </lookup>
-                                    <lookup name="floating-mode">TerminalHeaderBar</lookup>
-                                    <lookup name="single-tab-mode">TerminalHeaderBar</lookup>
+                                    <lookup
+                                      name="floating-mode"
+                                    >TerminalHeaderBar</lookup>
+                                    <lookup
+                                      name="single-tab-mode"
+                                    >TerminalHeaderBar</lookup>
                                     <constant type="gboolean">false</constant>
                                   </closure>
                                 </binding>
@@ -243,14 +304,24 @@
                         <child type="start">
                           <object class="GtkWindowControls">
                             <property name="side">start</property>
+                            <property name="use-native-controls">true</property>
 
                             <binding name="visible">
-                              <closure type="gboolean" function="show_window_controls">
+                              <closure
+                                type="gboolean"
+                                function="show_window_controls"
+                              >
                                 <lookup name="fullscreened">
-                                  <lookup name="window">TerminalHeaderBar</lookup>
+                                  <lookup
+                                    name="window"
+                                  >TerminalHeaderBar</lookup>
                                 </lookup>
-                                <lookup name="floating-mode">TerminalHeaderBar</lookup>
-                                <lookup name="single-tab-mode">TerminalHeaderBar</lookup>
+                                <lookup
+                                  name="floating-mode"
+                                >TerminalHeaderBar</lookup>
+                                <lookup
+                                  name="single-tab-mode"
+                                >TerminalHeaderBar</lookup>
                                 <constant type="gboolean">false</constant>
                               </closure>
                             </binding>
@@ -277,22 +348,40 @@
 
                             <child>
                               <object class="GtkButton">
-                                <property name="tooltip-text" translatable="yes">New Tab</property>
-                                <property name="icon-name">list-add-symbolic</property>
-                                <property name="action-name">win.new_tab</property>
+                                <property
+                                  name="tooltip-text"
+                                  translatable="yes"
+                                >New Tab</property>
+                                <property
+                                  name="icon-name"
+                                >list-add-symbolic</property>
+                                <property
+                                  name="action-name"
+                                >win.new_tab</property>
                               </object>
                             </child>
 
                             <child>
                               <object class="GtkButton">
-                                <property name="tooltip-text" translatable="yes">Exit Fullscreen</property>
-                                <property name="icon-name">view-restore-symbolic</property>
+                                <property
+                                  name="tooltip-text"
+                                  translatable="yes"
+                                >Exit Fullscreen</property>
+                                <property
+                                  name="icon-name"
+                                >view-restore-symbolic</property>
                                 <property name="can-focus">false</property>
-                                <signal name="clicked" handler="unfullscreen" swapped="no" />
+                                <signal
+                                  name="clicked"
+                                  handler="unfullscreen"
+                                  swapped="no"
+                                />
 
                                 <binding name="visible">
                                   <lookup name="fullscreened">
-                                    <lookup name="window">TerminalHeaderBar</lookup>
+                                    <lookup
+                                      name="window"
+                                    >TerminalHeaderBar</lookup>
                                   </lookup>
                                 </binding>
                               </object>
@@ -300,12 +389,19 @@
 
                             <child>
                               <object class="GtkMenuButton">
-                                <property name="tooltip-text" translatable="yes">Menu</property>
-                                <property name="icon-name">open-menu-symbolic</property>
+                                <property
+                                  name="tooltip-text"
+                                  translatable="yes"
+                                >Menu</property>
+                                <property
+                                  name="icon-name"
+                                >open-menu-symbolic</property>
 
                                 <property name="popover">
                                   <object class="GtkPopoverMenu">
-                                    <property name="menu-model">main-menu</property>
+                                    <property
+                                      name="menu-model"
+                                    >main-menu</property>
                                     <child type="style-switcher">
                                       <object class="TerminalStyleSwitcher" />
                                     </child>
@@ -314,7 +410,9 @@
 
                                 <binding name="visible">
                                   <lookup name="show-menu-button">
-                                    <lookup name="settings">TerminalHeaderBar</lookup>
+                                    <lookup
+                                      name="settings"
+                                    >TerminalHeaderBar</lookup>
                                   </lookup>
                                 </binding>
                               </object>
@@ -323,14 +421,26 @@
                             <child>
                               <object class="GtkWindowControls">
                                 <property name="side">end</property>
+                                <property
+                                  name="use-native-controls"
+                                >true</property>
 
                                 <binding name="visible">
-                                  <closure type="gboolean" function="show_window_controls">
+                                  <closure
+                                    type="gboolean"
+                                    function="show_window_controls"
+                                  >
                                     <lookup name="fullscreened">
-                                      <lookup name="window">TerminalHeaderBar</lookup>
+                                      <lookup
+                                        name="window"
+                                      >TerminalHeaderBar</lookup>
                                     </lookup>
-                                    <lookup name="floating-mode">TerminalHeaderBar</lookup>
-                                    <lookup name="single-tab-mode">TerminalHeaderBar</lookup>
+                                    <lookup
+                                      name="floating-mode"
+                                    >TerminalHeaderBar</lookup>
+                                    <lookup
+                                      name="single-tab-mode"
+                                    >TerminalHeaderBar</lookup>
                                     <constant type="gboolean">false</constant>
                                   </closure>
                                 </binding>
