@@ -77,6 +77,12 @@ public class Terminal.Terminal : Vte.Terminal {
     }
   }
 
+  public unowned string? title {
+    get {
+      return this.get_termprop_string(Vte.TERMPROP_XTERM_TITLE, null);
+    }
+  }
+
   // Fields
 
   public Window window;
@@ -406,6 +412,12 @@ public class Terminal.Terminal : Vte.Terminal {
           this.on_attention_received();
           this.attention_timer = 0;
         });
+      }
+    });
+
+    this.termprop_changed.connect((term, name) => {
+      if (name == Vte.TERMPROP_XTERM_TITLE) {
+        this.notify_property("title");
       }
     });
   }
