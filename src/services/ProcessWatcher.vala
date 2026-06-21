@@ -197,7 +197,12 @@ public class Terminal.ProcessWatcher : Object {
       foreground_pid != process.pid &&
       foreground_pid != process.foreground_pid
     ) {
-      process.foreground_pid = foreground_pid;
+      var cmdline = this.get_cached_cmdline(foreground_pid);
+
+      if (cmdline != null && cmdline != "") {
+        process.foreground_pid = foreground_pid;
+        process.last_foreground_task_command = cmdline;
+      }
     }
 
     process.ended = !check_pid_running(process.pid);
