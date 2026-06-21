@@ -6,35 +6,37 @@ endif
 
 install_subdir('schemes', install_dir: join_paths(get_option('datadir'), 'blackbox'))
 
-desktop_file = i18n.merge_file(
-  input: 'com.raggesilver.BlackBox.desktop.in',
-  output: 'com.raggesilver.BlackBox.desktop',
-  type: 'desktop',
-  po_dir: '../po',
-  install: true,
-  install_dir: join_paths(get_option('datadir'), 'applications'),
-)
+if host_machine.system() != 'darwin'
+  desktop_file = i18n.merge_file(
+    input: 'com.raggesilver.BlackBox.desktop.in',
+    output: 'com.raggesilver.BlackBox.desktop',
+    type: 'desktop',
+    po_dir: '../po',
+    install: true,
+    install_dir: join_paths(get_option('datadir'), 'applications'),
+  )
 
-desktop_utils = find_program('desktop-file-validate', required: false)
-if desktop_utils.found()
-  test('Validate desktop file', desktop_utils, args: [desktop_file])
-endif
-
-appstream_file = i18n.merge_file(
-  input: 'com.raggesilver.BlackBox.metainfo.xml.in',
-  output: 'com.raggesilver.BlackBox.metainfo.xml',
-  po_dir: '../po',
-  install: true,
-  install_dir: join_paths(get_option('datadir'), 'metainfo'),
-)
-
-appstreamcli = find_program('appstreamcli', required: false)
-if appstreamcli.found()
-  validate_args = ['validate', appstream_file, '--pedantic', '--explain']
-  if not get_option('network_tests')
-    validate_args += '--no-net'
+  desktop_utils = find_program('desktop-file-validate', required: false)
+  if desktop_utils.found()
+    test('Validate desktop file', desktop_utils, args: [desktop_file])
   endif
-  test('Validate appstream file', appstreamcli, args: validate_args)
+
+  appstream_file = i18n.merge_file(
+    input: 'com.raggesilver.BlackBox.metainfo.xml.in',
+    output: 'com.raggesilver.BlackBox.metainfo.xml',
+    po_dir: '../po',
+    install: true,
+    install_dir: join_paths(get_option('datadir'), 'metainfo'),
+  )
+
+  appstreamcli = find_program('appstreamcli', required: false)
+  if appstreamcli.found()
+    validate_args = ['validate', appstream_file, '--pedantic', '--explain']
+    if not get_option('network_tests')
+      validate_args += '--no-net'
+    endif
+    test('Validate appstream file', appstreamcli, args: validate_args)
+  endif
 endif
 
 # No need to install the Nautilus extension on platforms other than Linux. We
