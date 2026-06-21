@@ -481,7 +481,7 @@ public class Terminal.Window : Adw.ApplicationWindow {
     string? command = null;
 
     if (terminal != null) {
-      if (!terminal.get_can_close(out command)) {
+      if (!(yield terminal.get_can_close(out command))) {
         can_close = yield confirm_closing({ command });
       }
     }
@@ -506,7 +506,7 @@ public class Terminal.Window : Adw.ApplicationWindow {
       var     page = this.tab_view.get_nth_page((int) i);
       var     terminal = (page.get_child() as TerminalTab)?.terminal;
 
-      if (terminal != null && !terminal.get_can_close(out command)) {
+      if (terminal != null && !(yield terminal.get_can_close(out command))) {
         commands += command;
       }
     }

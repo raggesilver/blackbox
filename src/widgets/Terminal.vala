@@ -591,7 +591,7 @@ public class Terminal.Terminal : Vte.Terminal {
     return false;
   }
 
-  public bool get_can_close(out string command = null) {
+  public async bool get_can_close(out string command = null) {
     command = null;
 
     if (this.pid < 0 || this.pty == null) {
@@ -613,7 +613,14 @@ public class Terminal.Terminal : Vte.Terminal {
       return true;
     }
 
-    command = get_process_cmdline(fgpid);
+    string? cmd = null;
+    SourceFunc callback = get_can_close.callback;
+    new GLib.Thread<void>("get-cmdline", () => {
+      cmd = get_process_cmdline(fgpid);
+      GLib.Idle.add((owned) callback);
+    });
+    yield;
+    command = cmd;
 
     return command == null;
   }
