@@ -49,6 +49,7 @@ endif
 
 if host_machine.system() == 'darwin'
   add_project_arguments('--define=MACOS', language: 'vala')
+  add_project_arguments('-DMACOS', language: 'c')
 endif
 
 gnome = import('gnome')

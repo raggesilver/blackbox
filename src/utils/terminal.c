@@ -22,12 +22,47 @@
 
 #include <glib-object.h>
 #include <glib.h>
-#include <sys/stat.h>
 #include <unistd.h>
 
 int terminal_get_foreground_process(int terminal_fd) {
   return tcgetpgrp(terminal_fd);
 }
+
+gboolean terminal_check_pid_running(int pid) { return kill(pid, 0) == 0; }
+
+#ifdef MACOS
+
+#include <sys/sysctl.h>
+
+gchar *terminal_get_process_cmdline(int pid) {
+  int mib[4] = {CTL_KERN, KERN_PROC, KERN_PROC_PID, pid};
+  struct kinfo_proc info;
+  size_t size = sizeof(info);
+
+  if (sysctl(mib, 4, &info, &size, NULL, 0) != 0)
+    return NULL;
+
+  return g_strdup(info.kp_proc.p_comm);
+}
+
+int terminal_get_euid_from_pid(int pid, GError **error) {
+  int mib[4] = {CTL_KERN, KERN_PROC, KERN_PROC_PID, pid};
+  struct kinfo_proc info;
+  size_t size = sizeof(info);
+
+  if (sysctl(mib, 4, &info, &size, NULL, 0) != 0) {
+    g_set_error(error, G_FILE_ERROR, g_file_error_from_errno(errno),
+                "Failed to query process info for pid %d: %s", pid,
+                g_strerror(errno));
+    return -1;
+  }
+
+  return info.kp_eproc.e_ucred.cr_uid;
+}
+
+#else
+
+#include <sys/stat.h>
 
 gchar *terminal_get_process_cmdline(int pid) {
   GError *error = NULL;
@@ -61,4 +96,4 @@ int terminal_get_euid_from_pid(int pid, GError **error) {
   }
 }
 
-gboolean terminal_check_pid_running(int pid) { return kill(pid, 0) == 0; }
+#endif
