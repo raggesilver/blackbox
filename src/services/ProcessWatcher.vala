@@ -242,7 +242,7 @@ public class Terminal.ProcessWatcher : Object {
             ? process.foreground_pid
             : process.pid;
 
-      var euid = get_euid_from_pid(source_pid, null);
+      var euid = get_euid_from_pid(source_pid);
 
       if (euid == 0) {
         process.context = ProcessContext.ROOT;

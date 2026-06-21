@@ -5,6 +5,7 @@ blackbox_sources += files(
   'File.vala',
   'SettingsBinder.vala',
   'Shortcuts.vala',
-  'Terminal.vala',
   'Widget.vala',
+  'terminal.c',
+  'terminal.vapi',
 )

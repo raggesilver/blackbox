@@ -61,6 +61,7 @@ blackbox_exe = executable(
   config_header,
   vala_args: '--target-glib=2.50',
   dependencies: blackbox_deps,
+  include_directories: include_directories('utils'),
   install: true,
 )
 
