@@ -80,6 +80,47 @@ public class Terminal.Keymap : Object, Json.Serializable {
   construct {
     var _keymap = new Gee.HashMultiMap<string, string> ();
 
+#if MACOS
+    _keymap.set(ACTION_FOCUS_NEXT_TAB, "<Control>Tab");
+    _keymap.set(ACTION_FOCUS_PREVIOUS_TAB, "<Shift><Control>Tab");
+
+    // These two don't really make much sense in macOS.
+    // _keymap.set(ACTION_FOCUS_NEXT_TAB, "<Control>Page_Down");
+    // _keymap.set(ACTION_FOCUS_PREVIOUS_TAB, "<Control>Page_Up");
+
+    _keymap.set(ACTION_NEW_WINDOW, "<Meta>n");
+    _keymap.set(ACTION_WIN_SWITCH_HEADER_BAR_MODE, "<Shift><Meta>h");
+    _keymap.set(ACTION_WIN_NEW_TAB, "<Meta>t");
+    _keymap.set(ACTION_WIN_EDIT_PREFERENCES, "<Meta>comma");
+    _keymap.set(ACTION_WIN_COPY, "<Meta>c");
+    _keymap.set(ACTION_WIN_PASTE, "<Meta>v");
+    _keymap.set(ACTION_WIN_SEARCH, "<Meta>f");
+    // macOS has Fn+f for fullscreen, but I can't find a way to use Fn with
+    // Gtk's accelerator system, so I'm disabling it.
+    // _keymap.set(ACTION_WIN_FULLSCREEN, "F11");
+    _keymap.set(ACTION_WIN_SHOW_HELP_OVERLAY, "<Meta>question");
+    _keymap.set(ACTION_WIN_ZOOM_IN, "<Meta>equal");
+    _keymap.set(ACTION_WIN_ZOOM_OUT, "<Meta>minus");
+    _keymap.set(ACTION_WIN_ZOOM_DEFAULT, "<Meta>0");
+    _keymap.set(ACTION_WIN_CLOSE_TAB, "<Meta>w");
+    _keymap.set(ACTION_WIN_RENAME_TAB, "<Meta>r");
+    _keymap.set(ACTION_WIN_MOVE_TAB_LEFT, "<Meta>braceleft");
+    _keymap.set(ACTION_WIN_MOVE_TAB_RIGHT, "<Meta>braceright");
+    _keymap.set(ACTION_WIN_CLEAR_SCROLLBACK, "<Meta>k");
+
+    _keymap.set(ACTION_WIN_SWITCH_TAB_1, "<Meta>1");
+    _keymap.set(ACTION_WIN_SWITCH_TAB_2, "<Meta>2");
+    _keymap.set(ACTION_WIN_SWITCH_TAB_3, "<Meta>3");
+    _keymap.set(ACTION_WIN_SWITCH_TAB_4, "<Meta>4");
+    _keymap.set(ACTION_WIN_SWITCH_TAB_5, "<Meta>5");
+    _keymap.set(ACTION_WIN_SWITCH_TAB_6, "<Meta>6");
+    _keymap.set(ACTION_WIN_SWITCH_TAB_7, "<Meta>7");
+    _keymap.set(ACTION_WIN_SWITCH_TAB_8, "<Meta>8");
+    // On macOS <Meta>0 is mapped to reset zoom and <Meta>9 to switch to last
+    // tab, so that leaves us with nothing to switch to the nineth tab.
+    // _keymap.set(ACTION_WIN_SWITCH_TAB_9, "<Alt>9");
+    _keymap.set(ACTION_WIN_SWITCH_TAB_LAST, "<Meta>9");
+#else
     _keymap.set(ACTION_FOCUS_NEXT_TAB, "<Control>Tab");
     _keymap.set(ACTION_FOCUS_NEXT_TAB, "<Control>Page_Down");
     _keymap.set(ACTION_FOCUS_PREVIOUS_TAB, "<Shift><Control>Tab");
@@ -112,7 +153,7 @@ public class Terminal.Keymap : Object, Json.Serializable {
     _keymap.set(ACTION_WIN_SWITCH_TAB_8, "<Alt>8");
     _keymap.set(ACTION_WIN_SWITCH_TAB_9, "<Alt>9");
     _keymap.set(ACTION_WIN_SWITCH_TAB_LAST, "<Alt>0");
-
+#endif
     this.default_keymap = _keymap;
   }
 

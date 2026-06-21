@@ -43,6 +43,7 @@ public class Terminal.File : Object {
   public string? read_all (out size_t bytes_read) throws Error {
     bytes_read = 0;
 
+    // FIXME: FileStream.open can return null; @is.seek will segfault if it does
     var @is = FileStream.open (this.path, "r");
     @is.seek (0, FileSeek.END);
 

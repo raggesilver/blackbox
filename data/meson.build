@@ -1,5 +1,9 @@
 subdir('icons')
 
+if host_machine.system() == 'darwin'
+  subdir('macos')
+endif
+
 install_subdir('schemes', install_dir: join_paths(get_option('datadir'), 'blackbox'))
 
 desktop_file = i18n.merge_file(

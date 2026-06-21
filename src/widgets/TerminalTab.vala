@@ -34,9 +34,9 @@ public class Terminal.TerminalTab : Gtk.Box {
   public string title {
     get {
       if (this.title_override != null) { return this.title_override; }
-      if (this.terminal.window_title != null &&
-          this.terminal.window_title.strip() != "") {
-        return this.terminal.window_title;
+      if (this.terminal.title != null &&
+          this.terminal.title.strip() != "") {
+        return this.terminal.title;
       }
 
       return this.default_title;
@@ -91,13 +91,7 @@ public class Terminal.TerminalTab : Gtk.Box {
   private void connect_signals() {
     var settings = Settings.get_default();
 
-    //  this.terminal.bind_property ("window-title",
-    //                               this,
-    //                               "title",
-    //                               GLib.BindingFlags.DEFAULT,
-    //                               null, null);
-
-    this.terminal.notify["window-title"].connect(() => {
+    this.terminal.notify["title"].connect(() => {
       this.notify_property("title");
     });
 

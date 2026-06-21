@@ -2,6 +2,7 @@
 *.*~
 \#*#
 *.swp
+.DS_Store
 
 # Test files
 test*
@@ -22,3 +23,6 @@ repo/
 
 # i18n
 po/*.pot
+
+/.cache
+/compile_commands.json

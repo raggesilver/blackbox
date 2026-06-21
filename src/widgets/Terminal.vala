@@ -77,6 +77,12 @@ public class Terminal.Terminal : Vte.Terminal {
     }
   }
 
+  public unowned string? title {
+    get {
+      return this.get_termprop_string(Vte.TERMPROP_XTERM_TITLE, null);
+    }
+  }
+
   // Fields
 
   public Window window;
@@ -408,6 +414,12 @@ public class Terminal.Terminal : Vte.Terminal {
         });
       }
     });
+
+    this.termprop_changed.connect((term, name) => {
+      if (name == Vte.TERMPROP_XTERM_TITLE) {
+        this.notify_property("title");
+      }
+    });
   }
 
   private void spawn(string? command, string? cwd) throws Error {
@@ -579,7 +591,7 @@ public class Terminal.Terminal : Vte.Terminal {
     return false;
   }
 
-  public async bool get_can_close(out string command = null) {
+  public bool get_can_close(out string command = null) {
     command = null;
 
     if (this.pid < 0 || this.pty == null) {
@@ -592,7 +604,7 @@ public class Terminal.Terminal : Vte.Terminal {
     }
 
     // Get terminal's foreground process
-    var fgpid = yield get_foreground_process(fd);
+    var fgpid = get_foreground_process(fd);
     if (fgpid == -1) {
       return false;
     }
