@@ -115,15 +115,18 @@ codesign_app() {
 
   # Sign nested dylibs and frameworks before signing the bundle.
   # --deep is deprecated and can cause notarization rejection.
-  find "$APP_BUNDLE/Contents/Frameworks" \
-    \( -name "*.framework" -o -name "*.dylib" \) \
-    2>/dev/null | while read -r item; do
-    codesign --force --options runtime --sign "$SIGN_IDENTITY" --timestamp "$item"
-  done
+  if [[ -d "$APP_BUNDLE/Contents/Frameworks" ]]; then
+    find "$APP_BUNDLE/Contents/Frameworks" \
+      \( -name "*.framework" -o -name "*.dylib" \) | while read -r item; do
+      codesign --force --options runtime --sign "$SIGN_IDENTITY" --timestamp "$item"
+    done
+  fi
 
-  find "$APP_BUNDLE/Contents/MacOS" -type f 2>/dev/null | while read -r item; do
-    codesign --force --options runtime --sign "$SIGN_IDENTITY" --timestamp "$item"
-  done
+  if [[ -d "$APP_BUNDLE/Contents/MacOS" ]]; then
+    find "$APP_BUNDLE/Contents/MacOS" -type f | while read -r item; do
+      codesign --force --options runtime --sign "$SIGN_IDENTITY" --timestamp "$item"
+    done
+  fi
 
   codesign \
     --force \
@@ -140,6 +143,13 @@ codesign_app() {
 codesign_dmg() {
   step "Codesigning DMG"
   codesign --force --sign "$SIGN_IDENTITY" --timestamp "$DMG_OUT"
+
+  step "Notarizing DMG"
+  xcrun notarytool submit "$DMG_OUT" \
+    --keychain-profile "$NOTARYTOOL_PROFILE" \
+    --wait
+
+  step "Stapling notarization ticket to DMG"
   xcrun stapler staple "$DMG_OUT"
 }
 
