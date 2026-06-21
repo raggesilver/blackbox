@@ -1,3 +1,4 @@
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -18,11 +19,11 @@ static void setup_adwaita_compat(const char* exe_path) {
   char* path_copy = strdup(exe_path);
   // exe_path is .../Contents/MacOS/BlackBox — go up two levels
   const char* macos_dir = dirname(path_copy);
-  char contents_dir[1024];
+  char contents_dir[PATH_MAX + 4];
   snprintf(contents_dir, sizeof(contents_dir), "%s/..", macos_dir);
   free(path_copy);
 
-  char overlay_dir[1024];
+  char overlay_dir[PATH_MAX + 4];
   snprintf(overlay_dir, sizeof(overlay_dir), "%s/Resources/gtk-css-compat",
            contents_dir);
 
@@ -48,7 +49,7 @@ int main(int argc, char* argv[]) {
   const char* prefixes[] = { "/opt/homebrew", "/usr/local", NULL };
 
   for (int i = 0; prefixes[i] != NULL; i++) {
-    char binary[1024];
+    char binary[PATH_MAX + 4];
     snprintf(binary, sizeof(binary), "%s/bin/blackbox-terminal", prefixes[i]);
 
     if (access(binary, X_OK) != 0) {
@@ -56,13 +57,13 @@ int main(int argc, char* argv[]) {
     }
 
     if (!getenv("GSETTINGS_SCHEMA_DIR")) {
-      char schema_dir[1024];
+      char schema_dir[PATH_MAX + 4];
       snprintf(schema_dir, sizeof(schema_dir), "%s/share/glib-2.0/schemas",
                prefixes[i]);
       setenv("GSETTINGS_SCHEMA_DIR", schema_dir, 0);
     }
 
-    char share_dir[1024];
+    char share_dir[PATH_MAX + 4];
     snprintf(share_dir, sizeof(share_dir), "%s/share", prefixes[i]);
 
     const char* existing_xdg = getenv("XDG_DATA_DIRS");
