@@ -17,7 +17,7 @@ repo/
 *.flatpak
 .buildconfig
 /build-pkg/
-/BlackBox-*.dmg
+*.dmg
 
 # IDE dirs
 .vscode/

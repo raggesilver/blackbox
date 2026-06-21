@@ -41,31 +41,31 @@
 
 ## Install
 
-### macOS
-
-```sh
-brew tap raggesilver/tap
-brew install --cask blackbox-terminal
-```
-
 ### Linux
 
 Black Box is packaged by the community for several distributions. See
 [Repology](https://repology.org/project/blackbox-terminal/versions) for the
 full list.
 
-| Distribution | Package |
-|---|---|
-| Fedora | [![Fedora package](https://repology.org/badge/version-for-repo/fedora_44/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions) |
-| Arch Linux (AUR) | [![AUR package](https://repology.org/badge/version-for-repo/aur/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions) |
-| Ubuntu | [![Ubuntu package](https://repology.org/badge/version-for-repo/ubuntu_25_10/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions) |
-| Debian | [![Debian package](https://repology.org/badge/version-for-repo/debian_13/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions) |
-| Alpine Linux | [![Alpine package](https://repology.org/badge/version-for-repo/alpine_3_23/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions) |
-| Manjaro | [![Manjaro package](https://repology.org/badge/version-for-repo/manjaro_stable/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions) |
+| Distribution     | Package                                                                                                                                                         |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Fedora           | [![Fedora package](https://repology.org/badge/version-for-repo/fedora_44/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions)       |
+| Arch Linux (AUR) | [![AUR package](https://repology.org/badge/version-for-repo/aur/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions)                |
+| Ubuntu           | [![Ubuntu package](https://repology.org/badge/version-for-repo/ubuntu_25_10/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions)    |
+| Debian           | [![Debian package](https://repology.org/badge/version-for-repo/debian_13/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions)       |
+| Alpine Linux     | [![Alpine package](https://repology.org/badge/version-for-repo/alpine_3_23/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions)     |
+| Manjaro          | [![Manjaro package](https://repology.org/badge/version-for-repo/manjaro_stable/blackbox-terminal.svg)](https://repology.org/project/blackbox-terminal/versions) |
 
 **Looking for an older release?**
 
 Check out the [releases page](https://gitlab.gnome.org/raggesilver/blackbox/-/releases).
+
+### macOS
+
+```sh
+brew tap raggesilver/tap
+brew install --cask blackbox-terminal
+```
 
 ## Build from source
 

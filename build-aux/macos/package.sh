@@ -2,6 +2,7 @@
 #
 # Builds, codesigns, notarizes, and packages Black Box as a macOS DMG.
 # Pass --publish to also create a GitHub release and update the Homebrew tap.
+# Pass --skip-notarize to skip notarization (useful for local testing).
 #
 # Required env vars:
 #   SIGN_IDENTITY      — e.g. "Developer ID Application: Your Name (TEAMID)"
@@ -21,9 +22,16 @@ TAP_REPO="raggesilver/homebrew-tap"
 CASK_NAME="blackbox-terminal"
 
 PUBLISH=0
+SKIP_NOTARIZE=0
 for arg in "$@"; do
   [[ "$arg" == "--publish" ]] && PUBLISH=1
+  [[ "$arg" == "--skip-notarize" ]] && SKIP_NOTARIZE=1
 done
+
+if [[ $PUBLISH -eq 1 && $SKIP_NOTARIZE -eq 1 ]]; then
+  echo "error: --skip-notarize cannot be used with --publish"
+  exit 1
+fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
@@ -93,11 +101,10 @@ build() {
   step "Building ($VERSION)"
   cd "$PROJECT_ROOT"
 
-  if [[ -d "$MESON_DIR" ]]; then
-    meson setup "$MESON_DIR" --prefix="$STAGING_DIR" --wipe
-  else
-    meson setup "$MESON_DIR" --prefix="$STAGING_DIR"
-  fi
+  local extra_flags=()
+  [[ -d "$MESON_DIR" ]] && extra_flags+=(--wipe)
+
+  meson setup "$MESON_DIR" --prefix="$STAGING_DIR" --buildtype=release "${extra_flags[@]}"
 
   meson compile -C "$MESON_DIR"
   meson install -C "$MESON_DIR"
@@ -190,7 +197,7 @@ check_prereqs
 
 build
 codesign_app
-notarize
+[[ $SKIP_NOTARIZE -eq 0 ]] && notarize
 make_dmg
 
 if [[ $PUBLISH -eq 1 ]]; then
