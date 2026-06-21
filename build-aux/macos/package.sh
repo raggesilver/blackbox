@@ -66,6 +66,20 @@ check_prereqs() {
     ok=0
   fi
 
+  if [[ $PUBLISH -eq 1 ]]; then
+    if ! gh release view "v$VERSION" --repo raggesilver/blackbox &>/dev/null 2>&1; then
+      if ! gh api "repos/raggesilver/blackbox/git/ref/tags/v$VERSION" &>/dev/null 2>&1; then
+        echo "error: tag v$VERSION not found on GitHub."
+        echo "       Push the tag from GitLab first and wait for the mirror to sync:"
+        echo "         git push origin v$VERSION"
+        ok=0
+      fi
+    else
+      echo "error: GitHub release v$VERSION already exists."
+      ok=0
+    fi
+  fi
+
   [[ $ok -eq 1 ]]
 }
 
