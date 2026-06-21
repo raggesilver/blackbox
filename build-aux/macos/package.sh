@@ -52,7 +52,7 @@ DMG_OUT="$PROJECT_ROOT/BlackBox-$VERSION.dmg"
 check_prereqs() {
   local ok=1
 
-  if [[ -z "$SIGN_IDENTITY" ]]; then
+  if [[ $SKIP_NOTARIZE -eq 0 && -z "$SIGN_IDENTITY" ]]; then
     echo "error: SIGN_IDENTITY is not set."
     echo "       Run: security find-identity -v -p codesigning"
     echo "       Then: export SIGN_IDENTITY=\"Developer ID Application: Your Name (TEAMID)\""
@@ -196,7 +196,7 @@ publish() {
 check_prereqs
 
 build
-codesign_app
+[[ $SKIP_NOTARIZE -eq 0 ]] && codesign_app
 [[ $SKIP_NOTARIZE -eq 0 ]] && notarize
 make_dmg
 
