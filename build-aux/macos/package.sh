@@ -112,8 +112,20 @@ build() {
 
 codesign_app() {
   step "Codesigning"
+
+  # Sign nested dylibs and frameworks before signing the bundle.
+  # --deep is deprecated and can cause notarization rejection.
+  find "$APP_BUNDLE/Contents/Frameworks" \
+    \( -name "*.framework" -o -name "*.dylib" \) \
+    2>/dev/null | while read -r item; do
+    codesign --force --options runtime --sign "$SIGN_IDENTITY" --timestamp "$item"
+  done
+
+  find "$APP_BUNDLE/Contents/MacOS" -type f 2>/dev/null | while read -r item; do
+    codesign --force --options runtime --sign "$SIGN_IDENTITY" --timestamp "$item"
+  done
+
   codesign \
-    --deep \
     --force \
     --options runtime \
     --sign "$SIGN_IDENTITY" \
@@ -123,6 +135,12 @@ codesign_app() {
   echo "Verifying signature..."
   codesign --verify --deep --strict "$APP_BUNDLE"
   spctl --assess --type execute "$APP_BUNDLE" 2>/dev/null || true
+}
+
+codesign_dmg() {
+  step "Codesigning DMG"
+  codesign --force --sign "$SIGN_IDENTITY" --timestamp "$DMG_OUT"
+  xcrun stapler staple "$DMG_OUT"
 }
 
 notarize() {
@@ -199,6 +217,7 @@ build
 [[ $SKIP_NOTARIZE -eq 0 ]] && codesign_app
 [[ $SKIP_NOTARIZE -eq 0 ]] && notarize
 make_dmg
+[[ $SKIP_NOTARIZE -eq 0 ]] && codesign_dmg
 
 if [[ $PUBLISH -eq 1 ]]; then
   publish
