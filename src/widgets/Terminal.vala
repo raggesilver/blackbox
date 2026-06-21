@@ -591,7 +591,7 @@ public class Terminal.Terminal : Vte.Terminal {
     return false;
   }
 
-  public async bool get_can_close(out string command = null) {
+  public bool get_can_close(out string command = null) {
     command = null;
 
     if (this.pid < 0 || this.pty == null) {
@@ -604,7 +604,7 @@ public class Terminal.Terminal : Vte.Terminal {
     }
 
     // Get terminal's foreground process
-    var fgpid = yield get_foreground_process(fd);
+    var fgpid = get_foreground_process(fd);
     if (fgpid == -1) {
       return false;
     }

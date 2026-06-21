@@ -19,39 +19,40 @@
  */
 
 namespace Terminal {
-
-  public async int get_foreground_process (
+  public int get_foreground_process(
     int terminal_fd,
     Cancellable? cancellable = null
   ) {
-    return Posix.tcgetpgrp (terminal_fd);
+    return Posix.tcgetpgrp(terminal_fd);
   }
 
-  public string? get_process_cmdline (int pid) {
+  public string? get_process_cmdline(int pid) {
     try {
       string response;
-      bool success = FileUtils.get_contents (@"/proc/$pid/cmdline", out response);
-      if (success)
-        return response.strip ();
-    }
-    catch (GLib.Error e) {
-      warning ("%s", e.message);
+      bool   success = FileUtils.get_contents(@"/proc/$pid/cmdline",
+                                              out response);
+      if (success) {
+        return response.strip();
+      }
+    } catch (GLib.Error e) {
+      warning("%s", e.message);
     }
     return null;
   }
 
-  public int get_euid_from_pid (int pid,
-                                GLib.Cancellable? cancellable) throws GLib.Error
-  {
+  public int get_euid_from_pid(
+    int pid,
+    GLib.Cancellable? cancellable
+  ) throws GLib.Error {
     string proc_file = @"/proc/$pid";
     Posix.Stat? buf = null;
-    Posix.stat (proc_file, out buf);
+    Posix.stat(proc_file, out buf);
 
     return (int) buf.st_uid;
   }
 
-  public bool check_pid_running (int pid) {
-    int status = Posix.kill (pid, 0);
+  public bool check_pid_running(int pid) {
+    int status = Posix.kill(pid, 0);
     return (status == 0);
   }
 }

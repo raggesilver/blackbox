@@ -190,17 +190,15 @@ public class Terminal.ProcessWatcher : Object {
       process.foreground_pid = -1;
     }
 
-    get_foreground_process.begin(process.terminal_fd, null, (_, res) => {
-      int foreground_pid = get_foreground_process.end(res);
+    int foreground_pid = get_foreground_process(process.terminal_fd);
 
-      if (
-        foreground_pid >= 0 &&
-        foreground_pid != process.pid &&
-        foreground_pid != process.foreground_pid
-      ) {
-        process.foreground_pid = foreground_pid;
-      }
-    });
+    if (
+      foreground_pid >= 0 &&
+      foreground_pid != process.pid &&
+      foreground_pid != process.foreground_pid
+    ) {
+      process.foreground_pid = foreground_pid;
+    }
 
     process.ended = !check_pid_running(process.pid);
     if (process.ended) {
@@ -218,24 +216,20 @@ public class Terminal.ProcessWatcher : Object {
       process.foreground_pid = -1;
     }
 
-    get_foreground_process.begin(process.terminal_fd, null, (_, res) => {
-      int foreground_pid = get_foreground_process.end(res);
+    int foreground_pid = get_foreground_process(process.terminal_fd);
 
-      if (
-        foreground_pid >= 0 &&
-        foreground_pid != process.pid &&
-        foreground_pid != process.foreground_pid
-      ) {
-        var cmdline = this.get_cached_cmdline(foreground_pid);
+    if (
+      foreground_pid >= 0 &&
+      foreground_pid != process.pid &&
+      foreground_pid != process.foreground_pid
+    ) {
+      var cmdline = this.get_cached_cmdline(foreground_pid);
 
-        if (cmdline == null || cmdline == "") {
-          return;
-        }
-
+      if (cmdline != null && cmdline != "") {
         process.foreground_pid = foreground_pid;
         process.last_foreground_task_command = cmdline;
       }
-    });
+    }
 
     process.ended = !check_pid_running(process.pid);
     if (process.ended) {
