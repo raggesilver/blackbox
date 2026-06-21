@@ -36,21 +36,24 @@ blackbox_deps = [
   meson.get_compiler('vala').find_library('posix'),
 ]
 
-# https://github.com/elementary/terminal/blob/d9620eb12331a28c658f97ac9a1bdb809aa90089/meson.build
 vapi_dir = meson.current_source_dir() / 'vapi'
 add_project_arguments('--vapidir=' + vapi_dir, language: 'vala')
-add_project_arguments('-DPCRE2_CODE_UNIT_WIDTH=0', language: 'c')
 
-# This is required until VTE 0.70 is out
-add_project_arguments('--disable-since-check', language: 'vala')
-
-gnome = import('gnome')
-
-blackbox_sources += gnome.compile_resources('blackbox-resources', 'blackbox.gresource.xml', c_name: 'blackbox')
+# We add `-w` because the C code Vala generates has a bunch of unused variables
+# which keep polluting the build output with warnings.
+add_project_arguments(['-DPCRE2_CODE_UNIT_WIDTH=0', '-w'], language: 'c')
 
 if get_option('blackbox_debug_memory')
   add_project_arguments('-D', 'BLACKBOX_DEBUG_MEMORY', language: 'vala')
 endif
+
+if host_machine.system() == 'darwin'
+  add_project_arguments('--define=MACOS', language: 'vala')
+endif
+
+gnome = import('gnome')
+
+blackbox_sources += gnome.compile_resources('blackbox-resources', 'blackbox.gresource.xml', c_name: 'blackbox')
 
 blackbox_exe = executable(
   blackbox_cli,
