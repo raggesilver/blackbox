@@ -39,7 +39,7 @@ gchar *terminal_get_process_cmdline(int pid) {
   struct kinfo_proc info;
   size_t size = sizeof(info);
 
-  if (sysctl(mib, 4, &info, &size, NULL, 0) != 0)
+  if (sysctl(mib, 4, &info, &size, NULL, 0) != 0 || size == 0)
     return NULL;
 
   return g_strdup(info.kp_proc.p_comm);
@@ -50,7 +50,7 @@ int terminal_get_euid_from_pid(int pid, GError **error) {
   struct kinfo_proc info;
   size_t size = sizeof(info);
 
-  if (sysctl(mib, 4, &info, &size, NULL, 0) != 0) {
+  if (sysctl(mib, 4, &info, &size, NULL, 0) != 0 || size == 0) {
     g_set_error(error, G_FILE_ERROR, g_file_error_from_errno(errno),
                 "Failed to query process info for pid %d: %s", pid,
                 g_strerror(errno));
