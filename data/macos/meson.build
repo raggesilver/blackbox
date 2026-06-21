@@ -36,6 +36,11 @@ install_data(
   install_dir: bundle_contents,
 )
 
+install_subdir(
+  meson.project_source_root() / 'data' / 'gtk-css-compat',
+  install_dir: bundle_contents / 'Resources',
+)
+
 cc = meson.get_compiler('c')
 
 custom_target(

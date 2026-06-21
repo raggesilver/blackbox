@@ -41,6 +41,15 @@
 
 ## Install
 
+### macOS
+
+```sh
+brew tap raggesilver/tap
+brew install --cask blackbox-terminal
+```
+
+### Linux
+
 Black Box is packaged by the community for several distributions. See
 [Repology](https://repology.org/project/blackbox-terminal/versions) for the
 full list.
