@@ -89,7 +89,8 @@ public class Terminal.ShortcutDialog : Adw.Dialog {
       const Gdk.ModifierType valid_modifiers =
         Gdk.ModifierType.CONTROL_MASK |
         Gdk.ModifierType.SHIFT_MASK |
-        Gdk.ModifierType.ALT_MASK;
+        Gdk.ModifierType.ALT_MASK |
+        Gdk.ModifierType.META_MASK;
 
       var real_modifiers = valid_modifiers & modifier;
 
