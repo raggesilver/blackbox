@@ -12,6 +12,11 @@
   background: transparent;
 }
 
+/** macOS has super rounded headerbars, so we need fully rounded buttons */
+#blackbox-main-window.macos .custom-headerbar button {
+  border-radius: 50%;
+}
+
 #blackbox-main-window scrollbar {
   background: @window_bg_color;
 }
@@ -130,4 +135,9 @@ themeswitcher checkbutton.light radio {
 themeswitcher checkbutton.dark radio {
   color: white;
   background-color: #1e1e1e;
+}
+
+@media (prefers-color-scheme: dark) {
+  @define-color root_context_color  shade(@red_5, 0.7);
+  @define-color ssh_context_color   shade(@purple_5, 0.7);
 }

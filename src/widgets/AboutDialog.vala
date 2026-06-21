@@ -19,8 +19,8 @@
  */
 
 namespace Terminal {
-  public Adw.AboutDialog create_about_dialog () {
-    var window = new Adw.AboutDialog () {
+  public Adw.AboutDialog create_about_dialog() {
+    var window = new Adw.AboutDialog() {
       developer_name = "Paulo Queiroz",
       copyright = "© 2022-2026 Paulo Queiroz",
       license_type = Gtk.License.GPL_3_0,
@@ -29,8 +29,9 @@ namespace Terminal {
       version = VERSION,
       website = "https://gitlab.gnome.org/raggesilver/blackbox",
       issue_url = "https://gitlab.gnome.org/raggesilver/blackbox/-/issues",
-      debug_info = get_debug_information (),
-      release_notes = """
+      debug_info = get_debug_information(),
+      release_notes =
+        """
         <ul>
           <li>Open folders in Black Box directly from the Files app right-click menu.</li>
           <li>Fixed missing "command completed" notifications when the context-aware sidebar was disabled.</li>
@@ -40,44 +41,45 @@ namespace Terminal {
     };
 
     if (DEVEL) {
-      window.add_css_class ("devel");
+      window.add_css_class("devel");
     }
+#if MACOS
+    window.add_css_class("macos");
+#endif
 
-    window.add_link (_("Donate"), "https://www.patreon.com/raggesilver");
-    window.add_link (_("Full Changelog"), "https://gitlab.gnome.org/raggesilver/blackbox/-/blob/main/CHANGELOG.md");
+    window.add_link(_("Donate"), "https://www.patreon.com/raggesilver");
+    window.add_link(_("Full Changelog"),
+                    "https://gitlab.gnome.org/raggesilver/blackbox/-/blob/main/CHANGELOG.md");
 
     return window;
   }
 
-  private string get_debug_information () {
-    var app = "Black Box: %s\n".printf (VERSION);
-    var backend = "Backend: %s\n".printf (get_gtk_backend ());
-    var renderer = "Renderer: %s\n".printf (get_renderer ());
-    var os_info = get_os_info ();
-    var libs = get_libraries_info ();
-
-    return app + backend + renderer + os_info + libs;
+  private string get_debug_information() {
+    return "- Black Box: %s\n- Backend: %s\n- Renderer: %s\n\n%s\n%s".printf(
+      VERSION, get_gtk_backend(), get_renderer(), get_os_info(),
+      get_libraries_info()
+    );
   }
 
-  private string get_gtk_backend () {
-    var display = Gdk.Display.get_default ();
-    switch (display.get_class ().get_name ()) {
+  private string get_gtk_backend() {
+    var display = Gdk.Display.get_default();
+    switch (display.get_class().get_name()) {
       case "GdkX11Display": return "X11";
       case "GdkWaylandDisplay": return "Wayland";
       case "GdkBroadwayDisplay": return "Broadway";
       case "GdkWin32Display": return "Windows";
       case "GdkMacosDisplay": return "macOS";
-      default: return display.get_class ().get_name ();
+      default: return display.get_class().get_name();
     }
   }
 
-  private string get_renderer () {
-    var display = Gdk.Display.get_default ();
-    var surface = new Gdk.Surface.toplevel (display);
-    var renderer = Gsk.Renderer.for_surface (surface);
+  private string get_renderer() {
+    var display = Gdk.Display.get_default();
+    var surface = new Gdk.Surface.toplevel(display);
+    var renderer = Gsk.Renderer.for_surface(surface);
 
-    var name = renderer.get_class ().get_name ();
-    renderer.unrealize ();
+    var name = renderer.get_class().get_name();
+    renderer.unrealize();
 
     switch (name) {
       case "GskVulkanRenderer": return "Vulkan";
@@ -87,23 +89,40 @@ namespace Terminal {
     }
   }
 
-  private string get_libraries_info () {
-    string res = "Libraries:\n";
-
-    res += " - Gtk: %d.%d.%d\n".printf (Gtk.MAJOR_VERSION, Gtk.MINOR_VERSION, Gtk.MICRO_VERSION);
-    res += " - VTE: %d.%d.%d\n".printf (Vte.MAJOR_VERSION, Vte.MINOR_VERSION, Vte.MICRO_VERSION);
-    res += " - Libadwaita: %s\n".printf (Adw.VERSION_S);
-    res += " - JSON-glib: %s\n".printf (Json.VERSION_S);
-
-    return res;
+  private string get_libraries_info() {
+    return
+      "Libraries:\n- Gtk: %d.%d.%d\n- VTE: %d.%d.%d\n- Libadwaita: %s\n- JSON-glib: %s\n"
+      .printf(
+      Gtk.MAJOR_VERSION, Gtk.MINOR_VERSION, Gtk.MICRO_VERSION,
+      Vte.MAJOR_VERSION, Vte.MINOR_VERSION, Vte.MICRO_VERSION,
+      Adw.VERSION_S,
+      Json.VERSION_S
+      );
   }
 
-  private string get_os_info () {
-    string res = "OS:\n";
-
-    res += " - Name: %s\n".printf (Environment.get_os_info (OsInfoKey.NAME));
-    res += " - Version: %s\n".printf (Environment.get_os_info (OsInfoKey.VERSION));
-
-    return res;
+  private string get_os_info() {
+    return "OS:\n- Name: %s\n- Version: %s\n".printf(
+#if MACOS
+      sw_vers("-productName") ?? _("Unknown"),
+      sw_vers("-productVersion") ?? _("Unknown")
+#else
+      Environment.get_os_info(OsInfoKey.NAME) ?? _("Unknown"),
+      Environment.get_os_info(OsInfoKey.VERSION) ?? _("Unknown")
+#endif
+    );
   }
+
+#if MACOS
+  private string? sw_vers(string flag) {
+    try {
+      string output;
+      GLib.Process.spawn_command_line_sync("sw_vers %s".printf(flag),
+                                           out output);
+      return output.strip();
+    } catch {
+      return null;
+    }
+  }
+
+#endif
 }

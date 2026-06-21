@@ -97,6 +97,9 @@ public class Terminal.PreferencesWindow : Adw.PreferencesDialog {
     if (DEVEL) {
       this.add_css_class("devel");
     }
+#if MACOS
+    this.add_css_class("macos");
+#endif
   }
 
   public PreferencesWindow (Window window, Gtk.Application app) {

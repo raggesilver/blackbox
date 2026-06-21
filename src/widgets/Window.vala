@@ -142,6 +142,9 @@ public class Terminal.Window : Adw.ApplicationWindow {
     if (DEVEL) {
       this.add_css_class("devel");
     }
+#if MACOS
+    this.add_css_class("macos");
+#endif
 
     // FIXME: move this over to an ui file
 
