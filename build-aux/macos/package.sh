@@ -209,6 +209,8 @@ publish() {
     gh repo clone "$TAP_REPO" "$tap_dir"
   fi
 
+  grep -q 'version "' "$cask_file" || { echo "error: could not find version field in $cask_file"; exit 1; }
+  grep -q 'sha256 "' "$cask_file" || { echo "error: could not find sha256 field in $cask_file"; exit 1; }
   sed -i '' "s/version \".*\"/version \"$VERSION\"/" "$cask_file"
   sed -i '' "s/sha256 \".*\"/sha256 \"$DMG_SHA256\"/" "$cask_file"
 

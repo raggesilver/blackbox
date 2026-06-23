@@ -46,7 +46,13 @@ int main(int argc, char* argv[]) {
   setup_adwaita_compat(exe);
   free(exe);
 
-  const char* prefixes[] = { "/opt/homebrew", "/usr/local", NULL };
+  const char* prefixes[4];
+  int n = 0;
+  const char* homebrew_prefix = getenv("HOMEBREW_PREFIX");
+  if (homebrew_prefix) prefixes[n++] = homebrew_prefix;
+  prefixes[n++] = "/opt/homebrew";
+  prefixes[n++] = "/usr/local";
+  prefixes[n] = NULL;
 
   for (int i = 0; prefixes[i] != NULL; i++) {
     char binary[PATH_MAX + 4];

@@ -6,8 +6,8 @@ SVG="$1"
 OUTPUT="$2"
 RSVG_CONVERT="$3"
 
-TMPDIR="$(mktemp -d)"
-ICONSET="$TMPDIR/BlackBox.iconset"
+WORK_DIR="$(mktemp -d)"
+ICONSET="$WORK_DIR/BlackBox.iconset"
 mkdir "$ICONSET"
 
 render() {
@@ -26,4 +26,4 @@ render 512  icon_512x512.png
 render 1024 icon_512x512@2x.png
 
 iconutil -c icns "$ICONSET" -o "$OUTPUT"
-rm -rf "$TMPDIR"
+rm -rf "$WORK_DIR"
