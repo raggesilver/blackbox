@@ -169,7 +169,7 @@ public class Terminal.HeaderBar : Adw.Bin {
 
     foreach (var token in side.split(",")) {
       var t = token.strip();
-      if (t != "" && t != "spacer") { return true; }
+      if (t != "" && t != "spacer" && !t.has_suffix("menu")) { return true; }
     }
     return false;
   }
