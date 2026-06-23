@@ -37,7 +37,7 @@ install_data(
 )
 
 install_subdir(
-  meson.project_source_root() / 'data' / 'gtk-css-compat',
+  meson.current_source_dir() / 'gtk-css-compat',
   install_dir: bundle_contents / 'Resources',
 )
 

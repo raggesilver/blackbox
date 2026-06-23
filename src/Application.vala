@@ -68,13 +68,14 @@ public class Terminal.Application : Adw.Application {
 
   public override void startup() {
     base.startup();
-
-    // For whatever reason, gsettings doesn't apply anything in macOS, nor are
-    // the default values relevant for the platform, so we hardcode this here.
-    if (Gdk.Display.get_default().get_class().get_name() == "GdkMacosDisplay") {
-      Gtk.Settings.get_default().gtk_decoration_layout =
-        "close,minimize,maximize:";
-    }
+#if MACOS
+    // GSettings works weirdly on macOS. It uses `defaults`, which stores
+    // settings on a per app basis, so changing "system-wide" button-layout
+    // doesn't affect Black Box. We hardcode this hack to force it into a
+    // macOS-like layout.
+    Gtk.Settings.get_default().gtk_decoration_layout =
+      "close,minimize,maximize:";
+#endif
   }
 
   // GLib's default implementation strips "--" from args before command_line

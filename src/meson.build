@@ -70,7 +70,7 @@ blackbox_exe = executable(
 # mostly "Expected ';' at the end of the block". Here we use environment
 # variables to override the theme and avoid those warnings.
 if host_machine.system() == 'darwin'
-  gtk_css_compat_dir = meson.project_source_root() / 'data' / 'gtk-css-compat'
+  gtk_css_compat_dir = meson.project_source_root() / 'data' / 'macos' / 'gtk-css-compat'
 
   run_target(
     'run',
