@@ -39,25 +39,23 @@ window:not(.about) headerbar,
   padding-bottom: 0;
 }
 
-.custom-headerbar windowcontrols:not(.empty).start {
+.custom-headerbar tabbar {
+  margin: 0 -6px;
+}
+
+.custom-headerbar:not(.left-empty) .tabbar-left {
   margin-right: 6px;
 }
 
-.custom-headerbar windowcontrols.start.empty ~ tabbar {
-  margin-left: -6px;
-}
-
-.custom-headerbar windowcontrols:not(.empty).end {
+.custom-headerbar:not(.right-empty) .tabbar-right {
   margin-left: 6px;
 }
 
 /**
  * Add space on the left when "Drag Area" is enabled.
  */
-.custom-headerbar.with-dragarea:not(.single-tab-mode)
-  windowcontrols.start.empty
-  ~ tabbar {
-  margin-left: 34px;
+.custom-headerbar.with-dragarea:not(.single-tab-mode).left-empty tabbar {
+  margin-left: 28px;
 }
 
 .toolbar {
