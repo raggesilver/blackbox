@@ -127,29 +127,68 @@
                     <property name="child">
                       <object class="GtkCenterBox" id="single_tab_content">
                         <child type="start">
-                          <object class="GtkWindowControls" id="left_controls">
-                            <property name="side">start</property>
-                            <property name="use-native-controls">true</property>
+                          <object class="GtkBox">
+                            <property name="orientation">horizontal</property>
+                            <property name="spacing">0</property>
+                            <property name="valign">center</property>
+                            <style>
+                              <class name="tabbar-left" />
+                            </style>
 
-                            <binding name="visible">
-                              <closure
-                                type="gboolean"
-                                function="show_window_controls"
+                            <child>
+                              <object
+                                class="GtkWindowControls"
+                                id="left_controls"
                               >
-                                <lookup name="fullscreened">
-                                  <lookup
-                                    name="window"
-                                  >TerminalHeaderBar</lookup>
-                                </lookup>
-                                <lookup
-                                  name="floating-mode"
-                                >TerminalHeaderBar</lookup>
-                                <lookup
-                                  name="single-tab-mode"
-                                >TerminalHeaderBar</lookup>
-                                <constant type="gboolean">false</constant>
-                              </closure>
-                            </binding>
+                                <property name="side">start</property>
+                                <property
+                                  name="use-native-controls"
+                                >true</property>
+
+                                <binding name="visible">
+                                  <closure
+                                    type="gboolean"
+                                    function="show_window_controls"
+                                  >
+                                    <lookup name="fullscreened">
+                                      <lookup
+                                        name="window"
+                                      >TerminalHeaderBar</lookup>
+                                    </lookup>
+                                    <lookup
+                                      name="floating-mode"
+                                    >TerminalHeaderBar</lookup>
+                                    <lookup
+                                      name="single-tab-mode"
+                                    >TerminalHeaderBar</lookup>
+                                    <constant type="gboolean">false</constant>
+                                  </closure>
+                                </binding>
+                              </object>
+                            </child>
+
+                            <child>
+                              <object class="GtkButton">
+                                <property
+                                  name="tooltip-text"
+                                  translatable="yes"
+                                >Search</property>
+                                <property
+                                  name="icon-name"
+                                >edit-find-symbolic</property>
+                                <property
+                                  name="action-name"
+                                >win.search</property>
+
+                                <binding name="visible">
+                                  <lookup name="show-search-toggle-button">
+                                    <lookup
+                                      name="settings"
+                                    >TerminalHeaderBar</lookup>
+                                  </lookup>
+                                </binding>
+                              </object>
+                            </child>
                           </object>
                         </child>
 
@@ -180,6 +219,9 @@
                             <property name="orientation">horizontal</property>
                             <property name="spacing">0</property>
                             <property name="valign">center</property>
+                            <style>
+                              <class name="tabbar-right" />
+                            </style>
 
                             <binding name="visible">
                               <lookup
@@ -199,6 +241,14 @@
                                 <property
                                   name="action-name"
                                 >win.new_tab</property>
+
+                                <binding name="visible">
+                                  <lookup name="show-new-tab-button">
+                                    <lookup
+                                      name="settings"
+                                    >TerminalHeaderBar</lookup>
+                                  </lookup>
+                                </binding>
                               </object>
                             </child>
 
@@ -301,30 +351,64 @@
                     <property name="child">
                       <object class="GtkBox">
 
-                        <child type="start">
-                          <object class="GtkWindowControls">
-                            <property name="side">start</property>
-                            <property name="use-native-controls">true</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="orientation">horizontal</property>
+                            <property name="spacing">0</property>
+                            <property name="valign">center</property>
+                            <style>
+                              <class name="tabbar-left" />
+                            </style>
 
-                            <binding name="visible">
-                              <closure
-                                type="gboolean"
-                                function="show_window_controls"
-                              >
-                                <lookup name="fullscreened">
-                                  <lookup
-                                    name="window"
-                                  >TerminalHeaderBar</lookup>
-                                </lookup>
-                                <lookup
-                                  name="floating-mode"
-                                >TerminalHeaderBar</lookup>
-                                <lookup
-                                  name="single-tab-mode"
-                                >TerminalHeaderBar</lookup>
-                                <constant type="gboolean">false</constant>
-                              </closure>
-                            </binding>
+                            <child>
+                              <object class="GtkWindowControls">
+                                <property name="side">start</property>
+                                <property name="use-native-controls">true</property>
+
+                                <binding name="visible">
+                                  <closure
+                                    type="gboolean"
+                                    function="show_window_controls"
+                                  >
+                                    <lookup name="fullscreened">
+                                      <lookup
+                                        name="window"
+                                      >TerminalHeaderBar</lookup>
+                                    </lookup>
+                                    <lookup
+                                      name="floating-mode"
+                                    >TerminalHeaderBar</lookup>
+                                    <lookup
+                                      name="single-tab-mode"
+                                    >TerminalHeaderBar</lookup>
+                                    <constant type="gboolean">false</constant>
+                                  </closure>
+                                </binding>
+                              </object>
+                            </child>
+
+                            <child>
+                              <object class="GtkButton">
+                                <property name="valign">center</property>
+                                <property
+                                  name="tooltip-text"
+                                  translatable="yes"
+                                >Search</property>
+                                <property
+                                  name="icon-name"
+                                >edit-find-symbolic</property>
+                                <property name="action-name">win.search</property>
+
+                                <binding name="visible">
+                                  <lookup name="show-search-toggle-button">
+                                    <lookup
+                                      name="settings"
+                                    >TerminalHeaderBar</lookup>
+                                  </lookup>
+                                </binding>
+                              </object>
+                            </child>
+
                           </object>
                         </child>
 
@@ -345,6 +429,9 @@
                             <property name="orientation">horizontal</property>
                             <property name="spacing">0</property>
                             <property name="valign">center</property>
+                            <style>
+                              <class name="tabbar-right" />
+                            </style>
 
                             <child>
                               <object class="GtkButton">
@@ -358,6 +445,14 @@
                                 <property
                                   name="action-name"
                                 >win.new_tab</property>
+
+                                <binding name="visible">
+                                  <lookup name="show-new-tab-button">
+                                    <lookup
+                                      name="settings"
+                                    >TerminalHeaderBar</lookup>
+                                  </lookup>
+                                </binding>
                               </object>
                             </child>
 

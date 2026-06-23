@@ -56,11 +56,6 @@
               </object>
             </child>
             <child>
-              <object class="AdwSwitchRow" id="show_menu_button_switch_row">
-                <property name="title" translatable="yes">Show Menu Button</property>
-              </object>
-            </child>
-            <child>
               <object class="AdwSwitchRow" id="drag_area_switch_row">
                 <property name="title" translatable="yes">Drag Area</property>
                 <property name="subtitle" translatable="yes">Enable to reserve some space on the left side to drag the window.</property>
@@ -91,6 +86,25 @@
                     <property name="adjustment">floating_controls_delay_adjustment</property>
                   </object>
                 </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <child>
+              <object class="AdwSwitchRow" id="show_new_tab_button_switch_row">
+                <property name="title" translatable="yes">Show New Tab Button</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSwitchRow" id="show_search_toggle_button_switch_row">
+                <property name="title" translatable="yes">Show Search Button</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSwitchRow" id="show_menu_button_switch_row">
+                <property name="title" translatable="yes">Show Menu Button</property>
               </object>
             </child>
           </object>
