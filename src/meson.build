@@ -24,7 +24,7 @@ config_header = configure_file(input: 'config.vala.in', output: 'config.vala', c
 
 blackbox_deps = [
   dependency('gio-2.0', version: '>= 2.50'),
-  dependency('gtk4', version: '>= 4.12.0'),
+  dependency('gtk4', version: '>= 4.18.0'),
   dependency('libadwaita-1', version: '>= 1.4'),
   dependency('vte-2.91-gtk4', version: '>= 0.69.0'),
   dependency('json-glib-1.0', version: '>= 1.4.4'),
