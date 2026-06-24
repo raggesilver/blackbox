@@ -16,10 +16,10 @@ namespace Terminal.Constants {
 
   const string USERPASS = USERCHARS_CLASS + "+(?:" + PASSCHARS_CLASS + "+)?";
   const string URLPATH = "(?:(/" + PATHCHARS_CLASS +
-                         "+(?:[(]" + PATHCHARS_CLASS +
-                         "*[)])*" + PATHCHARS_CLASS +
-                         "*)*" + PATHTERM_CLASS +
-                         ")?";
+    "+(?:[(]" + PATHCHARS_CLASS +
+    "*[)])*" + PATHCHARS_CLASS +
+    "*)*" + PATHTERM_CLASS +
+    ")?";
 
   const string[] URL_REGEX_STRINGS = {
     SCHEME + "//(?:" + USERPASS + "\\@)?" + HOST + PORT + URLPATH,
@@ -31,33 +31,44 @@ namespace Terminal.Constants {
     "(?:news:|man:|info:)[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+"
   };
 
-  const string MENU_BUTTON_ALTERNATIVE = _("You can still access the menu by right-clicking any terminal.");
+  const string MENU_BUTTON_ALTERNATIVE =
+    _("You can still access the menu by right-clicking any terminal.");
 
-  const string COPYING_NOT_IMPLEMENTED_WARNING_FMT = _("%s uses an early Gtk 4 port of VTE as a terminal widget. While a lot of progress has been made on this port, copying has yet to be implemented. This means there's currently no way to copy text in %s.");
+  const string COPYING_NOT_IMPLEMENTED_WARNING_FMT =
+    _(
+      "%s uses an early Gtk 4 port of VTE as a terminal widget. While a lot of progress has been made on this port, copying has yet to be implemented. This means there's currently no way to copy text in %s.");
 
-  const string INFINITE_SCROLLBACK_WARNING = _("Warning: unlimited scrollback saves content to disk, which may cause your system to run out of storage.");
+  const string INFINITE_SCROLLBACK_WARNING =
+    _(
+      "Warning: unlimited scrollback saves content to disk, which may cause your system to run out of storage.");
 
-  public string get_user_schemes_dir () {
+  public string get_user_schemes_dir() {
     return Path.build_path(
-      Path.DIR_SEPARATOR_S, Environment.get_user_data_dir (), "blackbox", "schemes"
+      Path.DIR_SEPARATOR_S, Environment.get_user_data_dir(), "blackbox",
+      "schemes"
     );
   }
 
-  public string get_user_keybindings_path () {
+  public string get_user_keybindings_path() {
     return Path.build_path(
-      Path.DIR_SEPARATOR_S, Environment.get_user_data_dir (), "blackbox", "user-keymap.json"
+      Path.DIR_SEPARATOR_S, Environment.get_user_data_dir(), "blackbox",
+      "user-keymap.json"
     );
   }
 
-  public string get_app_schemes_dir () {
+  public string get_app_schemes_dir() {
+#if MACOS
     // Prefer XDG data dirs so that a self-contained .app bundle can redirect
     // this path via XDG_DATA_DIRS without recompiling.
-    foreach (var dir in Environment.get_system_data_dirs ()) {
-      var candidate = Path.build_path (Path.DIR_SEPARATOR_S, dir, "blackbox", "schemes");
-      if (FileUtils.test (candidate, FileTest.IS_DIR)) {
+    foreach (var dir in Environment.get_system_data_dirs()) {
+      var candidate = Path.build_path(Path.DIR_SEPARATOR_S, dir, "blackbox",
+                                      "schemes");
+      if (FileUtils.test(candidate, FileTest.IS_DIR)) {
         return candidate;
       }
     }
-    return Path.build_path (Path.DIR_SEPARATOR_S, DATADIR, "blackbox", "schemes");
+#endif
+    return Path.build_path(Path.DIR_SEPARATOR_S, DATADIR, "blackbox",
+                           "schemes");
   }
 }
