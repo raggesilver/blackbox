@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #
+# Based on https://github.com/bschrenk/baobab-disk-usage-analyzer-app-macos/blob/942a08c01e94bee82e34cf67cda9720389c8a249/scripts/create_app.sh
+#
 # Builds, codesigns, notarizes, and packages Black Box as a macOS DMG.
 # Pass --publish to upload the DMG to the GitLab Package Registry.
 # Pass --skip-notarize to skip notarization (useful for local testing).
