@@ -62,10 +62,7 @@ Check out the [releases page](https://gitlab.gnome.org/raggesilver/blackbox/-/re
 
 ### macOS
 
-```sh
-brew tap raggesilver/tap
-brew install --cask blackbox-terminal
-```
+Download the latest DMG from the [releases page](https://gitlab.gnome.org/raggesilver/blackbox/-/releases).
 
 ## Build from source
 
@@ -73,7 +70,7 @@ brew install --cask blackbox-terminal
 
 - `valac` (Vala compiler)
 - `meson` >= 0.50
-- `gtk4` >= 4.12.0
+- `gtk4` >= 4.18.0
 - `libadwaita-1` >= 1.4
 - `vte-2.91-gtk4` >= 0.69.0
 - `json-glib-1.0` >= 1.4.4

@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 #
 # Builds, codesigns, notarizes, and packages Black Box as a macOS DMG.
-# Pass --publish to also create a GitHub release and update the Homebrew tap.
+# Pass --publish to upload the DMG to the GitLab Package Registry.
 # Pass --skip-notarize to skip notarization (useful for local testing).
 #
 # Required env vars:
 #   SIGN_IDENTITY      — e.g. "Developer ID Application: Your Name (TEAMID)"
 #   NOTARYTOOL_PROFILE — keychain profile name (default: notarytool-blackbox)
 #
-# Prerequisites: create-dmg, gh (brew install create-dmg gh)
+# Prerequisites: create-dmg (brew install create-dmg)
+# For --publish: glab must be installed and authenticated (brew install glab)
 
 set -euo pipefail
 
@@ -18,8 +19,8 @@ set -euo pipefail
 
 SIGN_IDENTITY="${SIGN_IDENTITY:-}"
 NOTARYTOOL_PROFILE="${NOTARYTOOL_PROFILE:-notarytool-blackbox}"
-TAP_REPO="raggesilver/homebrew-tap"
-CASK_NAME="blackbox-terminal"
+GITLAB_HOST="gitlab.gnome.org"
+GITLAB_PROJECT="raggesilver%2Fblackbox"
 
 PUBLISH=0
 SKIP_NOTARIZE=0
@@ -74,21 +75,9 @@ check_prereqs() {
     ok=0
   fi
 
-  if [[ $PUBLISH -eq 1 ]] && ! command -v gh &>/dev/null; then
-    echo "error: gh not found — brew install gh"
-    ok=0
-  fi
-
   if [[ $PUBLISH -eq 1 ]]; then
-    if ! gh release view "v$VERSION" --repo raggesilver/blackbox &>/dev/null 2>&1; then
-      if ! gh api "repos/raggesilver/blackbox/git/ref/tags/v$VERSION" &>/dev/null 2>&1; then
-        echo "error: tag v$VERSION not found on GitHub."
-        echo "       Push the tag from GitLab first and wait for the mirror to sync:"
-        echo "         git push origin v$VERSION"
-        ok=0
-      fi
-    else
-      echo "error: GitHub release v$VERSION already exists."
+    if ! command -v glab &>/dev/null; then
+      echo "error: glab not found — brew install glab"
       ok=0
     fi
   fi
@@ -366,30 +355,17 @@ make_dmg() {
 }
 
 publish() {
-  step "Creating GitHub release (v$VERSION)"
-  gh release create "v$VERSION" "$DMG_OUT" \
-    --repo "raggesilver/blackbox" \
-    --title "v$VERSION" \
-    --latest
+  local pkg_url="https://$GITLAB_HOST/api/v4/projects/$GITLAB_PROJECT/packages/generic/blackbox-macos/$VERSION/BlackBox-$VERSION.dmg"
 
-  step "Updating Homebrew tap ($TAP_REPO)"
-  local tap_dir="$BUILD_DIR/homebrew-tap"
-  local cask_file="$tap_dir/Casks/$CASK_NAME.rb"
+  step "Uploading DMG to GitLab Package Registry"
+  local token; token="$(glab config get token --host "$GITLAB_HOST")"
+  curl --fail --progress-bar \
+    --header "PRIVATE-TOKEN: $token" \
+    --upload-file "$DMG_OUT" \
+    "$pkg_url"
 
-  if [[ -d "$tap_dir" ]]; then
-    git -C "$tap_dir" pull --rebase
-  else
-    gh repo clone "$TAP_REPO" "$tap_dir"
-  fi
-
-  grep -q 'version "' "$cask_file" || { echo "error: could not find version field in $cask_file"; exit 1; }
-  grep -q 'sha256 "' "$cask_file" || { echo "error: could not find sha256 field in $cask_file"; exit 1; }
-  sed -i '' "s/version \".*\"/version \"$VERSION\"/" "$cask_file"
-  sed -i '' "s/sha256 \".*\"/sha256 \"$DMG_SHA256\"/" "$cask_file"
-
-  git -C "$tap_dir" add "Casks/$CASK_NAME.rb"
-  git -C "$tap_dir" commit -m "Update $CASK_NAME to $VERSION"
-  git -C "$tap_dir" push
+  echo
+  echo "DMG URL: $pkg_url"
 }
 
 # ---------------------------------------------------------------------------
