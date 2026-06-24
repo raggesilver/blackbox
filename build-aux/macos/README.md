@@ -35,7 +35,9 @@ Add that export to `~/.zshrc` so you don't need to set it each time.
 **Install packaging dependencies**
 
 ```sh
-brew install create-dmg gh
+brew install create-dmg
+# For --publish:
+brew install glab && glab auth login
 ```
 
 ## Running locally
@@ -43,7 +45,7 @@ brew install create-dmg gh
 ```sh
 meson setup builddir
 meson compile -C builddir
-meson run -C builddir run
+ninja -C builddir run
 ```
 
 ## Building a release DMG
@@ -56,28 +58,44 @@ This builds the app, codesigns it with your Developer ID certificate,
 notarizes it with Apple, staples the ticket, and produces
 `BlackBox-<version>.dmg` in the project root.
 
-The build scratch directory is `build-pkg/` (gitignored). It is wiped and
-rebuilt on each run.
+Use `--skip-notarize` to skip codesigning and notarization for local testing:
+
+```sh
+./build-aux/macos/package.sh --skip-notarize
+```
+
+The build scratch directory is `build-pkg/` (gitignored).
 
 ## Publishing a release
 
-```sh
-./build-aux/macos/package.sh --publish
-```
+1. Tag the release and push:
 
-In addition to building the DMG, this:
+   ```sh
+   git tag v<version> && git push origin v<version>
+   ```
 
-1. Creates a GitHub release at `raggesilver/blackbox` and uploads the DMG
-2. Updates the version and SHA256 in the Homebrew tap
-   (`raggesilver/homebrew-tap`) and pushes the change
+2. Upload the DMG to the GitLab Package Registry:
 
-The tap repo is cloned into `build-pkg/homebrew-tap/` on first run and
-pulled on subsequent runs.
+   ```sh
+   ./build-aux/macos/package.sh --publish
+   ```
+
+   This builds the DMG (with notarization) and uploads it. The direct URL is
+   printed at the end.
+
+3. Create the release on the
+   [GitLab releases page](https://gitlab.gnome.org/raggesilver/blackbox/-/releases)
+   and paste the DMG URL as a package asset link.
 
 ## How the .app bundle works
 
-The `.app` is a thin launcher — `Contents/MacOS/BlackBox` — that sets up the
-required environment variables (GLib schemas, XDG data dirs, Adwaita CSS
-overlay) and then `execv`s into the `blackbox-terminal` binary installed by
-Homebrew. The actual app binary is provided by the `blackbox-terminal` formula,
-which Homebrew installs automatically as a cask dependency.
+The bundle is fully self-contained — no Homebrew installation required.
+
+- `Contents/MacOS/BlackBox` — launcher shell script that sets up the
+  environment (GLib schemas, XDG data dirs, icon theme, pixbuf loaders) and
+  `exec`s into the real binary
+- `Contents/MacOS/blackbox-terminal` — the compiled app binary
+- `Contents/Frameworks/` — all non-system dylibs, with load paths rewritten to
+  `@executable_path/../Frameworks/`
+- `Contents/Resources/` — GSettings schemas, icons, color schemes, GDK-Pixbuf
+  loaders, translations
