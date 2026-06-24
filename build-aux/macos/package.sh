@@ -37,11 +37,16 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 VERSION="$(grep "version:" "$PROJECT_ROOT/meson.build" | head -1 | grep -oE "[0-9]+\.[0-9]+\.[0-9]+")"
+BREW="$(brew --prefix)"
 
 BUILD_DIR="$PROJECT_ROOT/build-pkg"
 MESON_DIR="$BUILD_DIR/meson"
 STAGING_DIR="$BUILD_DIR/staging"
 APP_BUNDLE="$STAGING_DIR/BlackBox.app"
+BUNDLE_CONTENTS="$APP_BUNDLE/Contents"
+BUNDLE_MACOS="$BUNDLE_CONTENTS/MacOS"
+BUNDLE_RESOURCES="$BUNDLE_CONTENTS/Resources"
+BUNDLE_FRAMEWORKS="$BUNDLE_CONTENTS/Frameworks"
 DMG_STAGE="$BUILD_DIR/dmg-stage"
 DMG_OUT="$PROJECT_ROOT/BlackBox-$VERSION.dmg"
 
@@ -108,6 +113,149 @@ build() {
 
   meson compile -C "$MESON_DIR"
   meson install -C "$MESON_DIR"
+}
+
+# ---------------------------------------------------------------------------
+# Resolve the on-disk path for a single dylib reference, or print nothing.
+# Usage: resolve_lib <ref> <binary-that-referenced-it>
+# ---------------------------------------------------------------------------
+resolve_lib() {
+  local ref="$1"
+  local binary="$2"
+
+  if [[ "$ref" == @rpath/* ]]; then
+    local name="${ref#@rpath/}"
+    while IFS= read -r rpath; do
+      rpath="${rpath%% (offset*}"
+      rpath="${rpath#*path }"
+      rpath="${rpath//\$\{HOMEBREW_PREFIX\}/$BREW}"
+      [ -f "$rpath/$name" ] && { echo "$rpath/$name"; return; }
+    done < <(otool -l "$binary" 2>/dev/null | grep -A2 LC_RPATH | grep '^\s*path ')
+    # Fallback: scan Homebrew
+    find "$BREW/lib" "$BREW/opt" -maxdepth 4 -name "$name" 2>/dev/null | head -1
+  elif [ -f "$ref" ]; then
+    echo "$ref"
+  fi
+}
+
+# ---------------------------------------------------------------------------
+# Recursively collect non-system dylib dependencies into a temp file.
+# Each line is: <basename><TAB><resolved-path>
+# ---------------------------------------------------------------------------
+_COLLECTED=""
+
+collect_libs() {
+  local binary="$1"
+  while IFS= read -r ref; do
+    [[ "$ref" == /usr/lib/*         ]] && continue
+    [[ "$ref" == /System/Library/*  ]] && continue
+    [[ "$ref" == @executable_path/* ]] && continue
+    [[ "$ref" == @loader_path/*     ]] && continue
+
+    local src
+    src="$(resolve_lib "$ref" "$binary")"
+    [ -z "$src" ] && { echo "  warning: cannot resolve $ref — skipping" >&2; continue; }
+
+    src="$(python3 -c "import os,sys; print(os.path.realpath(sys.argv[1]))" "$src")"
+    local name; name="$(basename "$src")"
+
+    grep -qF "$name" "$_COLLECTED" && continue
+    printf '%s\t%s\n' "$name" "$src" >> "$_COLLECTED"
+
+    collect_libs "$src"
+  done < <(otool -L "$binary" 2>/dev/null | tail -n +2 | awk '{print $1}')
+}
+
+# ---------------------------------------------------------------------------
+# Rewrite dylib references in a binary to point into ../Frameworks/.
+# ---------------------------------------------------------------------------
+fix_refs() {
+  local binary="$1"
+  while IFS= read -r ref; do
+    [[ "$ref" == /usr/lib/*         ]] && continue
+    [[ "$ref" == /System/Library/*  ]] && continue
+    [[ "$ref" == @executable_path/* ]] && continue
+
+    local name
+    if [[ "$ref" == @rpath/* ]]; then
+      name="${ref#@rpath/}"
+    else
+      name="$(basename "$ref")"
+    fi
+
+    [ -f "$BUNDLE_FRAMEWORKS/$name" ] || continue
+    install_name_tool -change "$ref" "@executable_path/../Frameworks/$name" "$binary" 2>/dev/null || true
+  done < <(otool -L "$binary" 2>/dev/null | tail -n +2 | awk '{print $1}')
+}
+
+# ---------------------------------------------------------------------------
+# Copy the real terminal binary into the bundle.
+# ---------------------------------------------------------------------------
+bundle_binary() {
+  step "Copying blackbox-terminal into bundle"
+  cp "$STAGING_DIR/bin/blackbox-terminal" "$BUNDLE_MACOS/blackbox-terminal"
+  chmod 755 "$BUNDLE_MACOS/blackbox-terminal"
+}
+
+# ---------------------------------------------------------------------------
+# Collect all non-system dylibs, copy to Frameworks/, and rewrite load paths.
+# ---------------------------------------------------------------------------
+bundle_dylibs() {
+  step "Bundling dylibs"
+  mkdir -p "$BUNDLE_FRAMEWORKS"
+
+  _COLLECTED="$(mktemp)"
+  collect_libs "$BUNDLE_MACOS/blackbox-terminal"
+
+  local count; count="$(wc -l < "$_COLLECTED" | tr -d ' ')"
+  echo "Copying $count dylibs to Frameworks/"
+
+  while IFS=$'\t' read -r name src; do
+    cp "$src" "$BUNDLE_FRAMEWORKS/$name"
+    chmod 755 "$BUNDLE_FRAMEWORKS/$name"
+    install_name_tool -id "@executable_path/../Frameworks/$name" "$BUNDLE_FRAMEWORKS/$name"
+  done < "$_COLLECTED"
+  rm "$_COLLECTED"
+  _COLLECTED=""
+
+  echo "Fixing dylib references..."
+  fix_refs "$BUNDLE_MACOS/blackbox-terminal"
+  for lib in "$BUNDLE_FRAMEWORKS/"*.dylib; do
+    [ -f "$lib" ] && fix_refs "$lib"
+  done
+}
+
+# ---------------------------------------------------------------------------
+# Bundle GSettings schemas, color schemes, and icons into Resources/share/.
+# ---------------------------------------------------------------------------
+bundle_resources() {
+  step "Bundling resources"
+
+  # GSettings schemas: merge the app's schemas with GTK/Adwaita's from Homebrew,
+  # then compile. Both sets are required for settings lookups to succeed.
+  local schema_dir="$BUNDLE_RESOURCES/share/glib-2.0/schemas"
+  mkdir -p "$schema_dir"
+  cp "$STAGING_DIR/share/glib-2.0/schemas/"*.xml "$schema_dir/" 2>/dev/null || true
+  cp "$BREW/share/glib-2.0/schemas/"*.xml         "$schema_dir/" 2>/dev/null || true
+  glib-compile-schemas "$schema_dir/"
+
+  # Color schemes — the app searches XDG_DATA_DIRS (set by the launcher).
+  local schemes_dir="$BUNDLE_RESOURCES/share/blackbox/schemes"
+  mkdir -p "$schemes_dir"
+  cp -r "$STAGING_DIR/share/blackbox/schemes/." "$schemes_dir/"
+
+  # Icons needed for GTK's icon theme machinery.
+  mkdir -p "$BUNDLE_RESOURCES/share/icons"
+  [ -d "$BREW/share/icons/hicolor" ] && \
+    cp -r "$BREW/share/icons/hicolor" "$BUNDLE_RESOURCES/share/icons/"
+  [ -d "$BREW/share/icons/Adwaita" ] && \
+    cp -r "$BREW/share/icons/Adwaita" "$BUNDLE_RESOURCES/share/icons/"
+
+  # Locale files (best-effort; the app falls back to English if absent).
+  if [ -d "$STAGING_DIR/share/locale" ]; then
+    mkdir -p "$BUNDLE_RESOURCES/share/locale"
+    cp -r "$STAGING_DIR/share/locale/." "$BUNDLE_RESOURCES/share/locale/"
+  fi
 }
 
 codesign_app() {
@@ -226,6 +374,9 @@ publish() {
 check_prereqs
 
 build
+bundle_binary
+bundle_dylibs
+bundle_resources
 [[ $SKIP_NOTARIZE -eq 0 ]] && codesign_app
 [[ $SKIP_NOTARIZE -eq 0 ]] && notarize
 make_dmg

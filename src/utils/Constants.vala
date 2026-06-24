@@ -50,8 +50,14 @@ namespace Terminal.Constants {
   }
 
   public string get_app_schemes_dir () {
-    return Path.build_path (
-      Path.DIR_SEPARATOR_S, DATADIR, "blackbox", "schemes"
-    );
+    // Prefer XDG data dirs so that a self-contained .app bundle can redirect
+    // this path via XDG_DATA_DIRS without recompiling.
+    foreach (var dir in Environment.get_system_data_dirs ()) {
+      var candidate = Path.build_path (Path.DIR_SEPARATOR_S, dir, "blackbox", "schemes");
+      if (FileUtils.test (candidate, FileTest.IS_DIR)) {
+        return candidate;
+      }
+    }
+    return Path.build_path (Path.DIR_SEPARATOR_S, DATADIR, "blackbox", "schemes");
   }
 }
