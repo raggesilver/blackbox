@@ -133,6 +133,10 @@ resolve_lib() {
     done < <(otool -l "$binary" 2>/dev/null | grep -A2 LC_RPATH | grep '^\s*path ')
     # Fallback: scan Homebrew
     find "$BREW/lib" "$BREW/opt" -maxdepth 4 -name "$name" 2>/dev/null | head -1
+  elif [[ "$ref" == @loader_path/* ]]; then
+    local name="${ref#@loader_path/}"
+    local dir; dir="$(dirname "$binary")"
+    [ -f "$dir/$name" ] && { echo "$dir/$name"; return; }
   elif [ -f "$ref" ]; then
     echo "$ref"
   fi
@@ -150,7 +154,6 @@ collect_libs() {
     [[ "$ref" == /usr/lib/*         ]] && continue
     [[ "$ref" == /System/Library/*  ]] && continue
     [[ "$ref" == @executable_path/* ]] && continue
-    [[ "$ref" == @loader_path/*     ]] && continue
 
     # Use the reference name (e.g. libicuuc.78.dylib) as the bundle filename,
     # NOT the realpath basename (e.g. libicuuc.78.3.dylib). References inside
@@ -158,6 +161,8 @@ collect_libs() {
     local ref_name
     if [[ "$ref" == @rpath/* ]]; then
       ref_name="${ref#@rpath/}"
+    elif [[ "$ref" == @loader_path/* ]]; then
+      ref_name="${ref#@loader_path/}"
     else
       ref_name="$(basename "$ref")"
     fi
@@ -190,6 +195,8 @@ fix_refs() {
     local name
     if [[ "$ref" == @rpath/* ]]; then
       name="${ref#@rpath/}"
+    elif [[ "$ref" == @loader_path/* ]]; then
+      name="${ref#@loader_path/}"
     else
       name="$(basename "$ref")"
     fi
@@ -213,6 +220,7 @@ bundle_binary() {
 # ---------------------------------------------------------------------------
 bundle_dylibs() {
   step "Bundling dylibs"
+  rm -rf "$BUNDLE_FRAMEWORKS"
   mkdir -p "$BUNDLE_FRAMEWORKS"
 
   _COLLECTED="$(mktemp)"
