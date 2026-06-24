@@ -152,15 +152,26 @@ collect_libs() {
     [[ "$ref" == @executable_path/* ]] && continue
     [[ "$ref" == @loader_path/*     ]] && continue
 
+    # Use the reference name (e.g. libicuuc.78.dylib) as the bundle filename,
+    # NOT the realpath basename (e.g. libicuuc.78.3.dylib). References inside
+    # other dylibs use the symlink name, so fix_refs must find it under that name.
+    local ref_name
+    if [[ "$ref" == @rpath/* ]]; then
+      ref_name="${ref#@rpath/}"
+    else
+      ref_name="$(basename "$ref")"
+    fi
+
+    grep -qF "$ref_name" "$_COLLECTED" && continue
+
     local src
     src="$(resolve_lib "$ref" "$binary")"
     [ -z "$src" ] && { echo "  warning: cannot resolve $ref — skipping" >&2; continue; }
 
+    # Resolve symlinks to get the actual file to copy from.
     src="$(python3 -c "import os,sys; print(os.path.realpath(sys.argv[1]))" "$src")"
-    local name; name="$(basename "$src")"
 
-    grep -qF "$name" "$_COLLECTED" && continue
-    printf '%s\t%s\n' "$name" "$src" >> "$_COLLECTED"
+    printf '%s\t%s\n' "$ref_name" "$src" >> "$_COLLECTED"
 
     collect_libs "$src"
   done < <(otool -L "$binary" 2>/dev/null | tail -n +2 | awk '{print $1}')
