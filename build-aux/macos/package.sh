@@ -244,12 +244,18 @@ bundle_resources() {
   mkdir -p "$schemes_dir"
   cp -r "$STAGING_DIR/share/blackbox/schemes/." "$schemes_dir/"
 
-  # Icons needed for GTK's icon theme machinery.
+  # Icons — start with Homebrew's theme base, then overlay the app's own icons
+  # from the staging dir (app icon, action symbolics, etc.).
+  # Regenerate icon-theme.cache for both themes; without it GTK cannot find icons.
   mkdir -p "$BUNDLE_RESOURCES/share/icons"
   [ -d "$BREW/share/icons/hicolor" ] && \
     cp -r "$BREW/share/icons/hicolor" "$BUNDLE_RESOURCES/share/icons/"
   [ -d "$BREW/share/icons/Adwaita" ] && \
     cp -r "$BREW/share/icons/Adwaita" "$BUNDLE_RESOURCES/share/icons/"
+  [ -d "$STAGING_DIR/share/icons" ] && \
+    cp -r "$STAGING_DIR/share/icons/." "$BUNDLE_RESOURCES/share/icons/"
+  gtk-update-icon-cache -f -t "$BUNDLE_RESOURCES/share/icons/hicolor" 2>/dev/null || true
+  gtk-update-icon-cache -f -t "$BUNDLE_RESOURCES/share/icons/Adwaita"  2>/dev/null || true
 
   # Locale files (best-effort; the app falls back to English if absent).
   if [ -d "$STAGING_DIR/share/locale" ]; then
