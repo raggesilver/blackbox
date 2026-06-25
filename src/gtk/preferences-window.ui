@@ -509,7 +509,7 @@
                 <property name="wrap">True</property>
                 <property name="margin-top">6</property>
                 <property name="use-markup">True</property>
-                <property name="label" translatable="yes">The VTE build you are using does not have support Sixel. Sixel is still an experimental feature in VTE. For this reason, most distros do not build VTE with Sixel support. Installing Black Box via Flatpak will enable this feature. &lt;a href=&quot;https://gitlab.gnome.org/raggesilver/blackbox/-/issues/273&quot;&gt;See discussion in issue tracker.&lt;/a&gt;</property>
+                <property name="label" translatable="yes">The VTE build you are using does not support Sixel. Sixel is still an experimental feature in VTE. For this reason, most distros do not build VTE with Sixel support. Installing Black Box via Flatpak will enable this feature. &lt;a href=&quot;https://gitlab.gnome.org/raggesilver/blackbox/-/issues/273&quot;&gt;See discussion in issue tracker.&lt;/a&gt;</property>
                 <style>
                   <class name="caption" />
                 </style>
